@@ -1,0 +1,89 @@
+{
+  "header": {
+    "title": "Mini Console de Vendas",
+    "subtitle": "Transforme leads em oportunidades com nossa plataforma premium de gerenciamento de vendas"
+  },
+  "kpi": {
+    "title": "Oportunidades Convertidas",
+    "subtitle": "Acompanhe suas conversões de sucesso",
+    "opportunities_created": "Oportunidades Criadas",
+    "average_score": "Pontuação Média",
+    "conversion_rate": "Taxa de Conversão"
+  },
+  "analytics": {
+    "title": "Análises",
+    "leadsBySource": {
+      "title": "Leads por Origem"
+    },
+    "conversionFunnel": {
+      "title": "Funil de Conversão"
+    },
+    "funnel": {
+      "total": "Total de Leads",
+      "contacted": "Contactados",
+      "qualified": "Qualificados",
+      "converted": "Convertidos"
+    }
+  },
+  "leads": {
+    "title": "Pipeline de Leads",
+    "subtitle": "Gerencie e converta seus leads",
+    "search_placeholder": "Buscar por nome ou empresa...",
+    "filter_all_status": "Todos os Status",
+    "table_header": {
+      "name": "Nome",
+      "company": "Empresa",
+      "email": "E-mail",
+      "source": "Origem",
+      "score": "Pontuação",
+      "status": "Status",
+      "actions": "Ações"
+    },
+    "status": {
+      "new": "Novo",
+      "qualified": "Qualificado",
+      "contacted": "Contactado"
+    },
+    "empty": {
+      "title": "Pronto para converter seu primeiro lead?",
+      "subtitle": "Comece a converter leads qualificados em oportunidades e veja seu pipeline crescer.",
+      "cta_button": "Converter Primeiro Lead"
+    },
+    "actions": {
+      "view_details": "Ver Detalhes",
+      "convert": "Converter em Oportunidade"
+    }
+  },
+  "detail_sheet": {
+    "title": "Detalhes do Lead",
+    "tabs": {
+      "overview": "Visão Geral",
+      "activity": "Atividade"
+    },
+    "fields": {
+      "name": "Nome",
+      "company": "Empresa",
+      "email": "E-mail",
+      "phone": "Telefone",
+      "source": "Origem",
+      "score": "Pontuação",
+      "status": "Status",
+      "notes": "Observações"
+    },
+    "buttons": {
+      "save_changes": "Salvar Alterações",
+      "convert": "Converter em Oportunidade",
+      "close": "Fechar"
+    },
+    "activity": {
+      "no_activity": "Nenhuma atividade registrada ainda"
+    }
+  },
+  "common": {
+    "loading": "Carregando...",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "edit": "Editar",
+    "delete": "Excluir"
+  }
+}

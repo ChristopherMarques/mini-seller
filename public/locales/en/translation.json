@@ -1,0 +1,89 @@
+{
+  "header": {
+    "title": "Mini Seller Console",
+    "subtitle": "Transform leads into opportunities with our premium sales management platform"
+  },
+  "kpi": {
+    "title": "Converted Opportunities",
+    "subtitle": "Track your successful conversions",
+    "opportunities_created": "Opportunities Created",
+    "average_score": "Average Score",
+    "conversion_rate": "Conversion Rate"
+  },
+  "analytics": {
+    "title": "Analytics",
+    "leadsBySource": {
+      "title": "Leads by Source"
+    },
+    "conversionFunnel": {
+      "title": "Conversion Funnel"
+    },
+    "funnel": {
+      "total": "Total Leads",
+      "contacted": "Contacted",
+      "qualified": "Qualified",
+      "converted": "Converted"
+    }
+  },
+  "leads": {
+    "title": "Leads Pipeline",
+    "subtitle": "Manage and convert your leads",
+    "search_placeholder": "Search by name or company...",
+    "filter_all_status": "All Status",
+    "table_header": {
+      "name": "Name",
+      "company": "Company",
+      "email": "Email",
+      "source": "Source",
+      "score": "Score",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "status": {
+      "new": "New",
+      "qualified": "Qualified",
+      "contacted": "Contacted"
+    },
+    "empty": {
+      "title": "Ready to convert your first lead?",
+      "subtitle": "Start converting qualified leads into opportunities and watch your pipeline grow.",
+      "cta_button": "Convert First Lead"
+    },
+    "actions": {
+      "view_details": "View Details",
+      "convert": "Convert to Opportunity"
+    }
+  },
+  "detail_sheet": {
+    "title": "Lead Details",
+    "tabs": {
+      "overview": "Overview",
+      "activity": "Activity"
+    },
+    "fields": {
+      "name": "Name",
+      "company": "Company",
+      "email": "Email",
+      "phone": "Phone",
+      "source": "Source",
+      "score": "Score",
+      "status": "Status",
+      "notes": "Notes"
+    },
+    "buttons": {
+      "save_changes": "Save Changes",
+      "convert": "Convert to Opportunity",
+      "close": "Close"
+    },
+    "activity": {
+      "no_activity": "No activity recorded yet"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete"
+  }
+}

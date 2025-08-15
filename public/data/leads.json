@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Sarah Johnson",
+    "company": "TechCorp Solutions",
+    "email": "sarah.johnson@techcorp.com",
+    "source": "Website",
+    "score": 95,
+    "status": "New"
+  },
+  {
+    "id": 2,
+    "name": "Michael Chen",
+    "company": "DataFlow Inc",
+    "email": "m.chen@dataflow.com",
+    "source": "LinkedIn",
+    "score": 88,
+    "status": "Contacted"
+  },
+  {
+    "id": 3,
+    "name": "Emily Rodriguez",
+    "company": "CloudVision",
+    "email": "emily@cloudvision.io",
+    "source": "Referral",
+    "score": 92,
+    "status": "Qualified"
+  },
+  {
+    "id": 4,
+    "name": "David Kim",
+    "company": "StartupHub",
+    "email": "david.kim@startuphub.com",
+    "source": "Cold Email",
+    "score": 76,
+    "status": "New"
+  },
+  {
+    "id": 5,
+    "name": "Lisa Thompson",
+    "company": "InnovateLabs",
+    "email": "lisa.t@innovatelabs.com",
+    "source": "Website",
+    "score": 84,
+    "status": "Contacted"
+  },
+  {
+    "id": 6,
+    "name": "James Wilson",
+    "company": "FutureTech",
+    "email": "j.wilson@futuretech.net",
+    "source": "Trade Show",
+    "score": 79,
+    "status": "New"
+  },
+  {
+    "id": 7,
+    "name": "Maria Garcia",
+    "company": "ScaleUp Ventures",
+    "email": "maria@scaleup.vc",
+    "source": "LinkedIn",
+    "score": 91,
+    "status": "Qualified"
+  },
+  {
+    "id": 8,
+    "name": "Robert Brown",
+    "company": "NextGen Systems",
+    "email": "rbrown@nextgen.com",
+    "source": "Referral",
+    "score": 87,
+    "status": "Contacted"
+  },
+  {
+    "id": 9,
+    "name": "Jennifer Lee",
+    "company": "DigitalFirst",
+    "email": "jen.lee@digitalfirst.com",
+    "source": "Website",
+    "score": 82,
+    "status": "New"
+  },
+  {
+    "id": 10,
+    "name": "Alex Turner",
+    "company": "GrowthCo",
+    "email": "alex@growthco.com",
+    "source": "Cold Email",
+    "score": 73,
+    "status": "New"
+  }
+]
