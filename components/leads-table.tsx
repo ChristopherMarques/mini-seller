@@ -5,17 +5,15 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
-import { Search, Users, Mail, Building, BarChart3, Plus } from "lucide-react"
+import { Search, Users, Mail, Building, BarChart3 } from "lucide-react"
 import { useTranslation } from "react-i18next"
-import type { Lead } from "@/lib/api"
+import type { Lead } from "@/types"
 
 interface LeadsTableProps {
   leads: Lead[]
   loading: boolean
   onLeadClick: (lead: Lead) => void
-  onCreateLead: (leadData: Omit<Lead, "id" | "createdAt">) => void
 }
 
 const statusColors = {
@@ -43,7 +41,7 @@ function ScoreIndicator({ score }: { score: number }) {
   )
 }
 
-export function LeadsTable({ leads, loading, onLeadClick, onCreateLead }: LeadsTableProps) {
+export function LeadsTable({ leads, loading, onLeadClick }: LeadsTableProps) {
   const { t } = useTranslation()
   const [searchTerm, setSearchTerm] = useState("")
   const [statusFilter, setStatusFilter] = useState<string>("all")
@@ -59,18 +57,6 @@ export function LeadsTable({ leads, loading, onLeadClick, onCreateLead }: LeadsT
   })
 
   const sortedLeads = [...filteredLeads].sort((a, b) => b.score - a.score)
-
-  const handleCreateNewLead = () => {
-    const newLeadData = {
-      name: "New Lead",
-      company: "New Company",
-      email: "new.lead@example.com",
-      source: "Website",
-      score: 50,
-      status: "New" as const,
-    }
-    onCreateLead(newLeadData)
-  }
 
   if (loading) {
     return (
@@ -100,13 +86,6 @@ export function LeadsTable({ leads, loading, onLeadClick, onCreateLead }: LeadsT
           <h2 className="text-3xl font-bold gradient-text">{t("leads.title")}</h2>
           <p className="text-gray-600 mt-2">{t("leads.subtitle")}</p>
         </div>
-        <Button
-          onClick={handleCreateNewLead}
-          className="bg-purple-500 hover:bg-purple-600 text-white btn-press hover:scale-105 transition-all duration-200"
-        >
-          <Plus className="h-4 w-4 mr-2" />
-          Add New Lead
-        </Button>
       </div>
 
       <div className="flex gap-4">
@@ -138,20 +117,11 @@ export function LeadsTable({ leads, loading, onLeadClick, onCreateLead }: LeadsT
             <Users className="h-8 w-8 text-white" />
           </div>
           <h3 className="text-xl font-semibold text-gray-900 mb-3">No leads found</h3>
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-600">
             {searchTerm || statusFilter !== "all"
               ? "Try adjusting your search or filter criteria."
               : "No leads available at the moment."}
           </p>
-          {!searchTerm && statusFilter === "all" && (
-            <Button
-              onClick={handleCreateNewLead}
-              className="bg-purple-500 hover:bg-purple-600 text-white btn-press hover:scale-105 transition-all duration-200"
-            >
-              <Plus className="h-4 w-4 mr-2" />
-              Create First Lead
-            </Button>
-          )}
         </div>
       ) : (
         <div className="hidden md:block">

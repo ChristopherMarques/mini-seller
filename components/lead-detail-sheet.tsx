@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -9,9 +9,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Separator } from "@/components/ui/separator"
-import { AlertCircle, CheckCircle2, Mail, Building, BarChart2, Sparkles, Trash2 } from "lucide-react"
+import { AlertCircle, CheckCircle2, Mail, Building, BarChart2, Sparkles } from "lucide-react"
 import { useTranslation } from "react-i18next"
-import type { Lead } from "@/lib/api"
+import type { Lead } from "@/types"
 
 interface LeadDetailSheetProps {
   lead: Lead | null
@@ -19,7 +19,6 @@ interface LeadDetailSheetProps {
   onOpenChange: (open: boolean) => void
   onConvert: (lead: Lead) => void
   onSave: (lead: Lead) => void
-  onDelete: (lead: Lead) => void
 }
 
 const statusColors = {
@@ -28,23 +27,22 @@ const statusColors = {
   Qualified: "bg-green-100 text-green-800 border-green-200",
 }
 
-export function LeadDetailSheet({ lead, open, onOpenChange, onConvert, onSave, onDelete }: LeadDetailSheetProps) {
+export function LeadDetailSheet({ lead, open, onOpenChange, onConvert, onSave }: LeadDetailSheetProps) {
   const { t } = useTranslation()
   const [editedLead, setEditedLead] = useState<Lead | null>(null)
   const [saving, setSaving] = useState(false)
   const [converting, setConverting] = useState(false)
-  const [deleting, setDeleting] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<string | null>(null)
 
   // Update edited lead when lead prop changes
-  useEffect(() => {
+  useState(() => {
     if (lead) {
       setEditedLead({ ...lead })
       setError(null)
       setSuccess(null)
     }
-  }, [lead])
+  })
 
   if (!lead || !editedLead) return null
 
@@ -62,41 +60,24 @@ export function LeadDetailSheet({ lead, open, onOpenChange, onConvert, onSave, o
     setSaving(true)
     setError(null)
 
-    try {
-      await onSave(editedLead)
+    // Simulate API call
+    setTimeout(() => {
+      onSave(editedLead)
+      setSaving(false)
       setSuccess("Lead updated successfully!")
       setTimeout(() => setSuccess(null), 3000)
-    } catch (error) {
-      setError("Failed to save lead changes")
-    } finally {
-      setSaving(false)
-    }
+    }, 1000)
   }
 
   const handleConvert = async () => {
     setConverting(true)
-    try {
-      await onConvert(editedLead)
-    } catch (error) {
-      setError("Failed to convert lead")
-    } finally {
+
+    // Simulate API call
+    setTimeout(() => {
+      onConvert(editedLead)
       setConverting(false)
-    }
-  }
-
-  const handleDelete = async () => {
-    if (!confirm("Are you sure you want to delete this lead? This action cannot be undone.")) {
-      return
-    }
-
-    setDeleting(true)
-    try {
-      await onDelete(editedLead)
-    } catch (error) {
-      setError("Failed to delete lead")
-    } finally {
-      setDeleting(false)
-    }
+      onOpenChange(false)
+    }, 1000)
   }
 
   const handleCancel = () => {
@@ -148,30 +129,6 @@ export function LeadDetailSheet({ lead, open, onOpenChange, onConvert, onSave, o
             <Separator className="bg-gray-200" />
 
             <div className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="name" className="text-sm font-medium text-gray-700">
-                  {t("detail_sheet.fields.name")}
-                </Label>
-                <Input
-                  id="name"
-                  value={editedLead.name}
-                  onChange={(e) => setEditedLead({ ...editedLead, name: e.target.value })}
-                  className="bg-white border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="company" className="text-sm font-medium text-gray-700">
-                  {t("detail_sheet.fields.company")}
-                </Label>
-                <Input
-                  id="company"
-                  value={editedLead.company}
-                  onChange={(e) => setEditedLead({ ...editedLead, company: e.target.value })}
-                  className="bg-white border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200"
-                />
-              </div>
-
               <div className="space-y-2">
                 <Label htmlFor="email" className="text-sm font-medium text-gray-700 flex items-center gap-2">
                   <Mail className="h-4 w-4 text-gray-400" />
@@ -250,15 +207,6 @@ export function LeadDetailSheet({ lead, open, onOpenChange, onConvert, onSave, o
         </div>
 
         <SheetFooter className="gap-2 pt-6 border-t border-gray-200">
-          <Button
-            variant="outline"
-            onClick={handleDelete}
-            disabled={deleting}
-            className="border-red-200 hover:bg-red-50 bg-transparent text-red-600 hover:text-red-700 btn-press transition-all duration-200"
-          >
-            <Trash2 className="h-4 w-4 mr-2" />
-            {deleting ? "Deleting..." : "Delete"}
-          </Button>
           <Button
             variant="outline"
             onClick={handleCancel}

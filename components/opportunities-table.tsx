@@ -2,18 +2,13 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Plus, Sparkles } from "lucide-react"
 import { KpiCards } from "@/components/kpi-cards"
-import { useTranslation } from "react-i18next"
-import type { Opportunity, KPIData } from "@/lib/api"
+import type { Opportunity } from "@/types"
 
 interface OpportunitiesTableProps {
   opportunities: Opportunity[]
-  kpiData: KPIData | null
-  loading: boolean
 }
 
-export function OpportunitiesTable({ opportunities, kpiData, loading }: OpportunitiesTableProps) {
-  const { t } = useTranslation()
-
+export function OpportunitiesTable({ opportunities }: OpportunitiesTableProps) {
   return (
     <div className="space-y-8">
       <div className="flex items-center justify-between">
@@ -23,7 +18,7 @@ export function OpportunitiesTable({ opportunities, kpiData, loading }: Opportun
         </div>
       </div>
 
-      <KpiCards kpiData={kpiData} loading={loading} />
+      <KpiCards opportunities={opportunities} />
 
       {opportunities.length === 0 && (
         <Card className="bg-white border-gray-200 shadow-sm">

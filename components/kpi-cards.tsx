@@ -1,53 +1,35 @@
 import { Card, CardContent } from "@/components/ui/card"
-import { Skeleton } from "@/components/ui/skeleton"
 import { TrendingUp, Target, Zap } from "lucide-react"
 import { useTranslation } from "react-i18next"
-import type { KPIData } from "@/lib/api"
+import type { Opportunity } from "@/types"
 
 interface KpiCardsProps {
-  kpiData: KPIData | null
-  loading: boolean
+  opportunities: Opportunity[]
 }
 
-export function KpiCards({ kpiData, loading }: KpiCardsProps) {
+export function KpiCards({ opportunities }: KpiCardsProps) {
   const { t } = useTranslation()
 
-  if (loading || !kpiData) {
-    return (
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {Array.from({ length: 3 }).map((_, index) => (
-          <Card key={index} className="bg-white border-gray-200 shadow-sm">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div className="space-y-2">
-                  <Skeleton className="h-4 w-24 bg-gray-200" />
-                  <Skeleton className="h-8 w-16 bg-gray-200" />
-                </div>
-                <Skeleton className="h-12 w-12 rounded-full bg-gray-200" />
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-    )
-  }
+  const opportunitiesCount = opportunities.length
+  const conversionRate = opportunitiesCount > 0 ? 85 : 0 // Mock conversion rate
+  const averageScore = opportunitiesCount > 0 ? 87 : 0 // Mock average score
 
   const kpis = [
     {
       title: t("kpi.opportunities_created"),
-      value: kpiData.opportunitiesCount,
+      value: opportunitiesCount,
       icon: Target,
       gradient: "from-purple-500 to-blue-400",
     },
     {
       title: t("kpi.average_score"),
-      value: kpiData.averageScore,
+      value: averageScore,
       icon: TrendingUp,
       gradient: "from-blue-400 to-cyan-400",
     },
     {
       title: t("kpi.conversion_rate"),
-      value: `${kpiData.conversionRate}%`,
+      value: `${conversionRate}%`,
       icon: Zap,
       gradient: "from-cyan-400 to-purple-500",
     },
