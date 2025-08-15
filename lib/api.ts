@@ -9,7 +9,6 @@ export interface Lead {
   score: number
   status: string
   createdAt: string
-  predictiveQuality: number
 }
 
 export interface Opportunity {
@@ -26,7 +25,6 @@ export interface KPIData {
   leadsCount: number
   averageScore: number
   conversionRate: number
-  averagePredictiveQuality: number
 }
 
 // API service functions
@@ -44,7 +42,7 @@ export const api = {
     return response.json()
   },
 
-  async createLead(leadData: Omit<Lead, "id" | "createdAt" | "predictiveQuality">): Promise<Lead> {
+  async createLead(leadData: Omit<Lead, "id" | "createdAt">): Promise<Lead> {
     const response = await fetch(`${API_BASE_URL}/leads`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

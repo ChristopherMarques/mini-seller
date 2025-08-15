@@ -10,21 +10,6 @@
     "average_score": "Average Score",
     "conversion_rate": "Conversion Rate"
   },
-  "analytics": {
-    "title": "Analytics",
-    "leadsBySource": {
-      "title": "Leads by Source"
-    },
-    "conversionFunnel": {
-      "title": "Conversion Funnel"
-    },
-    "funnel": {
-      "total": "Total Leads",
-      "contacted": "Contacted",
-      "qualified": "Qualified",
-      "converted": "Converted"
-    }
-  },
   "leads": {
     "title": "Leads Pipeline",
     "subtitle": "Manage and convert your leads",

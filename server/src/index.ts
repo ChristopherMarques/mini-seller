@@ -6,27 +6,6 @@ const app = express()
 const prisma = new PrismaClient()
 const PORT = process.env.PORT || 3001
 
-const calculatePredictiveQuality = (score: number, source: string): number => {
-  // Define source weights
-  const sourceWeights: Record<string, number> = {
-    Referral: 100,
-    Website: 80,
-    LinkedIn: 75,
-    "Cold Email": 40,
-    "Social Media": 60,
-    Event: 85,
-    Partner: 90,
-  }
-
-  const sourceWeight = sourceWeights[source] || 50 // Default weight for unknown sources
-
-  // Calculate predictive quality: (score * 0.7) + (source_weight * 0.3)
-  const predictiveQuality = Math.round(score * 0.7 + sourceWeight * 0.3)
-
-  // Ensure the result is between 0 and 100
-  return Math.min(100, Math.max(0, predictiveQuality))
-}
-
 // Middleware
 app.use(
   cors({
@@ -85,18 +64,6 @@ app.put("/api/leads/:id", async (req, res) => {
     const { id } = req.params
     const updateData = req.body
 
-    if (updateData.score !== undefined || updateData.source !== undefined) {
-      const currentLead = await prisma.lead.findUnique({
-        where: { id: Number.parseInt(id) },
-      })
-
-      if (currentLead) {
-        const newScore = updateData.score !== undefined ? updateData.score : currentLead.score
-        const newSource = updateData.source !== undefined ? updateData.source : currentLead.source
-        updateData.predictiveQuality = calculatePredictiveQuality(newScore, newSource)
-      }
-    }
-
     const lead = await prisma.lead.update({
       where: { id: Number.parseInt(id) },
       data: updateData,
@@ -127,8 +94,6 @@ app.delete("/api/leads/:id", async (req, res) => {
 app.post("/api/leads", async (req, res) => {
   try {
     const leadData = req.body
-
-    leadData.predictiveQuality = calculatePredictiveQuality(leadData.score, leadData.source)
 
     const lead = await prisma.lead.create({
       data: leadData,
@@ -193,17 +158,12 @@ app.get("/api/opportunities", async (req, res) => {
 // KPIs endpoint
 app.get("/api/kpis", async (req, res) => {
   try {
-    const [opportunitiesCount, leadsCount, avgScore, avgPredictiveQuality] = await Promise.all([
+    const [opportunitiesCount, leadsCount, avgScore] = await Promise.all([
       prisma.opportunity.count(),
       prisma.lead.count(),
       prisma.lead.aggregate({
         _avg: {
           score: true,
-        },
-      }),
-      prisma.lead.aggregate({
-        _avg: {
-          predictiveQuality: true,
         },
       }),
     ])
@@ -215,7 +175,6 @@ app.get("/api/kpis", async (req, res) => {
       leadsCount,
       averageScore: Math.round(avgScore._avg.score || 0),
       conversionRate: Math.round(conversionRate * 10) / 10,
-      averagePredictiveQuality: Math.round(avgPredictiveQuality._avg.predictiveQuality || 0),
     })
   } catch (error) {
     console.error("Error fetching KPIs:", error)

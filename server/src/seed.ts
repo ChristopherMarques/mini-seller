@@ -2,22 +2,6 @@ import { PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient()
 
-const calculatePredictiveQuality = (score: number, source: string): number => {
-  const sourceWeights: Record<string, number> = {
-    Referral: 100,
-    Website: 80,
-    LinkedIn: 75,
-    "Cold Email": 40,
-    "Social Media": 60,
-    Event: 85,
-    Partner: 90,
-  }
-
-  const sourceWeight = sourceWeights[source] || 50
-  const predictiveQuality = Math.round(score * 0.7 + sourceWeight * 0.3)
-  return Math.min(100, Math.max(0, predictiveQuality))
-}
-
 const seedData = {
   leads: [
     {
@@ -84,13 +68,10 @@ async function main() {
   await prisma.opportunity.deleteMany()
   await prisma.lead.deleteMany()
 
+  // Seed leads
   for (const lead of seedData.leads) {
-    const predictiveQuality = calculatePredictiveQuality(lead.score, lead.source)
     await prisma.lead.create({
-      data: {
-        ...lead,
-        predictiveQuality,
-      },
+      data: lead,
     })
   }
 

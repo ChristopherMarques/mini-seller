@@ -5,7 +5,6 @@ import { LeadsTable } from "@/components/leads-table"
 import { LeadDetailSheet } from "@/components/lead-detail-sheet"
 import LanguageSwitcher from "@/components/language-switcher"
 import { KpiCards } from "@/components/kpi-cards"
-import { AnalyticsSection } from "@/components/analytics-section"
 import { useTranslation } from "react-i18next"
 import { api, type Lead, type Opportunity, type KPIData } from "@/lib/api"
 
@@ -154,8 +153,6 @@ function MiniSellerConsoleContent() {
         </div>
 
         <KpiCards kpiData={kpiData} loading={loading} />
-
-        <AnalyticsSection leads={leads} loading={loading} />
 
         <LeadsTable leads={leads} loading={loading} onLeadClick={handleLeadClick} onCreateLead={handleCreateLead} />
 

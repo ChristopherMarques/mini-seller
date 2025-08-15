@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
-import { Search, Users, Mail, Building, BarChart3, Plus, Target } from "lucide-react"
+import { Search, Users, Mail, Building, BarChart3, Plus } from "lucide-react"
 import { useTranslation } from "react-i18next"
 import type { Lead } from "@/lib/api"
 
@@ -43,27 +43,6 @@ function ScoreIndicator({ score }: { score: number }) {
   )
 }
 
-function PredictiveQualityIndicator({ quality }: { quality: number }) {
-  const getQualityColor = (quality: number) => {
-    if (quality >= 80) return "text-green-600"
-    if (quality >= 60) return "text-yellow-600"
-    return "text-red-600"
-  }
-
-  const getQualityIcon = (quality: number) => {
-    if (quality >= 80) return "🎯"
-    if (quality >= 60) return "⚡"
-    return "⚠️"
-  }
-
-  return (
-    <div className="flex items-center gap-2">
-      <Target className={`h-4 w-4 ${getQualityColor(quality)}`} />
-      <span className={`text-sm font-medium ${getQualityColor(quality)}`}>{quality}</span>
-    </div>
-  )
-}
-
 export function LeadsTable({ leads, loading, onLeadClick, onCreateLead }: LeadsTableProps) {
   const { t } = useTranslation()
   const [searchTerm, setSearchTerm] = useState("")
@@ -89,7 +68,6 @@ export function LeadsTable({ leads, loading, onLeadClick, onCreateLead }: LeadsT
       source: "Website",
       score: 50,
       status: "New" as const,
-      predictiveQuality: 0,
     }
     onCreateLead(newLeadData)
   }
@@ -186,7 +164,6 @@ export function LeadsTable({ leads, loading, onLeadClick, onCreateLead }: LeadsT
                   <TableHead className="text-gray-700 font-semibold py-4">{t("leads.table_header.email")}</TableHead>
                   <TableHead className="text-gray-700 font-semibold py-4">{t("leads.table_header.source")}</TableHead>
                   <TableHead className="text-gray-700 font-semibold py-4">{t("leads.table_header.score")}</TableHead>
-                  <TableHead className="text-gray-700 font-semibold py-4">Prediction</TableHead>
                   <TableHead className="text-gray-700 font-semibold py-4">{t("leads.table_header.status")}</TableHead>
                 </TableRow>
               </TableHeader>
@@ -204,9 +181,6 @@ export function LeadsTable({ leads, loading, onLeadClick, onCreateLead }: LeadsT
                     <TableCell className="text-gray-600 py-4">{lead.source}</TableCell>
                     <TableCell className="py-4">
                       <ScoreIndicator score={lead.score} />
-                    </TableCell>
-                    <TableCell className="py-4">
-                      <PredictiveQualityIndicator quality={lead.predictiveQuality || 0} />
                     </TableCell>
                     <TableCell className="py-4">
                       <Badge
@@ -250,12 +224,9 @@ export function LeadsTable({ leads, loading, onLeadClick, onCreateLead }: LeadsT
               </p>
               <div className="flex justify-between items-center">
                 <span className="text-gray-600">Source: {lead.source}</span>
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-2">
-                    <BarChart3 className="h-3 w-3 text-gray-400" />
-                    <ScoreIndicator score={lead.score} />
-                  </div>
-                  <PredictiveQualityIndicator quality={lead.predictiveQuality || 0} />
+                <div className="flex items-center gap-2">
+                  <BarChart3 className="h-3 w-3 text-gray-400" />
+                  <ScoreIndicator score={lead.score} />
                 </div>
               </div>
             </div>

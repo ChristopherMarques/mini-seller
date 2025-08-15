@@ -11,7 +11,6 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Separator } from "@/components/ui/separator"
 import { AlertCircle, CheckCircle2, Mail, Building, BarChart2, Sparkles, Trash2 } from "lucide-react"
 import { useTranslation } from "react-i18next"
-import { PredictiveQualityChart } from "@/components/predictive-quality-chart"
 import type { Lead } from "@/lib/api"
 
 interface LeadDetailSheetProps {
@@ -246,16 +245,6 @@ export function LeadDetailSheet({ lead, open, onOpenChange, onConvert, onSave, o
               <Badge className={`${statusColors[editedLead.status]} rounded-full px-3 py-1 text-xs font-medium border`}>
                 {t(`leads.status.${editedLead.status.toLowerCase()}`)}
               </Badge>
-            </div>
-
-            <Separator className="bg-gray-200" />
-
-            <div className="space-y-4">
-              <Label className="text-sm font-medium text-gray-700">Predictive Quality Score</Label>
-              <div className="flex items-center justify-center">
-                <PredictiveQualityChart quality={lead.predictiveQuality || 0} />
-              </div>
-              <p className="text-xs text-gray-500 text-center">Based on lead score and source quality indicators</p>
             </div>
           </div>
         </div>

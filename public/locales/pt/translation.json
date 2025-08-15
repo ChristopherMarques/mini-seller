@@ -10,21 +10,6 @@
     "average_score": "Pontuação Média",
     "conversion_rate": "Taxa de Conversão"
   },
-  "analytics": {
-    "title": "Análises",
-    "leadsBySource": {
-      "title": "Leads por Origem"
-    },
-    "conversionFunnel": {
-      "title": "Funil de Conversão"
-    },
-    "funnel": {
-      "total": "Total de Leads",
-      "contacted": "Contactados",
-      "qualified": "Qualificados",
-      "converted": "Convertidos"
-    }
-  },
   "leads": {
     "title": "Pipeline de Leads",
     "subtitle": "Gerencie e converta seus leads",

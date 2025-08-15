@@ -11,15 +11,14 @@ datasource db {
 }
 
 model Lead {
-  id                Int      @id @default(autoincrement())
-  createdAt         DateTime @default(now())
-  name              String
-  company           String
-  email             String   @unique
-  source            String
-  score             Int
-  status            String
-  predictiveQuality Int      @default(0)
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  name      String
+  company   String
+  email     String   @unique
+  source    String
+  score     Int
+  status    String
 }
 
 model Opportunity {
