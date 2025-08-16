@@ -64,6 +64,15 @@
       "no_activity": "No activity recorded yet"
     }
   },
+  "opportunities": {
+    "title": "Converted Opportunities",
+    "subtitle": "Track your successful conversions",
+    "empty": {
+      "title": "Ready to convert your first lead?",
+      "subtitle": "Start converting qualified leads into opportunities and watch your pipeline grow.",
+      "cta_button": "Convert First Lead"
+    }
+  },
   "common": {
     "loading": "Loading...",
     "save": "Save",

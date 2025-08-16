@@ -89,7 +89,7 @@ export function LeadDetailSheet({ lead, open, onOpenChange, onConvert, onSave }:
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent className="w-full sm:max-w-md glass-effect border-l border-gray-200">
+      <SheetContent className="w-full sm:max-w-md glass-effect border-l border-gray-200" side="right">
         <SheetHeader className="pb-6">
           <SheetTitle className="text-xl font-bold text-gray-900">{t("detail_sheet.title")}</SheetTitle>
           <SheetDescription className="text-gray-600">View and edit lead information</SheetDescription>

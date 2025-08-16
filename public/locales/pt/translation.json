@@ -64,6 +64,15 @@
       "no_activity": "Nenhuma atividade registrada ainda"
     }
   },
+  "opportunities": {
+    "title": "Oportunidades Convertidas",
+    "subtitle": "Acompanhe suas conversões de sucesso",
+    "empty": {
+      "title": "Pronto para converter seu primeiro lead?",
+      "subtitle": "Comece a converter leads qualificados em oportunidades e veja seu pipeline crescer.",
+      "cta_button": "Converter Primeiro Lead"
+    }
+  },
   "common": {
     "loading": "Carregando...",
     "save": "Salvar",
