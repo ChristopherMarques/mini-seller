@@ -1,4 +1,3 @@
-// Componente principal OpportunitiesTable
 import { KpiCards } from "@/components/kpi-cards";
 import { useTranslation } from "react-i18next";
 import { EmptyOpportunitiesState } from "./empty-opportunities-state";

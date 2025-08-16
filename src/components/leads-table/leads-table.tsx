@@ -1,5 +1,3 @@
-"use client";
-
 import { STATUS_COLORS } from "@/components/shared";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";

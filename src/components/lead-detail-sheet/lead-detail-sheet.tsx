@@ -1,5 +1,3 @@
-"use client";
-
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -33,7 +31,6 @@ export function LeadDetailSheet({
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
 
-  // Update edited lead when lead prop changes
   useEffect(() => {
     if (lead) {
       setEditedLead({ ...lead });
@@ -90,7 +87,7 @@ export function LeadDetailSheet({
 
   const handleLeadChange = (updatedLead: Lead) => {
     setEditedLead(updatedLead);
-    setError(null); // Clear error when user makes changes
+    setError(null);
   };
 
   return (

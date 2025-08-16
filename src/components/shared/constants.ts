@@ -1,6 +1,5 @@
 // Constantes compartilhadas entre componentes
 
-// Cores de status para leads
 export const STATUS_COLORS = {
   New: "bg-purple-100 text-purple-800 border-purple-200",
   Contacted: "bg-yellow-100 text-yellow-800 border-yellow-200",

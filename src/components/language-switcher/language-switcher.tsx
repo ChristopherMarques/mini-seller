@@ -1,5 +1,3 @@
-"use client";
-
 import { useTranslation } from "react-i18next";
 import {
   getAvailableLanguages,
@@ -39,5 +37,4 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   );
 }
 
-// Manter compatibilidade com export default
 export default LanguageSwitcher;

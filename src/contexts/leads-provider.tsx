@@ -70,7 +70,6 @@ export function LeadsProvider({ children }: LeadsProviderProps) {
   const [loading, setLoading] = useState(true);
   const [isInitialized, setIsInitialized] = useState(false);
 
-  // Load leads on initialization
   useEffect(() => {
     const initializeLeads = async () => {
       setLoading(true);
@@ -79,7 +78,6 @@ export function LeadsProvider({ children }: LeadsProviderProps) {
       if (storedLeads.length > 0) {
         setLeads(storedLeads);
       } else {
-        // If no leads in localStorage, load from JSON file
         const initialLeads = await loadInitialLeads();
         setLeads(initialLeads);
         if (initialLeads.length > 0) {
@@ -94,7 +92,6 @@ export function LeadsProvider({ children }: LeadsProviderProps) {
     initializeLeads();
   }, []);
 
-  // Salvar no localStorage sempre que leads mudarem
   useEffect(() => {
     if (isInitialized) {
       saveLeadsToStorage(leads);
@@ -119,13 +116,12 @@ export function LeadsProvider({ children }: LeadsProviderProps) {
 
   const importLeads = (newLeads: Lead[]) => {
     // Add IDs if they don't exist
-    const leadsWithIds = newLeads.map(_lead => ({
+    const _leadsWithIds = newLeads.map(_lead => ({
       ..._lead,
       id: typeof _lead.id === "number" ? _lead.id : generateId(),
     }));
 
-    // Substituir todos os leads pelos importados
-    setLeads(leadsWithIds);
+    setLeads(_leadsWithIds);
   };
 
   const clearLeads = () => {
@@ -145,7 +141,7 @@ export function LeadsProvider({ children }: LeadsProviderProps) {
   return <LeadsContext.Provider value={value}>{children}</LeadsContext.Provider>;
 }
 
-export function useLeads() {
+function useLeads() {
   const context = useContext(LeadsContext);
   if (context === undefined) {
     throw new Error("useLeads deve ser usado dentro de um LeadsProvider");
@@ -153,4 +149,5 @@ export function useLeads() {
   return context;
 }
 
-export { LeadsContext };
+// eslint-disable-next-line react-refresh/only-export-components
+export { LeadsContext, useLeads };

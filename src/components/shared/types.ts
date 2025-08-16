@@ -1,12 +1,7 @@
-// Tipos compartilhados entre componentes
-
 import React from "react";
-import type { Lead, Opportunity } from "@/types";
 
-// Tipos para status de leads
 export type LeadStatus = "New" | "Contacted" | "Qualified";
 
-// Tipos para idiomas
 export type LanguageCode = "en" | "pt";
 
 export interface Language {
@@ -14,7 +9,6 @@ export interface Language {
   label: string;
 }
 
-// Tipos para KPIs
 export interface KpiItem {
   title: string;
   value: string | number;
@@ -22,18 +16,15 @@ export interface KpiItem {
   gradient: string;
 }
 
-// Tipos para props comuns
 export interface BaseComponentProps {
   className?: string;
   children?: React.ReactNode;
 }
 
-// Tipos para componentes de tabela
 export interface TableProps extends BaseComponentProps {
   loading?: boolean;
 }
 
-// Tipos para filtros
 export interface FilterState {
   searchTerm: string;
   statusFilter: string;
@@ -50,5 +41,4 @@ export interface ValidationResult {
   message?: string;
 }
 
-// Re-exportar tipos principais para facilitar imports
-export type { Lead, Opportunity };
+export type { Lead, Opportunity } from "@/types";

@@ -1,4 +1,3 @@
-// Componente para o estado vazio da tabela de oportunidades
 import { LeadImportDialog } from "@/components/lead-import-dialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";

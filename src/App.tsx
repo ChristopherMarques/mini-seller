@@ -27,12 +27,10 @@ function MiniSellerConsoleContent() {
   };
 
   const handleConvertLead = (lead: Lead) => {
-    // Remove lead from leads list
     deleteLead(lead.id);
 
-    // Add to opportunities
     const newOpportunity: Opportunity = {
-      id: Date.now(), // Simple ID generation
+      id: Date.now(),
       name: lead.name,
       stage: "Discovery",
       accountName: lead.company,
