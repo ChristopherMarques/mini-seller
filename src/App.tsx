@@ -4,8 +4,9 @@ import { LeadsTable } from "@/components/leads-table"
 import { LeadDetailSheet } from "@/components/lead-detail-sheet"
 import LanguageSwitcher from "@/components/language-switcher"
 import { useTranslation } from "react-i18next"
-import { LeadsProvider, useLeads } from "@/contexts/LeadsContext"
+import { LeadsProvider, useLeads } from "@/contexts/leads-provider"
 import type { Lead, Opportunity } from "@/types"
+import { ThemeProvider } from "./contexts/theme-provider"
 
 function MiniSellerConsoleContent() {
   const { t } = useTranslation()
@@ -41,7 +42,7 @@ function MiniSellerConsoleContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 relative overflow-hidden">
+    <div className="min-h-screen bg-white relative overflow-hidden">
       <div className="gradient-blob gradient-blob-1"></div>
       <div className="gradient-blob gradient-blob-2"></div>
       <div className="gradient-blob gradient-blob-3"></div>
@@ -74,10 +75,12 @@ function MiniSellerConsoleContent() {
 
 export default function App() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-gray-50 flex items-center justify-center">Loading...</div>}>
-      <LeadsProvider>
-        <MiniSellerConsoleContent />
-      </LeadsProvider>
-    </Suspense>
+    <ThemeProvider defaultTheme="light" storageKey="mini-seller-theme">
+      <Suspense fallback={<div className="min-h-screen bg-white flex items-center justify-center text-foreground">Loading...</div>}>
+        <LeadsProvider>
+          <MiniSellerConsoleContent />
+        </LeadsProvider>
+      </Suspense>
+    </ThemeProvider>
   )
 }

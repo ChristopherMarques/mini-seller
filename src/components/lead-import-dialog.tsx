@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLeads } from '../contexts/LeadsContext';
+import { useLeads } from '../contexts/leads-provider';
 import { Lead } from '../types';
 import {
   Dialog,
@@ -53,15 +53,44 @@ export function LeadImportDialog({ children }: LeadImportDialogProps) {
     });
   };
 
-  const validateLead = (lead: any): lead is Lead => {
-    return (
-      typeof lead.name === 'string' && lead.name.trim() !== '' &&
-      typeof lead.company === 'string' && lead.company.trim() !== '' &&
-      typeof lead.email === 'string' && lead.email.trim() !== '' &&
-      typeof lead.source === 'string' && lead.source.trim() !== '' &&
-      typeof lead.score === 'number' && lead.score >= 0 && lead.score <= 100 &&
-      typeof lead.status === 'string' && ['New', 'Contacted', 'Qualified'].includes(lead.status)
-    );
+  const validateLead = (lead: any, index: number): { isValid: boolean; errors: string[] } => {
+    const errors: string[] = [];
+    
+    if (!lead || typeof lead !== 'object') {
+      errors.push(`Lead ${index + 1}: ${t('leads.import.error_invalid_object')}`);
+      return { isValid: false, errors };
+    }
+    
+    if (typeof lead.name !== 'string' || lead.name.trim() === '') {
+      errors.push(`Lead ${index + 1}: ${t('leads.import.error_invalid_name')}`);
+    }
+    
+    if (typeof lead.company !== 'string' || lead.company.trim() === '') {
+      errors.push(`Lead ${index + 1}: ${t('leads.import.error_invalid_company')}`);
+    }
+    
+    if (typeof lead.email !== 'string' || lead.email.trim() === '') {
+      errors.push(`Lead ${index + 1}: ${t('leads.import.error_invalid_email')}`);
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(lead.email)) {
+        errors.push(`Lead ${index + 1}: ${t('leads.import.error_invalid_email_format')}`);
+      }
+    }
+    
+    if (typeof lead.source !== 'string' || lead.source.trim() === '') {
+      errors.push(`Lead ${index + 1}: ${t('leads.import.error_invalid_source')}`);
+    }
+    
+    if (typeof lead.score !== 'number' || lead.score < 0 || lead.score > 100) {
+      errors.push(`Lead ${index + 1}: ${t('leads.import.error_invalid_score')}`);
+    }
+    
+    if (typeof lead.status !== 'string' || !['New', 'Contacted', 'Qualified'].includes(lead.status)) {
+      errors.push(`Lead ${index + 1}: ${t('leads.import.error_invalid_status')}`);
+    }
+    
+    return { isValid: errors.length === 0, errors };
   };
 
   const handleJsonImport = () => {
@@ -80,15 +109,24 @@ export function LeadImportDialog({ children }: LeadImportDialogProps) {
         throw new Error(t('leads.import.error_empty_json'));
       }
 
-      const validLeads = parsedLeads.filter((lead: any) => validateLead(lead));
-      const invalidCount = parsedLeads.length - validLeads.length;
-
-      if (validLeads.length === 0) {
-        throw new Error(t('leads.import.error_no_valid_leads'));
+      const validationResults = parsedLeads.map((lead: any, index: number) => ({
+        lead,
+        validation: validateLead(lead, index)
+      }));
+      
+      const validLeads = validationResults.filter(result => result.validation.isValid).map(result => result.lead);
+      const allErrors = validationResults.flatMap(result => result.validation.errors);
+      
+      if (allErrors.length > 0 && validLeads.length === 0) {
+        throw new Error(`${t('leads.import.error_validation_failed')}:\n${allErrors.slice(0, 5).join('\n')}${allErrors.length > 5 ? `\n${t('leads.import.error_more_errors', { count: allErrors.length - 5 })}` : ''}`);
+      }
+      
+      if (allErrors.length > 0) {
+        console.warn('Validation errors found:', allErrors);
       }
 
       validLeads.forEach((lead: Lead) => addLead(lead));
-      setSuccess(`${t('leads.import.success_import')} ${validLeads.length} leads importados${invalidCount > 0 ? `, ${invalidCount} inválidos ignorados` : ''}.`);
+      setSuccess(`${t('leads.import.success_import')} ${validLeads.length} ${t('leads.import.leads_imported')}${allErrors.length > 0 ? `, ${allErrors.length} ${t('leads.import.invalid_ignored')}` : ''}.`);
       
       setTimeout(() => {
         resetStates();
@@ -112,7 +150,7 @@ export function LeadImportDialog({ children }: LeadImportDialogProps) {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(manualLead.email)) {
-      setError('Please enter a valid email address');
+      setError(t('detail_sheet.messages.invalid_email'));
       return;
     }
 
@@ -131,7 +169,7 @@ export function LeadImportDialog({ children }: LeadImportDialogProps) {
         setOpen(false);
       }, 2000);
     } catch (err: any) {
-      setError(err instanceof Error ? err.message : 'Erro ao adicionar lead');
+      setError(err instanceof Error ? err.message : t('leads.import.error_add_lead'));
     } finally {
       setLoading(false);
     }
@@ -142,7 +180,7 @@ export function LeadImportDialog({ children }: LeadImportDialogProps) {
       <DialogTrigger asChild>
         {children}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[600px]">
+      <DialogContent className="sm:max-w-[600px] bg-white border-gray-200 shadow-lg">
         <DialogHeader>
           <DialogTitle>{t('leads.import.title')}</DialogTitle>
           <DialogDescription>
@@ -161,10 +199,27 @@ export function LeadImportDialog({ children }: LeadImportDialogProps) {
               <Label htmlFor="json-input">JSON</Label>
               <Textarea
                 id="json-input"
-                placeholder={t('leads.import.json_placeholder')}
+                placeholder={`[
+  {
+    "name": "João Silva",
+    "company": "Tech Corp",
+    "email": "joao@techcorp.com",
+    "source": "Website",
+    "score": 85,
+    "status": "New"
+  },
+  {
+    "name": "Maria Santos",
+    "company": "Digital Solutions",
+    "email": "maria@digital.com",
+    "source": "LinkedIn",
+    "score": 92,
+    "status": "Qualified"
+  }
+]`}
                 value={jsonInput}
                 onChange={(e) => setJsonInput(e.target.value)}
-                className="min-h-[200px]"
+                className="min-h-[200px] bg-white border-gray-200 shadow-sm font-mono text-sm"
               />
               <p className="text-sm text-muted-foreground">
                 {t('leads.import.json_help')}
@@ -184,10 +239,10 @@ export function LeadImportDialog({ children }: LeadImportDialogProps) {
             )}
             
             <DialogFooter>
-              <Button variant="outline" onClick={() => setOpen(false)}>
+              <Button variant="secondary" className='border-gray-200 shadow-sm' onClick={() => setOpen(false)}>
                 {t('leads.import.button_cancel')}
               </Button>
-              <Button onClick={handleJsonImport} disabled={loading || !jsonInput.trim()}>
+              <Button variant="default" onClick={handleJsonImport} className='bg-blue-500 hover:bg-blue-600 text-white'  disabled={loading || !jsonInput.trim()}>
                 {loading ? t('leads.import.importing') : t('leads.import.button_import')}
               </Button>
             </DialogFooter>
@@ -199,9 +254,10 @@ export function LeadImportDialog({ children }: LeadImportDialogProps) {
                 <Label htmlFor="manual-name">{t('leads.import.manual_name')}</Label>
                 <Input
                   id="manual-name"
+                  className='border-gray-200 shadow-sm'
                   value={manualLead.name}
                   onChange={(e) => setManualLead(prev => ({ ...prev, name: e.target.value }))}
-                  placeholder="Nome completo"
+                  placeholder={t('leads.import.placeholder_name')}
                 />
               </div>
               
@@ -209,9 +265,10 @@ export function LeadImportDialog({ children }: LeadImportDialogProps) {
                 <Label htmlFor="manual-company">{t('leads.import.manual_company')}</Label>
                 <Input
                   id="manual-company"
+                  className='border-gray-200 shadow-sm'
                   value={manualLead.company}
                   onChange={(e) => setManualLead(prev => ({ ...prev, company: e.target.value }))}
-                  placeholder="Nome da empresa"
+                  placeholder={t('leads.import.placeholder_company')}
                 />
               </div>
               
@@ -219,10 +276,11 @@ export function LeadImportDialog({ children }: LeadImportDialogProps) {
                 <Label htmlFor="manual-email">{t('leads.import.manual_email')}</Label>
                 <Input
                   id="manual-email"
+                  className='border-gray-200 shadow-sm'
                   type="email"
                   value={manualLead.email}
                   onChange={(e) => setManualLead(prev => ({ ...prev, email: e.target.value }))}
-                  placeholder="email@exemplo.com"
+                  placeholder={t('leads.import.placeholder_email')}
                 />
               </div>
               
@@ -230,9 +288,10 @@ export function LeadImportDialog({ children }: LeadImportDialogProps) {
                 <Label htmlFor="manual-source">{t('leads.import.manual_source')}</Label>
                 <Input
                   id="manual-source"
+                  className='border-gray-200 shadow-sm'
                   value={manualLead.source}
                   onChange={(e) => setManualLead(prev => ({ ...prev, source: e.target.value }))}
-                  placeholder="Website, LinkedIn, etc."
+                  placeholder={t('leads.import.placeholder_source')}
                 />
               </div>
               
@@ -240,6 +299,7 @@ export function LeadImportDialog({ children }: LeadImportDialogProps) {
                 <Label htmlFor="manual-score">{t('leads.import.manual_score')}</Label>
                 <Input
                   id="manual-score"
+                  className='border-gray-200 shadow-sm'
                   type="number"
                   min="0"
                   max="100"
@@ -250,14 +310,14 @@ export function LeadImportDialog({ children }: LeadImportDialogProps) {
               
               <div className="space-y-2">
                 <Label htmlFor="manual-status">{t('leads.import.manual_status')}</Label>
-                <Select value={manualLead.status} onValueChange={(value: 'New' | 'Contacted' | 'Qualified') => setManualLead(prev => ({ ...prev, status: value }))}>
-                  <SelectTrigger>
+                <Select value={manualLead.status}  onValueChange={(value: 'New' | 'Contacted' | 'Qualified') => setManualLead(prev => ({ ...prev, status: value }))}>
+                  <SelectTrigger className='border-gray-200 shadow-sm'>
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="New">New</SelectItem>
-                    <SelectItem value="Contacted">Contacted</SelectItem>
-                    <SelectItem value="Qualified">Qualified</SelectItem>
+                  <SelectContent className='bg-white border-gray-200 shadow-sm'>
+                    <SelectItem value="New">{t('leads.status.new')}</SelectItem>
+                    <SelectItem value="Contacted">{t('leads.status.contacted')}</SelectItem>
+                    <SelectItem value="Qualified">{t('leads.status.qualified')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -276,10 +336,10 @@ export function LeadImportDialog({ children }: LeadImportDialogProps) {
             )}
             
             <DialogFooter>
-              <Button variant="outline" onClick={() => setOpen(false)}>
+              <Button variant="secondary" className='bg-white border-gray-200 shadow-sm' onClick={() => setOpen(false)}>
                 {t('leads.import.button_cancel')}
               </Button>
-              <Button onClick={handleManualAdd} disabled={loading}>
+              <Button variant="default" onClick={handleManualAdd} className='bg-blue-500 hover:bg-blue-600 text-white' disabled={loading}>
                 {loading ? t('leads.import.adding') : t('leads.import.button_add')}
               </Button>
             </DialogFooter>

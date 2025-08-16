@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Search, Users, Mail, Building, BarChart3 } from "lucide-react"
 import { useTranslation } from "react-i18next"
-import { useLeads } from "@/contexts/LeadsContext"
+import { useLeads } from "@/contexts/leads-provider"
 import type { Lead } from "@/types"
 
 interface LeadsTableProps {

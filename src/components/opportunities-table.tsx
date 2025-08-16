@@ -20,12 +20,7 @@ export function OpportunitiesTable({ opportunities }: OpportunitiesTableProps) {
           <h2 className="text-3xl font-bold gradient-text">{t('opportunities.title')}</h2>
           <p className="text-gray-600 mt-2">{t('opportunities.subtitle')}</p>
         </div>
-        <LeadImportDialog>
-          <Button className="bg-blue-500 hover:bg-blue-600 text-white btn-press hover:scale-105 transition-all duration-200 px-6 py-3 rounded-full">
-            <Upload className="h-4 w-4 mr-2" />
-            {t('leads.import_button')}
-          </Button>
-        </LeadImportDialog>
+        
       </div>
 
       <KpiCards opportunities={opportunities} />
@@ -41,10 +36,12 @@ export function OpportunitiesTable({ opportunities }: OpportunitiesTableProps) {
               <p className="text-gray-600 mb-8 max-w-md mx-auto">
                 {t('opportunities.empty.subtitle')}
               </p>
-              <Button className="bg-purple-500 hover:bg-purple-600 text-white btn-press hover:scale-105 transition-all duration-200 px-6 py-3 rounded-full">
-                <Plus className="h-4 w-4 mr-2" />
-                {t('opportunities.empty.cta_button')}
-              </Button>
+              <LeadImportDialog>
+                <Button className="bg-purple-500 hover:bg-purple-600 text-white btn-press hover:scale-105 transition-all duration-200 px-6 py-3 rounded-full">
+                  <Plus className="h-4 w-4" />
+                   {t('leads.import_button')}
+                </Button>
+              </LeadImportDialog>
             </div>
           </CardContent>
         </Card>
