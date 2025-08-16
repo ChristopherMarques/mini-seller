@@ -94,7 +94,29 @@
       "convert": "Convert to Opportunity"
     },
     "showing_all": "Showing all {{count}} leads",
-    "showing_filtered": "Showing {{filtered}} of {{total}} leads"
+    "showing_filtered": "Showing {{filtered}} of {{total}} leads",
+    "export": {
+      "button": "Export",
+      "exporting": "Exporting...",
+      "no_data": "No data to export",
+      "unexpected_error": "Unexpected error during export",
+      "filtered_leads": "Export {{count}} filtered leads",
+      "all_leads": "Export all {{count}} leads",
+      "excel_format": "Excel (.xlsx)",
+      "excel_description": "Best for data analysis",
+      "csv_format": "CSV (.csv)",
+      "csv_description": "Compatible with any system",
+      "success_message": "Data exported successfully",
+      "columns": {
+        "id": "ID",
+        "name": "Name",
+        "company": "Company",
+        "email": "Email",
+        "source": "Source",
+        "score": "Score",
+        "status": "Status"
+      }
+    }
   },
   "detail_sheet": {
     "title": "Lead Details",

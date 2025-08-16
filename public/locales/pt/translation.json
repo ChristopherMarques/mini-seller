@@ -94,7 +94,29 @@
       "convert": "Converter em Oportunidade"
     },
     "showing_all": "Mostrando todos os {{count}} leads",
-    "showing_filtered": "Mostrando {{filtered}} de {{total}} leads"
+    "showing_filtered": "Mostrando {{filtered}} de {{total}} leads",
+    "export": {
+      "button": "Exportar",
+      "exporting": "Exportando...",
+      "no_data": "Não há dados para exportar",
+      "unexpected_error": "Erro inesperado durante a exportação",
+      "filtered_leads": "Exportar {{count}} leads filtrados",
+      "all_leads": "Exportar todos os {{count}} leads",
+      "excel_format": "Excel (.xlsx)",
+      "excel_description": "Melhor para análise de dados",
+      "csv_format": "CSV (.csv)",
+      "csv_description": "Compatível com qualquer sistema",
+      "success_message": "Dados exportados com sucesso",
+      "columns": {
+        "id": "ID",
+        "name": "Nome",
+        "company": "Empresa",
+        "email": "Email",
+        "source": "Fonte",
+        "score": "Pontuação",
+        "status": "Status"
+      }
+    }
   },
   "detail_sheet": {
     "title": "Detalhes do Lead",

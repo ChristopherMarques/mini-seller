@@ -23,6 +23,7 @@ import { useLeads } from "@/contexts/leads-provider";
 import { BarChart3, Building, Mail, Search, Trash2, Users } from "lucide-react";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { ExportButtons } from "./export-buttons";
 import { ScoreIndicator } from "./score-indicator";
 import type { LeadsTableProps } from "./types";
 import {
@@ -124,6 +125,7 @@ export function LeadsTable({ onLeadClick }: LeadsTableProps) {
             ))}
           </SelectContent>
         </Select>
+        <ExportButtons leads={filteredLeads} searchTerm={searchTerm} statusFilter={statusFilter} />
       </div>
 
       {/* Table */}

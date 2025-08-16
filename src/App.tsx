@@ -7,6 +7,7 @@ import { LeadsProvider, useLeads } from "@/contexts/leads-provider";
 import type { Lead, Opportunity } from "@/types";
 import { Suspense, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Toaster } from "./components/ui/sonner";
 import { ThemeProvider } from "./contexts/theme-provider";
 
 function MiniSellerConsoleContent() {
@@ -77,6 +78,7 @@ function MiniSellerConsoleContent() {
           onDelete={handleDeleteLead}
         />
       </div>
+      <Toaster richColors position="top-right" />
     </div>
   );
 }
