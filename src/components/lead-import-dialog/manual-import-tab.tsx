@@ -32,7 +32,7 @@ export function ManualImportTab({
           <Label htmlFor="manual-name">{t("leads.import.manual_name")}</Label>
           <Input
             id="manual-name"
-            className="border-gray-200 shadow-sm"
+            className="border-primary/50 shadow-sm"
             value={manualLead.name}
             onChange={e => setManualLead(prev => ({ ...prev, name: e.target.value }))}
             placeholder={t("leads.import.placeholder_name")}
@@ -43,7 +43,7 @@ export function ManualImportTab({
           <Label htmlFor="manual-company">{t("leads.import.manual_company")}</Label>
           <Input
             id="manual-company"
-            className="border-gray-200 shadow-sm"
+            className="border-primary/50 shadow-sm"
             value={manualLead.company}
             onChange={e => setManualLead(prev => ({ ...prev, company: e.target.value }))}
             placeholder={t("leads.import.placeholder_company")}
@@ -54,7 +54,7 @@ export function ManualImportTab({
           <Label htmlFor="manual-email">{t("leads.import.manual_email")}</Label>
           <Input
             id="manual-email"
-            className="border-gray-200 shadow-sm"
+            className="border-primary/50 shadow-sm"
             type="email"
             value={manualLead.email}
             onChange={e => setManualLead(prev => ({ ...prev, email: e.target.value }))}
@@ -66,7 +66,7 @@ export function ManualImportTab({
           <Label htmlFor="manual-source">{t("leads.import.manual_source")}</Label>
           <Input
             id="manual-source"
-            className="border-gray-200 shadow-sm"
+            className="border-primary/50 shadow-sm"
             value={manualLead.source}
             onChange={e => setManualLead(prev => ({ ...prev, source: e.target.value }))}
             placeholder={t("leads.import.placeholder_source")}
@@ -77,7 +77,7 @@ export function ManualImportTab({
           <Label htmlFor="manual-score">{t("leads.import.manual_score")}</Label>
           <Input
             id="manual-score"
-            className="border-gray-200 shadow-sm"
+            className="border-primary/50 shadow-sm"
             type="number"
             min="0"
             max="100"
@@ -96,10 +96,10 @@ export function ManualImportTab({
               setManualLead(prev => ({ ...prev, status: value }))
             }
           >
-            <SelectTrigger className="border-gray-200 shadow-sm">
+            <SelectTrigger className="border-primary/50 shadow-sm">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className="bg-white border-gray-200 shadow-sm">
+            <SelectContent className="bg-white border-primary/50 shadow-sm">
               {statusOptions.map(option => (
                 <SelectItem key={option.value} value={option.value}>
                   {option.label}
@@ -117,19 +117,10 @@ export function ManualImportTab({
       )}
 
       <DialogFooter>
-        <Button
-          variant="secondary"
-          className="bg-white border-gray-200 shadow-sm"
-          onClick={onCancel}
-        >
+        <Button variant="ghost" onClick={onCancel}>
           {t("leads.import.button_cancel")}
         </Button>
-        <Button
-          variant="default"
-          onClick={onAdd}
-          className="bg-blue-500 hover:bg-blue-600 text-white"
-          disabled={loading}
-        >
+        <Button variant="default" onClick={onAdd} className=" text-white" disabled={loading}>
           {loading ? t("leads.import.adding") : t("leads.import.button_add")}
         </Button>
       </DialogFooter>

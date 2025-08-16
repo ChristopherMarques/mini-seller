@@ -36,7 +36,7 @@ export function DeleteConfirmationDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="bg-white border border-gray-200 shadow-lg">
+      <DialogContent className="bg-white border border-primary/50 shadow-lg">
         <DialogHeader>
           <div className="flex items-center gap-3">
             <div className="flex-shrink-0">

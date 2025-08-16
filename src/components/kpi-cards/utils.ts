@@ -34,19 +34,19 @@ export const generateKpiItems = (kpiData: KpiData, t: (_key: string) => string):
       title: t("kpi.opportunities_created"),
       value: kpiData.opportunitiesCount,
       icon: Target,
-      gradient: "from-purple-500 to-blue-400",
+      gradient: "bg-gradient-primary",
     },
     {
       title: t("kpi.average_score"),
       value: kpiData.averageScore,
       icon: TrendingUp,
-      gradient: "from-blue-400 to-cyan-400",
+      gradient: "bg-gradient-primary",
     },
     {
       title: t("kpi.conversion_rate"),
       value: `${kpiData.conversionRate}%`,
       icon: Zap,
-      gradient: "from-cyan-400 to-purple-500",
+      gradient: "bg-gradient-primary",
     },
   ];
 };

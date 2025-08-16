@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { useTranslation } from "react-i18next";
 import type { KpiCardsProps } from "./types";
-import { calculateKpiData, generateKpiItems, getAnimationDelay } from "./utils";
+import { calculateKpiData, generateKpiItems } from "./utils";
 
 export function KpiCards({ opportunities, leads = [] }: KpiCardsProps) {
   const { t } = useTranslation();
@@ -14,20 +14,14 @@ export function KpiCards({ opportunities, leads = [] }: KpiCardsProps) {
       {kpiItems.map((kpi, index) => {
         const Icon = kpi.icon;
         return (
-          <Card
-            key={index}
-            className="bg-card border hover-lift hover:shadow-md transition-all duration-200 border-gray-200 shadow-sm"
-            style={{ animationDelay: getAnimationDelay(index) }}
-          >
+          <Card key={index} className="bg-card border hover:shadow-md border-primary/50 shadow-sm">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground mb-1">{kpi.title}</p>
                   <p className="text-3xl font-bold text-foreground">{kpi.value}</p>
                 </div>
-                <div
-                  className={`p-3 rounded-full bg-gradient-to-r ${kpi.gradient} hover:scale-110 transition-transform duration-200`}
-                >
+                <div className={`p-3 rounded-full ${kpi.gradient} hover:scale-110 `}>
                   <Icon className="h-6 w-6 text-white" />
                 </div>
               </div>

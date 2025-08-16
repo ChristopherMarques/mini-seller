@@ -12,12 +12,13 @@ export function SheetActions({
   t,
 }: SheetActionsProps) {
   return (
-    <div className="pt-6 border-t border-gray-200">
+    <div className="pt-6 border-t border-primary/50">
       <div className="flex flex-col gap-3 w-full">
         <Button
           onClick={onConvert}
           disabled={converting}
-          className="flex-1 btn-press hover:scale-105 transition-all duration-200"
+          className="flex-1 btn-press transition-all duration-200"
+          variant="default"
         >
           <Sparkles className="h-4 w-4 mr-2" />
           {converting ? t("detail_sheet.messages.converting") : t("detail_sheet.buttons.convert")}

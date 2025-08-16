@@ -26,7 +26,7 @@ export function JsonImportTab({
           placeholder={getJsonPlaceholder()}
           value={jsonInput}
           onChange={e => setJsonInput(e.target.value)}
-          className="min-h-[200px] bg-white border-gray-200 shadow-sm font-mono text-sm"
+          className="min-h-[200px] bg-white border-primary/50 shadow-sm font-mono text-sm"
         />
         <p className="text-sm text-muted-foreground">{t("leads.import.json_help")}</p>
       </div>
@@ -38,13 +38,13 @@ export function JsonImportTab({
       )}
 
       <DialogFooter>
-        <Button variant="secondary" className="border-gray-200 shadow-sm" onClick={onCancel}>
+        <Button variant="ghost" onClick={onCancel}>
           {t("leads.import.button_cancel")}
         </Button>
         <Button
           variant="default"
           onClick={onImport}
-          className="bg-blue-500 hover:bg-blue-600 text-white"
+          className="text-white"
           disabled={loading || !jsonInput.trim()}
         >
           {loading ? t("leads.import.importing") : t("leads.import.button_import")}

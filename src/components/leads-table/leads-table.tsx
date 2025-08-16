@@ -109,14 +109,14 @@ export function LeadsTable({ onLeadClick }: LeadsTableProps) {
             placeholder={t("leads.table.search_placeholder")}
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
-            className="pl-10 border-gray-200 shadow-sm"
+            className="pl-10 border-primary/50 shadow-sm"
           />
         </div>
         <Select value={statusFilter} onValueChange={setStatusFilter}>
-          <SelectTrigger className="w-48 border-gray-200 shadow-sm">
+          <SelectTrigger className="w-48 border-primary/50 shadow-sm">
             <SelectValue />
           </SelectTrigger>
-          <SelectContent className="border-gray-200 shadow-sm bg-background">
+          <SelectContent className="border-primary/50 shadow-sm bg-background">
             {statusOptions.map(option => (
               <SelectItem key={option.value} value={option.value}>
                 {option.label}
@@ -128,10 +128,10 @@ export function LeadsTable({ onLeadClick }: LeadsTableProps) {
 
       {/* Table */}
       {filteredLeads.length > 0 ? (
-        <div className="bg-card rounded-lg border overflow-hidden border-gray-200 shadow-sm">
+        <div className="bg-card rounded-lg border overflow-hidden border-primary/50 shadow-sm">
           <Table>
             <TableHeader>
-              <TableRow className="bg-muted/50 border-gray-200 shadow-sm">
+              <TableRow className="bg-muted/50 border-primary/50 shadow-sm">
                 <TableHead className="font-semibold text-foreground">
                   <div className="flex items-center gap-2">
                     <Users className="h-4 w-4" />
@@ -168,7 +168,7 @@ export function LeadsTable({ onLeadClick }: LeadsTableProps) {
               {filteredLeads.map(lead => (
                 <TableRow
                   key={lead.id}
-                  className="hover:bg-muted/50 cursor-pointer transition-colors border-gray-200 shadow-sm"
+                  className="hover:bg-primaryOpacity-foreground cursor-pointer border-primary/50 shadow-sm"
                   onClick={() => onLeadClick(lead)}
                 >
                   <TableCell className="font-medium text-foreground">{lead.name}</TableCell>

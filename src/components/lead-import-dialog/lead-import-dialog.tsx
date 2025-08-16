@@ -98,7 +98,7 @@ export function LeadImportDialog({ children }: LeadImportDialogProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="sm:max-w-[600px] bg-white border-gray-200 shadow-lg">
+      <DialogContent className="sm:max-w-[600px] bg-white border-primary/50 shadow-lg">
         <DialogHeader>
           <DialogTitle>{t("leads.import.title")}</DialogTitle>
           <DialogDescription>{t("leads.import.description")}</DialogDescription>

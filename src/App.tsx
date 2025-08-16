@@ -61,7 +61,7 @@ function MiniSellerConsoleContent() {
 
         <div className="text-center space-y-4 py-8">
           <h1 className="text-4xl md:text-5xl font-bold gradient-text">{t("header.title")}</h1>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">{t("header.subtitle")}</p>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">{t("header.subtitle")}</p>
         </div>
 
         <OpportunitiesTable opportunities={opportunities} />
