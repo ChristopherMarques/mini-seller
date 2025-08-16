@@ -13,4 +13,5 @@ export interface Opportunity {
   name: string
   stage: string
   accountName: string
+  amount: number
 }

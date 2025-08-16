@@ -28,6 +28,9 @@
       "score": "Score",
       "status": "Status"
     },
+    "filter": {
+      "all_status": "All statuses"
+    },
     "import": {
       "title": "Import Leads",
       "description": "Import leads via JSON or add manually",
@@ -80,12 +83,18 @@
     "empty": {
       "title": "Ready to convert your first lead?",
       "subtitle": "Start converting qualified leads into opportunities and watch your pipeline grow.",
-      "cta_button": "Convert First Lead"
+      "cta_button": "Convert First Lead",
+      "no_results_title": "No leads found",
+      "no_results_subtitle": "Try adjusting your search or filter criteria",
+      "no_leads_title": "No leads yet",
+      "no_leads_subtitle": "Import your first leads to get started"
     },
     "actions": {
       "view_details": "View Details",
       "convert": "Convert to Opportunity"
-    }
+    },
+    "showing_all": "Showing all {{count}} leads",
+    "showing_filtered": "Showing {{filtered}} of {{total}} leads"
   },
   "detail_sheet": {
     "title": "Lead Details",

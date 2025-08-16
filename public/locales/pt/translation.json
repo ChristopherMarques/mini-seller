@@ -22,11 +22,14 @@
       "filter_qualified": "Qualificado",
       "name": "Nome",
       "company": "Empresa",
-      "email": "E-mail",
+      "email": "Email",
       "phone": "Telefone",
       "source": "Origem",
       "score": "Pontuação",
       "status": "Status"
+    },
+    "filter": {
+      "all_status": "Todos os status"
     },
     "import": {
       "title": "Importar Leads",
@@ -80,12 +83,18 @@
     "empty": {
       "title": "Pronto para converter seu primeiro lead?",
       "subtitle": "Comece a converter leads qualificados em oportunidades e veja seu pipeline crescer.",
-      "cta_button": "Converter Primeiro Lead"
+      "cta_button": "Converter Primeiro Lead",
+      "no_results_title": "Nenhum lead encontrado",
+      "no_results_subtitle": "Tente ajustar seus critérios de busca ou filtro",
+      "no_leads_title": "Nenhum lead ainda",
+      "no_leads_subtitle": "Importe seus primeiros leads para começar"
     },
     "actions": {
       "view_details": "Ver Detalhes",
       "convert": "Converter em Oportunidade"
-    }
+    },
+    "showing_all": "Mostrando todos os {{count}} leads",
+    "showing_filtered": "Mostrando {{filtered}} de {{total}} leads"
   },
   "detail_sheet": {
     "title": "Detalhes do Lead",

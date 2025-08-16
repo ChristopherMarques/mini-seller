@@ -15,12 +15,16 @@ const LeadsContext = createContext<LeadsContextType | undefined>(undefined)
 
 const STORAGE_KEY = 'mini-seller-leads'
 
-// Função para gerar ID único
+/**
+ * Generates a unique ID
+ */
 const generateId = (): number => {
   return Date.now() + Math.floor(Math.random() * 1000)
 }
 
-// Funções de localStorage
+/**
+ * Local storage functions
+ */
 const saveLeadsToStorage = (leads: Lead[]): void => {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(leads))
@@ -41,7 +45,9 @@ const loadLeadsFromStorage = (): Lead[] => {
   return []
 }
 
-// Função para carregar leads iniciais do arquivo JSON (fallback)
+/**
+ * Loads initial leads from JSON file (fallback)
+ */
 const loadInitialLeads = async (): Promise<Lead[]> => {
   try {
     const response = await fetch('/data/leads.json')
@@ -64,7 +70,7 @@ export function LeadsProvider({ children }: LeadsProviderProps) {
   const [loading, setLoading] = useState(true)
   const [isInitialized, setIsInitialized] = useState(false)
 
-  // Carregar leads na inicialização
+  // Load leads on initialization
   useEffect(() => {
     const initializeLeads = async () => {
       setLoading(true)
@@ -73,7 +79,7 @@ export function LeadsProvider({ children }: LeadsProviderProps) {
       if (storedLeads.length > 0) {
         setLeads(storedLeads)
       } else {
-        // Se não há leads no localStorage, carregar do arquivo JSON
+        // If no leads in localStorage, load from JSON file
         const initialLeads = await loadInitialLeads()
         setLeads(initialLeads)
         if (initialLeads.length > 0) {
@@ -114,7 +120,7 @@ export function LeadsProvider({ children }: LeadsProviderProps) {
   }
 
   const importLeads = (newLeads: Lead[]) => {
-    // Adicionar IDs se não existirem
+    // Add IDs if they don't exist
     const leadsWithIds = newLeads.map(lead => ({
       ...lead,
       id: typeof lead.id === 'number' ? lead.id : generateId()

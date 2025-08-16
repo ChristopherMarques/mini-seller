@@ -1,11 +1,11 @@
-import { useState, useEffect, Suspense } from "react"
-import { OpportunitiesTable } from "@/components/opportunities-table"
-import { LeadsTable } from "@/components/leads-table"
+import { LanguageSwitcher } from "@/components/language-switcher"
 import { LeadDetailSheet } from "@/components/lead-detail-sheet"
-import LanguageSwitcher from "@/components/language-switcher"
-import { useTranslation } from "react-i18next"
+import { LeadsTable } from "@/components/leads-table"
+import { OpportunitiesTable } from "@/components/opportunities-table"
 import { LeadsProvider, useLeads } from "@/contexts/leads-provider"
 import type { Lead, Opportunity } from "@/types"
+import { Suspense, useState } from "react"
+import { useTranslation } from "react-i18next"
 import { ThemeProvider } from "./contexts/theme-provider"
 
 function MiniSellerConsoleContent() {
@@ -36,6 +36,7 @@ function MiniSellerConsoleContent() {
       name: lead.name,
       stage: "Discovery",
       accountName: lead.company,
+      amount: 0,
     }
 
     setOpportunities((prevOpportunities) => [...prevOpportunities, newOpportunity])
