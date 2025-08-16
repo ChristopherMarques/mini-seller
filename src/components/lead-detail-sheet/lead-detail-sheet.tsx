@@ -71,7 +71,7 @@ export function LeadDetailSheet({
     setConverting(true);
 
     try {
-      await simulateConvertApi(editedLead);
+      await simulateConvertApi();
       onConvert(editedLead);
       setConverting(false);
       onOpenChange(false);
