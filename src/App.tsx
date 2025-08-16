@@ -4,51 +4,30 @@ import { LeadsTable } from "@/components/leads-table"
 import { LeadDetailSheet } from "@/components/lead-detail-sheet"
 import LanguageSwitcher from "@/components/language-switcher"
 import { useTranslation } from "react-i18next"
+import { LeadsProvider, useLeads } from "@/contexts/LeadsContext"
 import type { Lead, Opportunity } from "@/types"
 
 function MiniSellerConsoleContent() {
   const { t } = useTranslation()
-  const [leads, setLeads] = useState<Lead[]>([])
   const [opportunities, setOpportunities] = useState<Opportunity[]>([])
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null)
   const [sheetOpen, setSheetOpen] = useState(false)
-  const [loading, setLoading] = useState(true)
-
-  // Load initial data
-  useEffect(() => {
-    const loadData = async () => {
-      setLoading(true)
-
-      // Simulate API call with timeout
-      setTimeout(async () => {
-        try {
-          const response = await fetch("/data/leads.json")
-          const leadsData = await response.json()
-          setLeads(leadsData)
-        } catch (error) {
-          console.error("Failed to load leads:", error)
-        } finally {
-          setLoading(false)
-        }
-      }, 1500) // Simulate network delay
-    }
-
-    loadData()
-  }, [])
 
   const handleLeadClick = (lead: Lead) => {
     setSelectedLead(lead)
     setSheetOpen(true)
   }
 
+  const { updateLead, deleteLead } = useLeads()
+
   const handleSaveLead = (updatedLead: Lead) => {
-    setLeads((prevLeads) => prevLeads.map((lead) => (lead.id === updatedLead.id ? updatedLead : lead)))
+    updateLead(updatedLead.id, updatedLead)
     setSelectedLead(updatedLead)
   }
 
   const handleConvertLead = (lead: Lead) => {
     // Remove lead from leads list
-    setLeads((prevLeads) => prevLeads.filter((l) => l.id !== lead.id))
+    deleteLead(lead.id)
 
     // Add to opportunities
     const newOpportunity: Opportunity = {
@@ -79,7 +58,7 @@ function MiniSellerConsoleContent() {
 
         <OpportunitiesTable opportunities={opportunities} />
 
-        <LeadsTable leads={leads} loading={loading} onLeadClick={handleLeadClick} />
+        <LeadsTable onLeadClick={handleLeadClick} />
 
         <LeadDetailSheet
           lead={selectedLead}
@@ -96,7 +75,9 @@ function MiniSellerConsoleContent() {
 export default function App() {
   return (
     <Suspense fallback={<div className="min-h-screen bg-gray-50 flex items-center justify-center">Loading...</div>}>
-      <MiniSellerConsoleContent />
+      <LeadsProvider>
+        <MiniSellerConsoleContent />
+      </LeadsProvider>
     </Suspense>
   )
 }

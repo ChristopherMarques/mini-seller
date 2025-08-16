@@ -8,11 +8,10 @@ import { Badge } from "@/components/ui/badge"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Search, Users, Mail, Building, BarChart3 } from "lucide-react"
 import { useTranslation } from "react-i18next"
+import { useLeads } from "@/contexts/LeadsContext"
 import type { Lead } from "@/types"
 
 interface LeadsTableProps {
-  leads: Lead[]
-  loading: boolean
   onLeadClick: (lead: Lead) => void
 }
 
@@ -41,8 +40,9 @@ function ScoreIndicator({ score }: { score: number }) {
   )
 }
 
-export function LeadsTable({ leads, loading, onLeadClick }: LeadsTableProps) {
+export function LeadsTable({ onLeadClick }: LeadsTableProps) {
   const { t } = useTranslation()
+  const { leads, loading } = useLeads()
   const [searchTerm, setSearchTerm] = useState("")
   const [statusFilter, setStatusFilter] = useState<string>("all")
 

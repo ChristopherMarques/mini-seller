@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -36,13 +36,13 @@ export function LeadDetailSheet({ lead, open, onOpenChange, onConvert, onSave }:
   const [success, setSuccess] = useState<string | null>(null)
 
   // Update edited lead when lead prop changes
-  useState(() => {
+  useEffect(() => {
     if (lead) {
       setEditedLead({ ...lead })
       setError(null)
       setSuccess(null)
     }
-  })
+  }, [lead])
 
   if (!lead || !editedLead) return null
 
@@ -53,7 +53,7 @@ export function LeadDetailSheet({ lead, open, onOpenChange, onConvert, onSave }:
 
   const handleSave = async () => {
     if (!validateEmail(editedLead.email)) {
-      setError("Please enter a valid email address")
+      setError(t("detail_sheet.messages.invalid_email"))
       return
     }
 
@@ -64,7 +64,7 @@ export function LeadDetailSheet({ lead, open, onOpenChange, onConvert, onSave }:
     setTimeout(() => {
       onSave(editedLead)
       setSaving(false)
-      setSuccess("Lead updated successfully!")
+      setSuccess(t("detail_sheet.messages.lead_updated"))
       setTimeout(() => setSuccess(null), 3000)
     }, 1000)
   }
@@ -92,7 +92,7 @@ export function LeadDetailSheet({ lead, open, onOpenChange, onConvert, onSave }:
       <SheetContent className="w-full sm:max-w-md glass-effect border-l border-gray-200" side="right">
         <SheetHeader className="pb-6">
           <SheetTitle className="text-xl font-bold text-gray-900">{t("detail_sheet.title")}</SheetTitle>
-          <SheetDescription className="text-gray-600">View and edit lead information</SheetDescription>
+          <SheetDescription className="text-gray-600">{t("detail_sheet.description")}</SheetDescription>
         </SheetHeader>
 
         <div className="py-6 space-y-6">
@@ -197,8 +197,8 @@ export function LeadDetailSheet({ lead, open, onOpenChange, onConvert, onSave }:
               </div>
             </div>
 
-            <div className="space-y-2">
-              <Label className="text-sm font-medium text-gray-500">Current Status</Label>
+            <div className="space-y-2 space-x-2">
+              <Label className="text-sm font-medium text-gray-500">{t("detail_sheet.current_status")}</Label>
               <Badge className={`${statusColors[editedLead.status]} rounded-full px-3 py-1 text-xs font-medium border`}>
                 {t(`leads.status.${editedLead.status.toLowerCase()}`)}
               </Badge>
@@ -207,20 +207,14 @@ export function LeadDetailSheet({ lead, open, onOpenChange, onConvert, onSave }:
         </div>
 
         <SheetFooter className="gap-2 pt-6 border-t border-gray-200">
-          <Button
-            variant="outline"
-            onClick={handleCancel}
-            className="border-gray-200 hover:bg-gray-50 bg-transparent text-gray-700 hover:text-gray-900 btn-press transition-all duration-200"
-          >
-            {t("detail_sheet.buttons.close")}
-          </Button>
+        
           <Button
             onClick={handleSave}
             disabled={saving}
             variant="secondary"
             className="bg-gray-100 hover:bg-gray-200 text-gray-900 btn-press transition-all duration-200"
           >
-            {saving ? "Saving..." : t("detail_sheet.buttons.save_changes")}
+            {saving ? t("detail_sheet.messages.saving") : t("detail_sheet.buttons.save_changes")}
           </Button>
           <Button
             onClick={handleConvert}
@@ -228,7 +222,7 @@ export function LeadDetailSheet({ lead, open, onOpenChange, onConvert, onSave }:
             className="bg-purple-500 hover:bg-purple-600 text-white btn-press hover:scale-105 transition-all duration-200"
           >
             <Sparkles className="h-4 w-4 mr-2" />
-            {converting ? "Converting..." : t("detail_sheet.buttons.convert")}
+            {converting ? t("detail_sheet.messages.converting") : t("detail_sheet.buttons.convert")}
           </Button>
         </SheetFooter>
       </SheetContent>

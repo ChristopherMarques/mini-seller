@@ -11,18 +11,49 @@
     "conversion_rate": "Taxa de Conversão"
   },
   "leads": {
-    "title": "Pipeline de Leads",
-    "subtitle": "Gerencie e converta seus leads",
-    "search_placeholder": "Buscar por nome ou empresa...",
-    "filter_all_status": "Todos os Status",
-    "table_header": {
+    "title": "Leads",
+    "subtitle": "Gerencie seus leads e converta-os em oportunidades",
+    "import_button": "Importar Leads",
+    "table": {
+      "search_placeholder": "Buscar por nome ou empresa...",
+      "filter_all": "Todos os status",
+      "filter_new": "Novo",
+      "filter_contacted": "Contatado",
+      "filter_qualified": "Qualificado",
       "name": "Nome",
       "company": "Empresa",
       "email": "E-mail",
+      "phone": "Telefone",
       "source": "Origem",
       "score": "Pontuação",
-      "status": "Status",
-      "actions": "Ações"
+      "status": "Status"
+    },
+    "import": {
+      "title": "Importar Leads",
+      "description": "Importe leads via JSON ou adicione manualmente",
+      "tab_json": "Importar JSON",
+      "tab_manual": "Adicionar Manual",
+      "json_placeholder": "Cole aqui o JSON com os leads...",
+      "json_help": "O JSON deve conter um array de objetos com as propriedades: name, company, email, phone, source, score, status, notes",
+      "manual_name": "Nome",
+      "manual_company": "Empresa",
+      "manual_email": "E-mail",
+      "manual_phone": "Telefone",
+      "manual_source": "Origem",
+      "manual_score": "Pontuação",
+      "manual_status": "Status",
+      "manual_notes": "Observações",
+      "button_import": "Importar",
+      "button_add": "Adicionar Lead",
+      "button_cancel": "Cancelar",
+      "success_import": "Leads importados com sucesso!",
+      "success_add": "Lead adicionado com sucesso!",
+      "error_invalid_json": "JSON inválido",
+      "error_empty_json": "JSON não pode estar vazio",
+      "error_no_valid_leads": "Nenhum lead válido encontrado",
+      "error_required_fields": "Todos os campos obrigatórios devem ser preenchidos",
+      "importing": "Importando...",
+      "adding": "Adicionando..."
     },
     "status": {
       "new": "Novo",
@@ -41,6 +72,8 @@
   },
   "detail_sheet": {
     "title": "Detalhes do Lead",
+    "description": "Visualize e edite as informações do lead",
+    "current_status": "Status Atual",
     "tabs": {
       "overview": "Visão Geral",
       "activity": "Atividade"
@@ -59,6 +92,12 @@
       "save_changes": "Salvar Alterações",
       "convert": "Converter em Oportunidade",
       "close": "Fechar"
+    },
+    "messages": {
+      "invalid_email": "Por favor, insira um endereço de e-mail válido",
+      "lead_updated": "Lead atualizado com sucesso!",
+      "saving": "Salvando...",
+      "converting": "Convertendo..."
     },
     "activity": {
       "no_activity": "Nenhuma atividade registrada ainda"

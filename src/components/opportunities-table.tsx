@@ -1,7 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Plus, Sparkles } from "lucide-react"
+import { Plus, Sparkles, Upload } from "lucide-react"
 import { KpiCards } from "@/components/kpi-cards"
+import { LeadImportDialog } from "@/components/lead-import-dialog"
 import { useTranslation } from "react-i18next"
 import type { Opportunity } from "@/types"
 
@@ -19,6 +20,12 @@ export function OpportunitiesTable({ opportunities }: OpportunitiesTableProps) {
           <h2 className="text-3xl font-bold gradient-text">{t('opportunities.title')}</h2>
           <p className="text-gray-600 mt-2">{t('opportunities.subtitle')}</p>
         </div>
+        <LeadImportDialog>
+          <Button className="bg-blue-500 hover:bg-blue-600 text-white btn-press hover:scale-105 transition-all duration-200 px-6 py-3 rounded-full">
+            <Upload className="h-4 w-4 mr-2" />
+            {t('leads.import_button')}
+          </Button>
+        </LeadImportDialog>
       </div>
 
       <KpiCards opportunities={opportunities} />

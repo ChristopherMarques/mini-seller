@@ -11,18 +11,49 @@
     "conversion_rate": "Conversion Rate"
   },
   "leads": {
-    "title": "Leads Pipeline",
-    "subtitle": "Manage and convert your leads",
-    "search_placeholder": "Search by name or company...",
-    "filter_all_status": "All Status",
-    "table_header": {
+    "title": "Leads",
+    "subtitle": "Manage your leads and convert them into opportunities",
+    "import_button": "Import Leads",
+    "table": {
+      "search_placeholder": "Search by name or company...",
+      "filter_all": "All statuses",
+      "filter_new": "New",
+      "filter_contacted": "Contacted",
+      "filter_qualified": "Qualified",
       "name": "Name",
       "company": "Company",
       "email": "Email",
+      "phone": "Phone",
       "source": "Source",
       "score": "Score",
-      "status": "Status",
-      "actions": "Actions"
+      "status": "Status"
+    },
+    "import": {
+      "title": "Import Leads",
+      "description": "Import leads via JSON or add manually",
+      "tab_json": "Import JSON",
+      "tab_manual": "Add Manual",
+      "json_placeholder": "Paste your JSON with leads here...",
+      "json_help": "JSON should contain an array of objects with properties: name, company, email, phone, source, score, status, notes",
+      "manual_name": "Name",
+      "manual_company": "Company",
+      "manual_email": "Email",
+      "manual_phone": "Phone",
+      "manual_source": "Source",
+      "manual_score": "Score",
+      "manual_status": "Status",
+      "manual_notes": "Notes",
+      "button_import": "Import",
+      "button_add": "Add Lead",
+      "button_cancel": "Cancel",
+      "success_import": "Leads imported successfully!",
+      "success_add": "Lead added successfully!",
+      "error_invalid_json": "Invalid JSON",
+      "error_empty_json": "JSON cannot be empty",
+      "error_no_valid_leads": "No valid leads found",
+      "error_required_fields": "All required fields must be filled",
+      "importing": "Importing...",
+      "adding": "Adding..."
     },
     "status": {
       "new": "New",
@@ -41,6 +72,8 @@
   },
   "detail_sheet": {
     "title": "Lead Details",
+    "description": "View and edit lead information",
+    "current_status": "Current Status",
     "tabs": {
       "overview": "Overview",
       "activity": "Activity"
@@ -59,6 +92,12 @@
       "save_changes": "Save Changes",
       "convert": "Convert to Opportunity",
       "close": "Close"
+    },
+    "messages": {
+      "invalid_email": "Please enter a valid email address",
+      "lead_updated": "Lead updated successfully!",
+      "saving": "Saving...",
+      "converting": "Converting..."
     },
     "activity": {
       "no_activity": "No activity recorded yet"
