@@ -168,6 +168,11 @@
     "delete": "Excluir",
     "actions": "Ações"
   },
+  "footer": {
+    "made_with_love": "Feito com amor",
+    "in_brazil": "no Brasil",
+    "by_author": "por Christopher Correa"
+  },
   "delete_confirmation": {
     "title": "Confirmar Exclusão",
     "description": "Tem certeza de que deseja excluir {{item}}? Esta ação não pode ser desfeita.",

@@ -168,6 +168,11 @@
     "delete": "Delete",
     "actions": "Actions"
   },
+  "footer": {
+    "made_with_love": "Made with love",
+    "in_brazil": "in Brazil",
+    "by_author": "by Christopher Correa"
+  },
   "delete_confirmation": {
     "title": "Confirm Deletion",
     "description": "Are you sure you want to delete {{item}}? This action cannot be undone.",

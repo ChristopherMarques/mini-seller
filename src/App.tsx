@@ -2,6 +2,7 @@ import { LanguageSwitcher } from "@/components/language-switcher";
 import { LeadDetailSheet } from "@/components/lead-detail-sheet";
 import { LeadsTable } from "@/components/leads-table";
 import { OpportunitiesTable } from "@/components/opportunities-table";
+import { Footer } from "@/components/shared/footer";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { LeadsProvider, useLeads } from "@/contexts/leads-provider";
 import type { Lead, Opportunity } from "@/types";
@@ -78,6 +79,7 @@ function MiniSellerConsoleContent() {
           onDelete={handleDeleteLead}
         />
       </div>
+      <Footer />
       <Toaster richColors position="top-right" />
     </div>
   );
