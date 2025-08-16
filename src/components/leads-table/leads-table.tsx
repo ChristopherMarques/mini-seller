@@ -1,5 +1,7 @@
 import { STATUS_COLORS } from "@/components/shared";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { DeleteConfirmationDialog } from "@/components/ui/delete-confirmation-dialog";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -18,8 +20,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useLeads } from "@/contexts/leads-provider";
-import { BarChart3, Building, Mail, Search, Users } from "lucide-react";
-import { useState } from "react";
+import { BarChart3, Building, Mail, Search, Trash2, Users } from "lucide-react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ScoreIndicator } from "./score-indicator";
 import type { LeadsTableProps } from "./types";
@@ -32,13 +34,36 @@ import {
 
 export function LeadsTable({ onLeadClick }: LeadsTableProps) {
   const { t } = useTranslation();
-  const { leads, loading } = useLeads();
+  const { leads, loading, deleteLead } = useLeads();
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [leadToDelete, setLeadToDelete] = useState<number | null>(null);
 
   const filteredLeads = getFilteredLeads(leads, searchTerm, statusFilter);
   const statusOptions = getStatusFilterOptions(t);
   const emptyStateText = getEmptyStateText(searchTerm, statusFilter, t);
+
+  const handleDeleteClick = (leadId: number, event: React.MouseEvent) => {
+    event.stopPropagation();
+    setLeadToDelete(leadId);
+    setDeleteDialogOpen(true);
+  };
+
+  const handleDeleteConfirm = () => {
+    if (leadToDelete) {
+      deleteLead(leadToDelete);
+      setLeadToDelete(null);
+    }
+  };
+
+  const getLeadName = () => {
+    if (leadToDelete) {
+      const lead = leads.find(l => l.id === leadToDelete);
+      return lead ? lead.name : "";
+    }
+    return "";
+  };
 
   if (loading) {
     return (
@@ -134,6 +159,9 @@ export function LeadsTable({ onLeadClick }: LeadsTableProps) {
                 <TableHead className="font-semibold text-gray-900">
                   {t("leads.table.status")}
                 </TableHead>
+                <TableHead className="font-semibold text-gray-900 w-20">
+                  {t("common.actions", "Ações")}
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -154,6 +182,16 @@ export function LeadsTable({ onLeadClick }: LeadsTableProps) {
                       {t(`leads.status.${lead.status.toLowerCase()}`)}
                     </Badge>
                   </TableCell>
+                  <TableCell>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={e => handleDeleteClick(lead.id, e)}
+                      className="h-8 w-8 p-0 text-red-600 hover:text-red-700 hover:bg-red-50"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -166,6 +204,13 @@ export function LeadsTable({ onLeadClick }: LeadsTableProps) {
           <p className="text-gray-600">{emptyStateText.subtitle}</p>
         </div>
       )}
+
+      <DeleteConfirmationDialog
+        open={deleteDialogOpen}
+        onOpenChange={setDeleteDialogOpen}
+        onConfirm={handleDeleteConfirm}
+        itemName={getLeadName()}
+      />
     </div>
   );
 }

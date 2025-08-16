@@ -1,4 +1,5 @@
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { DeleteConfirmationDialog } from "@/components/ui/delete-confirmation-dialog";
 import { Separator } from "@/components/ui/separator";
 import {
   Sheet,
@@ -23,13 +24,16 @@ export function LeadDetailSheet({
   onOpenChange,
   onConvert,
   onSave,
+  onDelete,
 }: LeadDetailSheetProps) {
   const { t } = useTranslation();
   const [editedLead, setEditedLead] = useState<Lead | null>(null);
   const [saving, setSaving] = useState(false);
   const [converting, setConverting] = useState(false);
+  const [deleting, setDeleting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
 
   useEffect(() => {
     if (lead) {
@@ -90,6 +94,26 @@ export function LeadDetailSheet({
     setError(null);
   };
 
+  const handleDelete = () => {
+    setDeleteDialogOpen(true);
+  };
+
+  const handleDeleteConfirm = async () => {
+    if (!onDelete || !editedLead) return;
+
+    setDeleting(true);
+    setError(null);
+
+    try {
+      onDelete(editedLead);
+      setDeleting(false);
+      onOpenChange(false);
+    } catch (err) {
+      setDeleting(false);
+      setError(t("detail_sheet.messages.delete_error", "Erro ao excluir lead"));
+    }
+  };
+
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent
@@ -144,9 +168,18 @@ export function LeadDetailSheet({
           onSave={handleSave}
           onConvert={handleConvert}
           onCancel={handleCancel}
+          onDelete={onDelete ? handleDelete : undefined}
           saving={saving}
           converting={converting}
+          deleting={deleting}
           t={t}
+        />
+
+        <DeleteConfirmationDialog
+          open={deleteDialogOpen}
+          onOpenChange={setDeleteDialogOpen}
+          onConfirm={handleDeleteConfirm}
+          itemName={editedLead?.name || ""}
         />
       </SheetContent>
     </Sheet>

@@ -143,6 +143,14 @@
     "save": "Save",
     "cancel": "Cancel",
     "edit": "Edit",
-    "delete": "Delete"
+    "delete": "Delete",
+    "actions": "Actions"
+  },
+  "delete_confirmation": {
+    "title": "Confirm Deletion",
+    "description": "Are you sure you want to delete {{item}}? This action cannot be undone.",
+    "default_item": "this item",
+    "cancel": "Cancel",
+    "confirm": "Delete"
   }
 }

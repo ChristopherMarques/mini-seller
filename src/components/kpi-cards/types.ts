@@ -1,8 +1,9 @@
-import type { Opportunity, KpiItem } from "@/components/shared";
+import type { Opportunity, Lead, KpiItem } from "@/components/shared";
 import type { LucideIcon } from "lucide-react";
 
 export interface KpiCardsProps {
   opportunities: Opportunity[];
+  leads?: Lead[];
 }
 
 export interface KpiData {

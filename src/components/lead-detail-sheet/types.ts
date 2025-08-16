@@ -6,6 +6,7 @@ export interface LeadDetailSheetProps {
   onOpenChange: (_open: boolean) => void;
   onConvert: (_lead: Lead) => void;
   onSave: (_lead: Lead) => void;
+  onDelete?: (_lead: Lead) => void;
 }
 
 export interface LeadFormData extends Lead {}
@@ -35,8 +36,10 @@ export interface SheetActionsProps {
   onSave: () => void;
   onConvert: () => void;
   onCancel: () => void;
+  onDelete?: () => void;
   saving: boolean;
   converting: boolean;
+  deleting?: boolean;
   t: (_key: string) => string;
 }
 

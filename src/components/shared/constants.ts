@@ -1,5 +1,3 @@
-// Constantes compartilhadas entre componentes
-
 export const STATUS_COLORS = {
   New: "bg-purple-100 text-purple-800 border-purple-200",
   Contacted: "bg-yellow-100 text-yellow-800 border-yellow-200",
@@ -17,7 +15,6 @@ export const SCORE_CONFIG = {
   MIN_WIDTH: 10,
 } as const;
 
-// Classes CSS para scores
 export const SCORE_CLASSES = {
   HIGH: "score-high",
   MEDIUM: "score-medium",

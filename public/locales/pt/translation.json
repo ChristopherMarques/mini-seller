@@ -143,6 +143,14 @@
     "save": "Salvar",
     "cancel": "Cancelar",
     "edit": "Editar",
-    "delete": "Excluir"
+    "delete": "Excluir",
+    "actions": "Ações"
+  },
+  "delete_confirmation": {
+    "title": "Confirmar Exclusão",
+    "description": "Tem certeza de que deseja excluir {{item}}? Esta ação não pode ser desfeita.",
+    "default_item": "este item",
+    "cancel": "Cancelar",
+    "confirm": "Excluir"
   }
 }

@@ -40,6 +40,12 @@ function MiniSellerConsoleContent() {
     setOpportunities(prevOpportunities => [...prevOpportunities, newOpportunity]);
   };
 
+  const handleDeleteLead = (lead: Lead) => {
+    deleteLead(lead.id);
+    setSheetOpen(false);
+    setSelectedLead(null);
+  };
+
   return (
     <div className="min-h-screen bg-white relative overflow-hidden">
       <div className="gradient-blob gradient-blob-1"></div>
@@ -66,6 +72,7 @@ function MiniSellerConsoleContent() {
           onOpenChange={setSheetOpen}
           onConvert={handleConvertLead}
           onSave={handleSaveLead}
+          onDelete={handleDeleteLead}
         />
       </div>
     </div>

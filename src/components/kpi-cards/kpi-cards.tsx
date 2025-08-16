@@ -1,12 +1,12 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { useTranslation } from "react-i18next";
-import { calculateKpiData, generateKpiItems, getAnimationDelay } from "./utils";
 import type { KpiCardsProps } from "./types";
+import { calculateKpiData, generateKpiItems, getAnimationDelay } from "./utils";
 
-export function KpiCards({ opportunities }: KpiCardsProps) {
+export function KpiCards({ opportunities, leads = [] }: KpiCardsProps) {
   const { t } = useTranslation();
 
-  const kpiData = calculateKpiData(opportunities);
+  const kpiData = calculateKpiData(opportunities, leads);
   const kpiItems = generateKpiItems(kpiData, t);
 
   return (
