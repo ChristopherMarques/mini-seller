@@ -125,6 +125,7 @@ export function LeadsTable({ onLeadClick }: LeadsTableProps) {
             ))}
           </SelectContent>
         </Select>
+
         <ExportButtons leads={filteredLeads} searchTerm={searchTerm} statusFilter={statusFilter} />
       </div>
 

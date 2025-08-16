@@ -18,7 +18,7 @@ export const getLanguageButtonClasses = (isActive: boolean): string => {
     return `${baseClasses} bg-secondary text-white shadow-md transform scale-105`;
   }
 
-  return `${baseClasses} text-gray-500 hover:text-gray-700 hover:bg-gray-50`;
+  return `${baseClasses} text-secondary hover:text-gray-700 hover:bg-secondary`;
 };
 
 /**
@@ -26,7 +26,7 @@ export const getLanguageButtonClasses = (isActive: boolean): string => {
  */
 export const getSwitcherContainerClasses = (customClassName?: string): string => {
   const baseClasses =
-    "flex space-x-2 rounded-full bg-white/80 backdrop-blur-sm p-1 shadow-sm border border-primary/50";
+    "flex space-x-2 rounded-full bg-background backdrop-blur-sm p-1 shadow-sm border border-primary/50";
 
   return customClassName ? `${baseClasses} ${customClassName}` : baseClasses;
 };

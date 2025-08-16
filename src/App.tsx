@@ -3,6 +3,7 @@ import { LeadDetailSheet } from "@/components/lead-detail-sheet";
 import { LeadsTable } from "@/components/leads-table";
 import { OpportunitiesTable } from "@/components/opportunities-table";
 import { Footer } from "@/components/shared/footer";
+import { Tutorial } from "@/components/shared/tutorial";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { LeadsProvider, useLeads } from "@/contexts/leads-provider";
 import type { Lead, Opportunity } from "@/types";
@@ -56,9 +57,10 @@ function MiniSellerConsoleContent() {
       <div className="gradient-blob gradient-blob-3"></div>
 
       <div className="relative z-10 container mx-auto py-8 px-4 space-y-8">
-        <div className="flex justify-end items-center gap-3 mb-4">
+        <div className="flex justify-end items-center gap-3 mb-4" data-tutorial="controls">
           <ThemeSwitcher />
           <LanguageSwitcher />
+          <Tutorial />
         </div>
 
         <div className="text-center space-y-4 py-8">
@@ -66,9 +68,13 @@ function MiniSellerConsoleContent() {
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">{t("header.subtitle")}</p>
         </div>
 
-        <OpportunitiesTable opportunities={opportunities} />
+        <div data-tutorial="opportunities">
+          <OpportunitiesTable opportunities={opportunities} />
+        </div>
 
-        <LeadsTable onLeadClick={handleLeadClick} />
+        <div data-tutorial="leads">
+          <LeadsTable onLeadClick={handleLeadClick} />
+        </div>
 
         <LeadDetailSheet
           lead={selectedLead}

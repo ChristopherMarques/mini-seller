@@ -173,6 +173,40 @@
     "in_brazil": "no Brasil",
     "by_author": "por Christopher Correa"
   },
+  "tutorial": {
+    "help_button": "Ajuda",
+    "start_tour": "Iniciar Tutorial",
+    "welcome": {
+      "title": "Bem-vindo ao Mini Seller!",
+      "content": "Vamos fazer um tour rápido pelas principais funcionalidades da plataforma."
+    },
+    "controls": {
+      "title": "Controles da Interface",
+      "content": "Aqui você pode alternar entre tema claro/escuro, mudar o idioma e acessar esta ajuda."
+    },
+    "opportunities": {
+      "title": "Tabela de Oportunidades",
+      "content": "Visualize e gerencie suas oportunidades de vendas convertidas a partir de leads."
+    },
+    "leads": {
+      "title": "Tabela de Leads",
+      "content": "Gerencie seus leads, filtre por status, pesquise e exporte dados. Clique em um lead para ver detalhes."
+    },
+    "export": {
+      "title": "Exportar Dados",
+      "content": "Exporte seus leads filtrados para Excel ou CSV para análise externa."
+    },
+    "import": {
+      "title": "Importar Leads",
+      "content": "Importe novos leads através de arquivo JSON ou inserção manual."
+    },
+    "buttons": {
+      "back": "Voltar",
+      "next": "Próximo",
+      "skip": "Pular",
+      "close": "Fechar"
+    }
+  },
   "delete_confirmation": {
     "title": "Confirmar Exclusão",
     "description": "Tem certeza de que deseja excluir {{item}}? Esta ação não pode ser desfeita.",

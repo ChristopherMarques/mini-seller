@@ -173,6 +173,40 @@
     "in_brazil": "in Brazil",
     "by_author": "by Christopher Correa"
   },
+  "tutorial": {
+    "help_button": "Help",
+    "start_tour": "Start Tutorial",
+    "welcome": {
+      "title": "Welcome to Mini Seller!",
+      "content": "Let's take a quick tour of the platform's main features."
+    },
+    "controls": {
+      "title": "Interface Controls",
+      "content": "Here you can toggle between light/dark theme, change language, and access this help."
+    },
+    "opportunities": {
+      "title": "Opportunities Table",
+      "content": "View and manage your sales opportunities converted from leads."
+    },
+    "leads": {
+      "title": "Leads Table",
+      "content": "Manage your leads, filter by status, search, and export data. Click on a lead to see details."
+    },
+    "export": {
+      "title": "Export Data",
+      "content": "Export your filtered leads to Excel or CSV for external analysis."
+    },
+    "import": {
+      "title": "Import Leads",
+      "content": "Import new leads through JSON file or manual entry."
+    },
+    "buttons": {
+      "back": "Back",
+      "next": "Next",
+      "skip": "Skip",
+      "close": "Close"
+    }
+  },
   "delete_confirmation": {
     "title": "Confirm Deletion",
     "description": "Are you sure you want to delete {{item}}? This action cannot be undone.",

@@ -56,14 +56,15 @@ export function ExportButtons({
   const isFiltered = searchTerm || (statusFilter && statusFilter !== "all");
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          variant="outline"
-          size="sm"
-          disabled={disabled || isExporting || exportCount === 0}
-          className="gap-2"
-        >
+    <div data-tutorial="export">
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button
+            variant="outline"
+            size="sm"
+            disabled={disabled || isExporting || exportCount === 0}
+            className="gap-2"
+          >
           <Download className="h-4 w-4" />
           {isExporting ? t("leads.export.exporting") : t("leads.export.button")}
           {exportCount > 0 && (
@@ -107,5 +108,6 @@ export function ExportButtons({
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
+    </div>
   );
 }

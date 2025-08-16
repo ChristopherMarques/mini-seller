@@ -19,12 +19,14 @@ export function EmptyOpportunitiesState({ onImportClick }: EmptyOpportunitiesSta
           </div>
           <h3 className={classes.title}>{t("opportunities.empty.title")}</h3>
           <p className={classes.subtitle}>{t("opportunities.empty.subtitle")}</p>
-          <LeadImportDialog>
-            <Button className={classes.button} onClick={onImportClick}>
-              <Plus className="h-4 w-4" />
-              {t("leads.import_button")}
-            </Button>
-          </LeadImportDialog>
+          <div data-tutorial="import">
+            <LeadImportDialog>
+              <Button className={classes.button} onClick={onImportClick}>
+                <Plus className="h-4 w-4" />
+                {t("leads.import_button")}
+              </Button>
+            </LeadImportDialog>
+          </div>
         </div>
       </CardContent>
     </Card>
