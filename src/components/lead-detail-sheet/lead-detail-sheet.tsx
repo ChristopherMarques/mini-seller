@@ -117,30 +117,30 @@ export function LeadDetailSheet({
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent
-        className="w-full sm:max-w-md glass-effect border-l border-gray-200"
+        className="w-full sm:max-w-md glass-effect"
         side="right"
       >
         <SheetHeader className="pb-6">
-          <SheetTitle className="text-xl font-bold text-gray-900">
+          <SheetTitle className="text-xl font-bold text-foreground">
             {t("detail_sheet.title")}
           </SheetTitle>
-          <SheetDescription className="text-gray-600">
+          <SheetDescription className="text-muted-foreground">
             {t("detail_sheet.description")}
           </SheetDescription>
         </SheetHeader>
 
         <div className="py-6 space-y-6">
           {error && (
-            <Alert variant="destructive" className="bg-red-50 border-red-200">
+            <Alert variant="destructive">
               <AlertCircle className="h-4 w-4" />
-              <AlertDescription className="text-red-800">{error}</AlertDescription>
+              <AlertDescription>{error}</AlertDescription>
             </Alert>
           )}
 
           {success && (
-            <Alert className="bg-green-50 border-green-200">
-              <CheckCircle2 className="h-4 w-4 text-green-600" />
-              <AlertDescription className="text-green-800">{success}</AlertDescription>
+            <Alert className="border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950">
+              <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
+              <AlertDescription className="text-green-800 dark:text-green-200">{success}</AlertDescription>
             </Alert>
           )}
 
@@ -149,7 +149,7 @@ export function LeadDetailSheet({
               <LeadHeader lead={lead} />
             </div>
 
-            <Separator className="bg-gray-200" />
+            <Separator />
 
             <LeadFormFields
               editedLead={editedLead}

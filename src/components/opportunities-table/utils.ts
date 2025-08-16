@@ -36,10 +36,10 @@ export const formatCurrency = (value: number, currency: string = "BRL"): string 
  * Obtém classes CSS para o estado vazio
  */
 export const getEmptyStateClasses = () => ({
-  container: "text-center",
+  container: "text-center ",
   icon: "mx-auto w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-400 rounded-full flex items-center justify-center mb-6 hover:scale-105 transition-transform duration-200",
-  title: "text-xl font-semibold text-gray-900 mb-3",
-  subtitle: "text-gray-600 mb-8 max-w-md mx-auto",
+  title: "text-xl font-semibold text-foreground mb-3",
+  subtitle: "text-muted-foreground mb-8 max-w-md mx-auto",
   button:
     "bg-purple-500 hover:bg-purple-600 text-white btn-press hover:scale-105 transition-all duration-200 px-6 py-3 rounded-full",
 });
@@ -50,5 +50,5 @@ export const getEmptyStateClasses = () => ({
 export const getHeaderClasses = () => ({
   container: "flex items-center justify-between",
   title: "text-3xl font-bold gradient-text",
-  subtitle: "text-gray-600 mt-2",
+  subtitle: "text-muted-foreground mt-2",
 });

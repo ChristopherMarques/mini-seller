@@ -11,7 +11,7 @@ export function EmptyOpportunitiesState({ onImportClick }: EmptyOpportunitiesSta
   const classes = getEmptyStateClasses();
 
   return (
-    <Card className="bg-white border-gray-200 shadow-sm">
+    <Card className="shadow-sm border-gray-200">
       <CardContent className="py-16">
         <div className={classes.container}>
           <div className={classes.icon}>

@@ -95,7 +95,7 @@ export function LeadsTable({ onLeadClick }: LeadsTableProps) {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-3xl font-bold gradient-text">{t("leads.title")}</h2>
-          <p className="text-gray-600 mt-2">
+          <p className="text-muted-foreground mt-2">
             {getSearchResultsText(filteredLeads.length, leads.length, t)}
           </p>
         </div>
@@ -104,19 +104,19 @@ export function LeadsTable({ onLeadClick }: LeadsTableProps) {
       {/* Filters */}
       <div className="flex gap-4">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4 " />
           <Input
             placeholder={t("leads.table.search_placeholder")}
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
-            className="pl-10 bg-white border-gray-200 focus:border-purple-300 focus:ring-purple-200"
+            className="pl-10 border-gray-200 shadow-sm"
           />
         </div>
         <Select value={statusFilter} onValueChange={setStatusFilter}>
-          <SelectTrigger className="w-48 bg-white border-gray-200">
+          <SelectTrigger className="w-48 border-gray-200 shadow-sm">
             <SelectValue />
           </SelectTrigger>
-          <SelectContent className="bg-white shadow-sm border-gray-200">
+          <SelectContent className="border-gray-200 shadow-sm bg-background">
             {statusOptions.map(option => (
               <SelectItem key={option.value} value={option.value}>
                 {option.label}
@@ -128,38 +128,38 @@ export function LeadsTable({ onLeadClick }: LeadsTableProps) {
 
       {/* Table */}
       {filteredLeads.length > 0 ? (
-        <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+        <div className="bg-card rounded-lg border overflow-hidden border-gray-200 shadow-sm">
           <Table>
             <TableHeader>
-              <TableRow className="bg-gray-50 border-gray-200">
-                <TableHead className="font-semibold text-gray-900">
+              <TableRow className="bg-muted/50 border-gray-200 shadow-sm">
+                <TableHead className="font-semibold text-foreground">
                   <div className="flex items-center gap-2">
                     <Users className="h-4 w-4" />
                     {t("leads.table.name")}
                   </div>
                 </TableHead>
-                <TableHead className="font-semibold text-gray-900">
+                <TableHead className="font-semibold text-foreground">
                   <div className="flex items-center gap-2">
                     <Building className="h-4 w-4" />
                     {t("leads.table.company")}
                   </div>
                 </TableHead>
-                <TableHead className="font-semibold text-gray-900">
+                <TableHead className="font-semibold text-foreground">
                   <div className="flex items-center gap-2">
                     <Mail className="h-4 w-4" />
                     {t("leads.table.email")}
                   </div>
                 </TableHead>
-                <TableHead className="font-semibold text-gray-900">
+                <TableHead className="font-semibold text-foreground">
                   <div className="flex items-center gap-2">
                     <BarChart3 className="h-4 w-4" />
                     {t("leads.table.score")}
                   </div>
                 </TableHead>
-                <TableHead className="font-semibold text-gray-900">
+                <TableHead className="font-semibold text-foreground">
                   {t("leads.table.status")}
                 </TableHead>
-                <TableHead className="font-semibold text-gray-900 w-20">
+                <TableHead className="font-semibold text-foreground w-20">
                   {t("common.actions", "Ações")}
                 </TableHead>
               </TableRow>
@@ -168,12 +168,12 @@ export function LeadsTable({ onLeadClick }: LeadsTableProps) {
               {filteredLeads.map(lead => (
                 <TableRow
                   key={lead.id}
-                  className="hover:bg-gray-50 cursor-pointer transition-colors border-gray-200"
+                  className="hover:bg-muted/50 cursor-pointer transition-colors border-gray-200 shadow-sm"
                   onClick={() => onLeadClick(lead)}
                 >
-                  <TableCell className="font-medium text-gray-900">{lead.name}</TableCell>
-                  <TableCell className="text-gray-600">{lead.company}</TableCell>
-                  <TableCell className="text-gray-600">{lead.email}</TableCell>
+                  <TableCell className="font-medium text-foreground">{lead.name}</TableCell>
+                  <TableCell className="text-muted-foreground">{lead.company}</TableCell>
+                  <TableCell className="text-muted-foreground">{lead.email}</TableCell>
                   <TableCell>
                     <ScoreIndicator score={lead.score} />
                   </TableCell>
@@ -187,7 +187,7 @@ export function LeadsTable({ onLeadClick }: LeadsTableProps) {
                       variant="ghost"
                       size="sm"
                       onClick={e => handleDeleteClick(lead.id, e)}
-                      className="h-8 w-8 p-0 text-red-600 hover:text-red-700 hover:bg-red-50"
+                      className="h-8 w-8 p-0 text-destructive hover:text-destructive hover:bg-destructive/10"
                     >
                       <Trash2 className="h-4 w-4" />
                     </Button>
@@ -198,10 +198,10 @@ export function LeadsTable({ onLeadClick }: LeadsTableProps) {
           </Table>
         </div>
       ) : (
-        <div className="bg-white rounded-lg border border-gray-200 shadow-sm p-12 text-center">
-          <Users className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">{emptyStateText.title}</h3>
-          <p className="text-gray-600">{emptyStateText.subtitle}</p>
+        <div className="bg-card rounded-lg border shadow-sm p-12 text-center">
+          <Users className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+          <h3 className="text-lg font-semibold text-foreground mb-2">{emptyStateText.title}</h3>
+          <p className="text-muted-foreground">{emptyStateText.subtitle}</p>
         </div>
       )}
 

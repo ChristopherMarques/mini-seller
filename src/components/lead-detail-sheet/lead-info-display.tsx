@@ -13,30 +13,30 @@ export function LeadInfoDisplay({ lead, t }: LeadInfoDisplayProps) {
     <>
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
-          <Label className="text-sm font-medium text-gray-500">
+          <Label className="text-sm font-medium text-muted-foreground">
             {t("detail_sheet.fields.source")}
           </Label>
-          <p className="text-gray-900 font-medium">{lead.source}</p>
+          <p className="text-foreground font-medium">{lead.source}</p>
         </div>
         <div className="space-y-2">
-          <Label className="text-sm font-medium text-gray-500 flex items-center gap-1">
+          <Label className="text-sm font-medium text-muted-foreground flex items-center gap-1">
             <BarChart2 className="h-3 w-3" />
             {t("detail_sheet.fields.score")}
           </Label>
           <div className="flex items-center gap-2">
-            <div className="w-12 bg-gray-200 rounded-full h-2">
+            <div className="w-12 bg-muted rounded-full h-2">
               <div
                 className={`h-2 rounded-full ${scoreGradientClass}`}
                 style={{ width: `${scoreBarWidth}%` }}
               />
             </div>
-            <span className="text-gray-900 font-semibold">{lead.score}</span>
+            <span className="text-foreground font-semibold">{lead.score}</span>
           </div>
         </div>
       </div>
 
       <div className="space-y-2 space-x-2">
-        <Label className="text-sm font-medium text-gray-500">
+        <Label className="text-sm font-medium text-muted-foreground">
           {t("detail_sheet.current_status")}
         </Label>
         <Badge

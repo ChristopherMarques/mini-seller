@@ -2,6 +2,7 @@ import { LanguageSwitcher } from "@/components/language-switcher";
 import { LeadDetailSheet } from "@/components/lead-detail-sheet";
 import { LeadsTable } from "@/components/leads-table";
 import { OpportunitiesTable } from "@/components/opportunities-table";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 import { LeadsProvider, useLeads } from "@/contexts/leads-provider";
 import type { Lead, Opportunity } from "@/types";
 import { Suspense, useState } from "react";
@@ -47,13 +48,14 @@ function MiniSellerConsoleContent() {
   };
 
   return (
-    <div className="min-h-screen bg-white relative overflow-hidden">
+    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
       <div className="gradient-blob gradient-blob-1"></div>
       <div className="gradient-blob gradient-blob-2"></div>
       <div className="gradient-blob gradient-blob-3"></div>
 
       <div className="relative z-10 container mx-auto py-8 px-4 space-y-8">
-        <div className="flex justify-end mb-4">
+        <div className="flex justify-end items-center gap-3 mb-4">
+          <ThemeSwitcher />
           <LanguageSwitcher />
         </div>
 
@@ -84,7 +86,7 @@ export default function App() {
     <ThemeProvider defaultTheme="light" storageKey="mini-seller-theme">
       <Suspense
         fallback={
-          <div className="min-h-screen bg-white flex items-center justify-center text-foreground">
+          <div className="min-h-screen bg-background flex items-center justify-center text-foreground">
             Loading...
           </div>
         }

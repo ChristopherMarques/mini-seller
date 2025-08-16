@@ -30,9 +30,9 @@ export function LeadFormFields({ editedLead, onLeadChange, hasError, t }: LeadFo
       <div className="space-y-2">
         <Label
           htmlFor="email"
-          className="text-sm font-medium text-gray-700 flex items-center gap-2"
+          className="text-sm font-medium text-foreground flex items-center gap-2"
         >
-          <Mail className="h-4 w-4 text-gray-400" />
+          <Mail className="h-4 w-4 text-muted-foreground" />
           {t("detail_sheet.fields.email")}
         </Label>
         <Input
@@ -45,14 +45,14 @@ export function LeadFormFields({ editedLead, onLeadChange, hasError, t }: LeadFo
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="status" className="text-sm font-medium text-gray-700">
+        <Label htmlFor="status" className="text-sm font-medium text-foreground">
           {t("detail_sheet.fields.status")}
         </Label>
         <Select value={editedLead.status} onValueChange={handleStatusChange}>
-          <SelectTrigger className="bg-white border-gray-200 focus:border-purple-500 transition-all duration-200">
+          <SelectTrigger className="bg-background border-input focus:border-ring transition-all duration-200">
             <SelectValue />
           </SelectTrigger>
-          <SelectContent className="bg-white border-gray-200">
+          <SelectContent className="bg-background border-input">
             {statusOptions.map(option => (
               <SelectItem key={option.value} value={option.value}>
                 {option.label}

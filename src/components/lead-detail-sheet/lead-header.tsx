@@ -9,8 +9,8 @@ export function LeadHeader({ lead }: LeadHeaderProps) {
         <span className="text-white font-semibold text-lg">{getInitials(lead.name)}</span>
       </div>
       <div>
-        <p className="text-lg font-semibold text-gray-900">{lead.name}</p>
-        <p className="text-sm text-gray-600 flex items-center gap-1">
+        <p className="text-lg font-semibold text-foreground">{lead.name}</p>
+        <p className="text-sm text-muted-foreground flex items-center gap-1">
           <Building className="h-3 w-3" />
           {lead.company}
         </p>
