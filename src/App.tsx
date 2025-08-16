@@ -93,7 +93,7 @@ function MiniSellerConsoleContent() {
 
 export default function App() {
   return (
-    <ThemeProvider defaultTheme="light" storageKey="mini-seller-theme">
+    <ThemeProvider defaultTheme="system" storageKey="mini-seller-theme">
       <Suspense
         fallback={
           <div className="min-h-screen bg-background flex items-center justify-center text-foreground">

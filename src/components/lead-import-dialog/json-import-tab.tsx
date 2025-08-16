@@ -26,7 +26,7 @@ export function JsonImportTab({
           placeholder={getJsonPlaceholder()}
           value={jsonInput}
           onChange={e => setJsonInput(e.target.value)}
-          className="min-h-[200px] bg-white border-primary/50 shadow-sm font-mono text-sm"
+          className="min-h-[200px] bg-background border-primary/50 shadow-sm font-mono text-sm"
         />
         <p className="text-sm text-muted-foreground">{t("leads.import.json_help")}</p>
       </div>
