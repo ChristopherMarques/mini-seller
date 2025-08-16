@@ -1,0 +1,217 @@
+{
+  "header": {
+    "title": "Mini Seller Console",
+    "subtitle": "Transform leads into opportunities with our premium sales management platform"
+  },
+  "kpi": {
+    "title": "Converted Opportunities",
+    "subtitle": "Track your successful conversions",
+    "opportunities_created": "Opportunities Created",
+    "average_score": "Average Score",
+    "conversion_rate": "Conversion Rate"
+  },
+  "leads": {
+    "title": "Leads",
+    "subtitle": "Manage your leads and convert them into opportunities",
+    "import_button": "Import Leads",
+    "table": {
+      "search_placeholder": "Search by name or company...",
+      "filter_all": "All statuses",
+      "filter_new": "New",
+      "filter_contacted": "Contacted",
+      "filter_qualified": "Qualified",
+      "name": "Name",
+      "company": "Company",
+      "email": "Email",
+      "phone": "Phone",
+      "source": "Source",
+      "score": "Score",
+      "status": "Status"
+    },
+    "filter": {
+      "all_status": "All statuses"
+    },
+    "import": {
+      "title": "Import Leads",
+      "description": "Import leads via JSON or add manually",
+      "tab_json": "Import JSON",
+      "tab_manual": "Add Manual",
+      "json_placeholder": "Paste your JSON with leads here...",
+      "json_help": "JSON should contain an array of objects with properties: name, company, email, phone, source, score, status, notes",
+      "manual_name": "Name",
+      "manual_company": "Company",
+      "manual_email": "Email",
+      "manual_phone": "Phone",
+      "manual_source": "Source",
+      "manual_score": "Score",
+      "manual_status": "Status",
+      "manual_notes": "Notes",
+      "button_import": "Import",
+      "button_add": "Add Lead",
+      "button_cancel": "Cancel",
+      "success_import": "Leads imported successfully!",
+      "success_add": "Lead added successfully!",
+      "error_invalid_json": "Invalid JSON",
+      "error_empty_json": "JSON cannot be empty",
+      "error_no_valid_leads": "No valid leads found",
+      "error_required_fields": "All required fields must be filled",
+      "error_add_lead": "Error adding lead",
+      "leads_imported": "leads imported",
+      "invalid_ignored": "invalid ignored",
+      "placeholder_name": "Full name",
+      "placeholder_company": "Company name",
+      "placeholder_email": "email@example.com",
+      "placeholder_source": "Website, LinkedIn, etc.",
+      "error_invalid_object": "Invalid object format",
+      "error_invalid_name": "Name is required and must be a string",
+      "error_invalid_company": "Company is required and must be a string",
+      "error_invalid_email": "Email is required",
+      "error_invalid_email_format": "Invalid email format",
+      "error_invalid_source": "Source is required and must be a string",
+      "error_invalid_score": "Score must be a number between 0 and 100",
+      "error_invalid_status": "Status must be 'New', 'Contacted', or 'Qualified'",
+      "error_validation_failed": "Validation failed",
+      "error_more_errors": "and {{count}} more errors...",
+      "importing": "Importing...",
+      "adding": "Adding..."
+    },
+    "status": {
+      "new": "New",
+      "qualified": "Qualified",
+      "contacted": "Contacted"
+    },
+    "empty": {
+      "title": "Ready to convert your first lead?",
+      "subtitle": "Start converting qualified leads into opportunities and watch your pipeline grow.",
+      "cta_button": "Convert First Lead",
+      "no_results_title": "No leads found",
+      "no_results_subtitle": "Try adjusting your search or filter criteria",
+      "no_leads_title": "No leads yet",
+      "no_leads_subtitle": "Import your first leads to get started"
+    },
+    "actions": {
+      "view_details": "View Details",
+      "convert": "Convert to Opportunity"
+    },
+    "showing_all": "Showing all {{count}} leads",
+    "showing_filtered": "Showing {{filtered}} of {{total}} leads",
+    "export": {
+      "button": "Export",
+      "exporting": "Exporting...",
+      "no_data": "No data to export",
+      "unexpected_error": "Unexpected error during export",
+      "filtered_leads": "Export {{count}} filtered leads",
+      "all_leads": "Export all {{count}} leads",
+      "excel_format": "Excel (.xlsx)",
+      "excel_description": "Best for data analysis",
+      "csv_format": "CSV (.csv)",
+      "csv_description": "Compatible with any system",
+      "success_message": "Data exported successfully",
+      "columns": {
+        "id": "ID",
+        "name": "Name",
+        "company": "Company",
+        "email": "Email",
+        "source": "Source",
+        "score": "Score",
+        "status": "Status"
+      }
+    }
+  },
+  "detail_sheet": {
+    "title": "Lead Details",
+    "description": "View and edit lead information",
+    "current_status": "Current Status",
+    "tabs": {
+      "overview": "Overview",
+      "activity": "Activity"
+    },
+    "fields": {
+      "name": "Name",
+      "company": "Company",
+      "email": "Email",
+      "phone": "Phone",
+      "source": "Source",
+      "score": "Score",
+      "status": "Status",
+      "notes": "Notes"
+    },
+    "buttons": {
+      "save_changes": "Save Changes",
+      "convert": "Convert to Opportunity",
+      "close": "Close"
+    },
+    "messages": {
+      "invalid_email": "Please enter a valid email address",
+      "lead_updated": "Lead updated successfully!",
+      "saving": "Saving...",
+      "converting": "Converting..."
+    },
+    "activity": {
+      "no_activity": "No activity recorded yet"
+    }
+  },
+  "opportunities": {
+    "title": "Converted Opportunities",
+    "subtitle": "Track your successful conversions",
+    "empty": {
+      "title": "Ready to convert your first lead?",
+      "subtitle": "Start converting qualified leads into opportunities and watch your pipeline grow.",
+      "cta_button": "Convert First Lead"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "actions": "Actions"
+  },
+  "footer": {
+    "made_with_love": "Made with love",
+    "in_brazil": "in Brazil",
+    "by_author": "by Christopher Correa"
+  },
+  "tutorial": {
+    "help_button": "Help",
+    "start_tour": "Start Tutorial",
+    "welcome": {
+      "title": "Welcome to Mini Seller!",
+      "content": "Let's take a quick tour of the platform's main features."
+    },
+    "controls": {
+      "title": "Interface Controls",
+      "content": "Here you can toggle between light/dark theme, change language, and access this help."
+    },
+    "opportunities": {
+      "title": "Opportunities Table",
+      "content": "View and manage your sales opportunities converted from leads."
+    },
+    "leads": {
+      "title": "Leads Table",
+      "content": "Manage your leads, filter by status, search, and export data. Click on a lead to see details."
+    },
+    "export": {
+      "title": "Export Data",
+      "content": "Export your filtered leads to Excel or CSV for external analysis."
+    },
+    "import": {
+      "title": "Import Leads",
+      "content": "Import new leads through JSON file or manual entry."
+    },
+    "buttons": {
+      "back": "Back",
+      "next": "Next",
+      "skip": "Skip",
+      "close": "Close"
+    }
+  },
+  "delete_confirmation": {
+    "title": "Confirm Deletion",
+    "description": "Are you sure you want to delete {{item}}? This action cannot be undone.",
+    "default_item": "this item",
+    "cancel": "Cancel",
+    "confirm": "Delete"
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "header": {
+    "title": "Mini Console de Vendas",
+    "subtitle": "Transforme leads em oportunidades com nossa plataforma premium de gerenciamento de vendas"
+  },
+  "kpi": {
+    "title": "Oportunidades Convertidas",
+    "subtitle": "Acompanhe suas conversões de sucesso",
+    "opportunities_created": "Oportunidades Criadas",
+    "average_score": "Pontuação Média",
+    "conversion_rate": "Taxa de Conversão"
+  },
+  "leads": {
+    "title": "Leads",
+    "subtitle": "Gerencie seus leads e converta-os em oportunidades",
+    "import_button": "Importar Leads",
+    "table": {
+      "search_placeholder": "Buscar por nome ou empresa...",
+      "filter_all": "Todos os status",
+      "filter_new": "Novo",
+      "filter_contacted": "Contatado",
+      "filter_qualified": "Qualificado",
+      "name": "Nome",
+      "company": "Empresa",
+      "email": "Email",
+      "phone": "Telefone",
+      "source": "Origem",
+      "score": "Pontuação",
+      "status": "Status"
+    },
+    "filter": {
+      "all_status": "Todos os status"
+    },
+    "import": {
+      "title": "Importar Leads",
+      "description": "Importe leads via JSON ou adicione manualmente",
+      "tab_json": "Importar JSON",
+      "tab_manual": "Adicionar Manual",
+      "json_placeholder": "Cole aqui o JSON com os leads...",
+      "json_help": "O JSON deve conter um array de objetos com as propriedades: name, company, email, phone, source, score, status, notes",
+      "manual_name": "Nome",
+      "manual_company": "Empresa",
+      "manual_email": "E-mail",
+      "manual_phone": "Telefone",
+      "manual_source": "Origem",
+      "manual_score": "Pontuação",
+      "manual_status": "Status",
+      "manual_notes": "Observações",
+      "button_import": "Importar",
+      "button_add": "Adicionar Lead",
+      "button_cancel": "Cancelar",
+      "success_import": "Leads importados com sucesso!",
+      "success_add": "Lead adicionado com sucesso!",
+      "error_invalid_json": "JSON inválido",
+      "error_empty_json": "JSON não pode estar vazio",
+      "error_no_valid_leads": "Nenhum lead válido encontrado",
+      "error_required_fields": "Todos os campos obrigatórios devem ser preenchidos",
+      "error_add_lead": "Erro ao adicionar lead",
+      "leads_imported": "leads importados",
+      "invalid_ignored": "inválidos ignorados",
+      "placeholder_name": "Nome completo",
+      "placeholder_company": "Nome da empresa",
+      "placeholder_email": "email@exemplo.com",
+      "placeholder_source": "Website, LinkedIn, etc.",
+      "error_invalid_object": "Formato de objeto inválido",
+      "error_invalid_name": "Nome é obrigatório e deve ser um texto",
+      "error_invalid_company": "Empresa é obrigatória e deve ser um texto",
+      "error_invalid_email": "E-mail é obrigatório",
+      "error_invalid_email_format": "Formato de e-mail inválido",
+      "error_invalid_source": "Origem é obrigatória e deve ser um texto",
+      "error_invalid_score": "Pontuação deve ser um número entre 0 e 100",
+      "error_invalid_status": "Status deve ser 'New', 'Contacted' ou 'Qualified'",
+      "error_validation_failed": "Falha na validação",
+      "error_more_errors": "e mais {{count}} erros...",
+      "importing": "Importando...",
+      "adding": "Adicionando..."
+    },
+    "status": {
+      "new": "Novo",
+      "qualified": "Qualificado",
+      "contacted": "Contactado"
+    },
+    "empty": {
+      "title": "Pronto para converter seu primeiro lead?",
+      "subtitle": "Comece a converter leads qualificados em oportunidades e veja seu pipeline crescer.",
+      "cta_button": "Converter Primeiro Lead",
+      "no_results_title": "Nenhum lead encontrado",
+      "no_results_subtitle": "Tente ajustar seus critérios de busca ou filtro",
+      "no_leads_title": "Nenhum lead ainda",
+      "no_leads_subtitle": "Importe seus primeiros leads para começar"
+    },
+    "actions": {
+      "view_details": "Ver Detalhes",
+      "convert": "Converter em Oportunidade"
+    },
+    "showing_all": "Mostrando todos os {{count}} leads",
+    "showing_filtered": "Mostrando {{filtered}} de {{total}} leads",
+    "export": {
+      "button": "Exportar",
+      "exporting": "Exportando...",
+      "no_data": "Não há dados para exportar",
+      "unexpected_error": "Erro inesperado durante a exportação",
+      "filtered_leads": "Exportar {{count}} leads filtrados",
+      "all_leads": "Exportar todos os {{count}} leads",
+      "excel_format": "Excel (.xlsx)",
+      "excel_description": "Melhor para análise de dados",
+      "csv_format": "CSV (.csv)",
+      "csv_description": "Compatível com qualquer sistema",
+      "success_message": "Dados exportados com sucesso",
+      "columns": {
+        "id": "ID",
+        "name": "Nome",
+        "company": "Empresa",
+        "email": "Email",
+        "source": "Fonte",
+        "score": "Pontuação",
+        "status": "Status"
+      }
+    }
+  },
+  "detail_sheet": {
+    "title": "Detalhes do Lead",
+    "description": "Visualize e edite as informações do lead",
+    "current_status": "Status Atual",
+    "tabs": {
+      "overview": "Visão Geral",
+      "activity": "Atividade"
+    },
+    "fields": {
+      "name": "Nome",
+      "company": "Empresa",
+      "email": "E-mail",
+      "phone": "Telefone",
+      "source": "Origem",
+      "score": "Pontuação",
+      "status": "Status",
+      "notes": "Observações"
+    },
+    "buttons": {
+      "save_changes": "Salvar Alterações",
+      "convert": "Converter em Oportunidade",
+      "close": "Fechar"
+    },
+    "messages": {
+      "invalid_email": "Por favor, insira um endereço de e-mail válido",
+      "lead_updated": "Lead atualizado com sucesso!",
+      "saving": "Salvando...",
+      "converting": "Convertendo..."
+    },
+    "activity": {
+      "no_activity": "Nenhuma atividade registrada ainda"
+    }
+  },
+  "opportunities": {
+    "title": "Oportunidades Convertidas",
+    "subtitle": "Acompanhe suas conversões de sucesso",
+    "empty": {
+      "title": "Pronto para converter seu primeiro lead?",
+      "subtitle": "Comece a converter leads qualificados em oportunidades e veja seu pipeline crescer.",
+      "cta_button": "Converter Primeiro Lead"
+    }
+  },
+  "common": {
+    "loading": "Carregando...",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "actions": "Ações"
+  },
+  "footer": {
+    "made_with_love": "Feito com amor",
+    "in_brazil": "no Brasil",
+    "by_author": "por Christopher Correa"
+  },
+  "tutorial": {
+    "help_button": "Ajuda",
+    "start_tour": "Iniciar Tutorial",
+    "welcome": {
+      "title": "Bem-vindo ao Mini Seller!",
+      "content": "Vamos fazer um tour rápido pelas principais funcionalidades da plataforma."
+    },
+    "controls": {
+      "title": "Controles da Interface",
+      "content": "Aqui você pode alternar entre tema claro/escuro, mudar o idioma e acessar esta ajuda."
+    },
+    "opportunities": {
+      "title": "Tabela de Oportunidades",
+      "content": "Visualize e gerencie suas oportunidades de vendas convertidas a partir de leads."
+    },
+    "leads": {
+      "title": "Tabela de Leads",
+      "content": "Gerencie seus leads, filtre por status, pesquise e exporte dados. Clique em um lead para ver detalhes."
+    },
+    "export": {
+      "title": "Exportar Dados",
+      "content": "Exporte seus leads filtrados para Excel ou CSV para análise externa."
+    },
+    "import": {
+      "title": "Importar Leads",
+      "content": "Importe novos leads através de arquivo JSON ou inserção manual."
+    },
+    "buttons": {
+      "back": "Voltar",
+      "next": "Próximo",
+      "skip": "Pular",
+      "close": "Fechar"
+    }
+  },
+  "delete_confirmation": {
+    "title": "Confirmar Exclusão",
+    "description": "Tem certeza de que deseja excluir {{item}}? Esta ação não pode ser desfeita.",
+    "default_item": "este item",
+    "cancel": "Cancelar",
+    "confirm": "Excluir"
+  }
+}
