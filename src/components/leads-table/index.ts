@@ -1,19 +1,19 @@
 export { LeadsTable } from "./leads-table";
 export { ScoreIndicator } from "./score-indicator";
-export type { 
-  LeadsTableProps, 
-  ScoreIndicatorProps, 
-  LeadRowProps, 
+export type {
+  LeadsTableProps,
+  ScoreIndicatorProps,
+  LeadRowProps,
   TableFiltersProps,
   EmptyStateProps,
   Lead,
-  FilterState
+  FilterState,
 } from "./types";
-export { 
+export {
   getFilteredLeads,
   getScoreIndicatorClasses,
   getStatusFilterOptions,
   getSearchResultsText,
   hasActiveFilters,
-  getEmptyStateText
+  getEmptyStateText,
 } from "./utils";

@@ -1,14 +1,13 @@
-import { TrendingUp, Target, Zap } from "lucide-react";
-import { DEFAULT_VALUES } from "@/components/shared";
-import type { Opportunity } from "@/components/shared";
-import type { KpiData, KpiCardItem } from "./types";
+import { DEFAULT_VALUES, type Opportunity } from "@/components/shared";
+import { Target, TrendingUp, Zap } from "lucide-react";
+import type { KpiCardItem, KpiData } from "./types";
 
 /**
  * Calcula os dados dos KPIs baseado nas oportunidades
  */
 export const calculateKpiData = (opportunities: Opportunity[]): KpiData => {
   const opportunitiesCount = opportunities.length;
-  
+
   return {
     opportunitiesCount,
     conversionRate: opportunitiesCount > 0 ? DEFAULT_VALUES.CONVERSION_RATE : 0,
@@ -19,10 +18,7 @@ export const calculateKpiData = (opportunities: Opportunity[]): KpiData => {
 /**
  * Gera os itens de KPI para exibição
  */
-export const generateKpiItems = (
-  kpiData: KpiData,
-  t: (key: string) => string
-): KpiCardItem[] => {
+export const generateKpiItems = (kpiData: KpiData, t: (_key: string) => string): KpiCardItem[] => {
   return [
     {
       title: t("kpi.opportunities_created"),

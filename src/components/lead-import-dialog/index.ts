@@ -1,7 +1,6 @@
-export { LeadImportDialog } from './lead-import-dialog';
-export { JsonImportTab } from './json-import-tab';
-export { ManualImportTab } from './manual-import-tab';
-
+export { LeadImportDialog } from "./lead-import-dialog";
+export { JsonImportTab } from "./json-import-tab";
+export { ManualImportTab } from "./manual-import-tab";
 
 export type {
   LeadImportDialogProps,
@@ -11,9 +10,8 @@ export type {
   LeadValidationResult,
   JsonImportTabProps,
   ManualImportTabProps,
-  ImportActionsProps
-} from './types';
-
+  ImportActionsProps,
+} from "./types";
 
 export {
   validateLead,
@@ -22,8 +20,7 @@ export {
   getImportSuccessMessage,
   getInitialManualLead,
   getStatusOptions,
-  getJsonPlaceholder
-} from './utils';
+  getJsonPlaceholder,
+} from "./utils";
 
-
-export type { Lead } from '@/components/shared';
+export type { Lead } from "@/components/shared";

@@ -128,6 +128,27 @@ pnpm lint         # Run ESLint
 pnpm type-check   # Run TypeScript compiler
 ```
 
+### Code Quality & Formatting
+
+```bash
+# Check for linting issues
+npm run lint:check
+
+# Fix linting issues automatically
+npm run lint:fix
+
+# Format code with Prettier
+npm run format
+
+# Check TypeScript types
+npm run type-check
+
+# Alternative: Use batch scripts (Windows)
+.\lint.bat          # Check linting
+.\lint-fix.bat      # Fix linting issues
+.\format.bat        # Format code
+```
+
 ## 📊 Data Structure
 
 ### Lead Object
@@ -212,6 +233,26 @@ Easily extensible for additional languages through the `public/locales/` directo
 | Radix UI | Latest | UI Primitives |
 | React i18next | Latest | Internationalization |
 | Lucide React | Latest | Icons |
+
+## ⚙️ Development Configuration
+
+### Code Quality Tools
+- **ESLint**: Configured for React, TypeScript, and React Hooks
+- **Prettier**: Automatic code formatting with consistent style
+- **VSCode Integration**: Auto-format on save and lint fixes
+- **Batch Scripts**: Windows-compatible scripts for easy linting
+
+### VSCode Setup
+The project includes VSCode configuration files:
+- `.vscode/settings.json`: Editor settings for consistent formatting
+- `.vscode/extensions.json`: Recommended extensions for optimal development
+
+### Linting Rules
+- React Hooks validation
+- Unused variables detection
+- Console statement warnings
+- Consistent code style enforcement
+- TypeScript best practices
 
 ## 📈 Performance
 

@@ -1,10 +1,10 @@
 // Componente principal OpportunitiesTable
-import { KpiCards } from '@/components/kpi-cards';
-import { useTranslation } from 'react-i18next';
-import { EmptyOpportunitiesState } from './empty-opportunities-state';
-import { OpportunitiesHeader } from './opportunities-header';
-import { OpportunitiesTableProps } from './types';
-import { hasOpportunities } from './utils';
+import { KpiCards } from "@/components/kpi-cards";
+import { useTranslation } from "react-i18next";
+import { EmptyOpportunitiesState } from "./empty-opportunities-state";
+import { OpportunitiesHeader } from "./opportunities-header";
+import { OpportunitiesTableProps } from "./types";
+import { hasOpportunities } from "./utils";
 
 export function OpportunitiesTable({ opportunities }: OpportunitiesTableProps) {
   const { t } = useTranslation();
@@ -13,15 +13,13 @@ export function OpportunitiesTable({ opportunities }: OpportunitiesTableProps) {
   return (
     <div className="space-y-8">
       <OpportunitiesHeader
-        title={t('opportunities.title')}
-        subtitle={t('opportunities.subtitle')}
+        title={t("opportunities.title")}
+        subtitle={t("opportunities.subtitle")}
       />
 
       <KpiCards opportunities={opportunities} />
 
-      {!showOpportunities && (
-        <EmptyOpportunitiesState />
-      )}
+      {!showOpportunities && <EmptyOpportunitiesState />}
     </div>
   );
 }

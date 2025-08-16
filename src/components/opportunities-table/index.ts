@@ -1,22 +1,19 @@
-export { OpportunitiesTable } from './opportunities-table';
-export { OpportunitiesHeader } from './opportunities-header';
-export { EmptyOpportunitiesState } from './empty-opportunities-state';
-
+export { OpportunitiesTable } from "./opportunities-table";
+export { OpportunitiesHeader } from "./opportunities-header";
+export { EmptyOpportunitiesState } from "./empty-opportunities-state";
 
 export type {
   OpportunitiesTableProps,
   EmptyOpportunitiesStateProps,
-  OpportunitiesHeaderProps
-} from './types';
-
+  OpportunitiesHeaderProps,
+} from "./types";
 
 export {
   hasOpportunities,
   getOpportunitiesStats,
   formatCurrency,
   getEmptyStateClasses,
-  getHeaderClasses
-} from './utils';
+  getHeaderClasses,
+} from "./utils";
 
-
-export type { Opportunity } from '@/components/shared';
+export type { Opportunity } from "@/components/shared";

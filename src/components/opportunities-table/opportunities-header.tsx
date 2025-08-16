@@ -1,5 +1,5 @@
-import { OpportunitiesHeaderProps } from './types';
-import { getHeaderClasses } from './utils';
+import { OpportunitiesHeaderProps } from "./types";
+import { getHeaderClasses } from "./utils";
 
 export function OpportunitiesHeader({ title, subtitle }: OpportunitiesHeaderProps) {
   const classes = getHeaderClasses();

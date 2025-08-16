@@ -1,9 +1,8 @@
-export { LeadDetailSheet } from './lead-detail-sheet';
-export { LeadHeader } from './lead-header';
-export { LeadFormFields } from './lead-form-fields';
-export { LeadInfoDisplay } from './lead-info-display';
-export { SheetActions } from './sheet-actions';
-
+export { LeadDetailSheet } from "./lead-detail-sheet";
+export { LeadHeader } from "./lead-header";
+export { LeadFormFields } from "./lead-form-fields";
+export { LeadInfoDisplay } from "./lead-info-display";
+export { SheetActions } from "./sheet-actions";
 
 export type {
   LeadDetailSheetProps,
@@ -12,9 +11,8 @@ export type {
   LeadHeaderProps,
   LeadFormFieldsProps,
   LeadInfoDisplayProps,
-  SheetActionsProps
-} from './types';
-
+  SheetActionsProps,
+} from "./types";
 
 export {
   simulateSaveApi,
@@ -25,8 +23,7 @@ export {
   getInitials,
   getStatusOptions,
   resetFormState,
-  getInputErrorClasses
-} from './utils';
+  getInputErrorClasses,
+} from "./utils";
 
-
-export type { Lead, FormState } from '@/components/shared';
+export type { Lead, FormState } from "@/components/shared";

@@ -6,9 +6,7 @@ export function LeadHeader({ lead }: LeadHeaderProps) {
   return (
     <div className="flex items-center gap-3">
       <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-400 rounded-full flex items-center justify-center">
-        <span className="text-white font-semibold text-lg">
-          {getInitials(lead.name)}
-        </span>
+        <span className="text-white font-semibold text-lg">{getInitials(lead.name)}</span>
       </div>
       <div>
         <p className="text-lg font-semibold text-gray-900">{lead.name}</p>

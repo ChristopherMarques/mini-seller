@@ -7,7 +7,7 @@ export interface LanguageSwitcherProps {
 export interface LanguageButtonProps {
   language: Language;
   isActive: boolean;
-  onClick: (code: LanguageCode) => void;
+  onClick: (_code: LanguageCode) => void;
 }
 
 export type { Language, LanguageCode };

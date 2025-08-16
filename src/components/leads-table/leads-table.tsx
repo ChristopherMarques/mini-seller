@@ -3,9 +3,22 @@
 import { STATUS_COLORS } from "@/components/shared";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { useLeads } from "@/contexts/leads-provider";
 import { BarChart3, Building, Mail, Search, Users } from "lucide-react";
 import { useState } from "react";
@@ -16,7 +29,7 @@ import {
   getEmptyStateText,
   getFilteredLeads,
   getSearchResultsText,
-  getStatusFilterOptions
+  getStatusFilterOptions,
 } from "./utils";
 
 export function LeadsTable({ onLeadClick }: LeadsTableProps) {
@@ -72,7 +85,7 @@ export function LeadsTable({ onLeadClick }: LeadsTableProps) {
           <Input
             placeholder={t("leads.table.search_placeholder")}
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={e => setSearchTerm(e.target.value)}
             className="pl-10 bg-white border-gray-200 focus:border-purple-300 focus:ring-purple-200"
           />
         </div>
@@ -81,7 +94,7 @@ export function LeadsTable({ onLeadClick }: LeadsTableProps) {
             <SelectValue />
           </SelectTrigger>
           <SelectContent className="bg-white shadow-sm border-gray-200">
-            {statusOptions.map((option) => (
+            {statusOptions.map(option => (
               <SelectItem key={option.value} value={option.value}>
                 {option.label}
               </SelectItem>
@@ -126,21 +139,15 @@ export function LeadsTable({ onLeadClick }: LeadsTableProps) {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {filteredLeads.map((lead) => (
+              {filteredLeads.map(lead => (
                 <TableRow
                   key={lead.id}
                   className="hover:bg-gray-50 cursor-pointer transition-colors border-gray-200"
                   onClick={() => onLeadClick(lead)}
                 >
-                  <TableCell className="font-medium text-gray-900">
-                    {lead.name}
-                  </TableCell>
-                  <TableCell className="text-gray-600">
-                    {lead.company}
-                  </TableCell>
-                  <TableCell className="text-gray-600">
-                    {lead.email}
-                  </TableCell>
+                  <TableCell className="font-medium text-gray-900">{lead.name}</TableCell>
+                  <TableCell className="text-gray-600">{lead.company}</TableCell>
+                  <TableCell className="text-gray-600">{lead.email}</TableCell>
                   <TableCell>
                     <ScoreIndicator score={lead.score} />
                   </TableCell>
@@ -157,12 +164,8 @@ export function LeadsTable({ onLeadClick }: LeadsTableProps) {
       ) : (
         <div className="bg-white rounded-lg border border-gray-200 shadow-sm p-12 text-center">
           <Users className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">
-            {emptyStateText.title}
-          </h3>
-          <p className="text-gray-600">
-            {emptyStateText.subtitle}
-          </p>
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">{emptyStateText.title}</h3>
+          <p className="text-gray-600">{emptyStateText.subtitle}</p>
         </div>
       )}
     </div>

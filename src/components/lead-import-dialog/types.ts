@@ -1,3 +1,4 @@
+import React from "react";
 
 export interface LeadImportDialogProps {
   children: React.ReactNode;
@@ -9,7 +10,7 @@ export interface ManualLeadForm {
   email: string;
   source: string;
   score: number;
-  status: 'New' | 'Contacted' | 'Qualified';
+  status: "New" | "Contacted" | "Qualified";
 }
 
 export interface DialogState {
@@ -33,7 +34,7 @@ export interface LeadValidationResult {
 
 export interface JsonImportTabProps {
   jsonInput: string;
-  setJsonInput: (value: string) => void;
+  setJsonInput: (_value: string) => void;
   error: string;
   success: string;
   loading: boolean;

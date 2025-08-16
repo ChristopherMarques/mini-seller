@@ -11,6 +11,6 @@ export interface KpiData {
   averageScore: number;
 }
 
-export interface KpiCardItem extends Omit<KpiItem, 'icon'> {
+export interface KpiCardItem extends Omit<KpiItem, "icon"> {
   icon: LucideIcon;
 }

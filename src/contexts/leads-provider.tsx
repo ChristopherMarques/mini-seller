@@ -1,138 +1,136 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react'
-import type { Lead } from '@/types'
+import type { Lead } from "@/types";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
 interface LeadsContextType {
-  leads: Lead[]
-  loading: boolean
-  addLead: (lead: Omit<Lead, 'id'>) => void
-  updateLead: (id: number, lead: Partial<Lead>) => void
-  deleteLead: (id: number) => void
-  importLeads: (leads: Lead[]) => void
-  clearLeads: () => void
+  leads: Lead[];
+  loading: boolean;
+  addLead: (_lead: Omit<Lead, "id">) => void;
+  updateLead: (_id: number, _lead: Partial<Lead>) => void;
+  deleteLead: (_id: number) => void;
+  importLeads: (_leads: Lead[]) => void;
+  clearLeads: () => void;
 }
 
-const LeadsContext = createContext<LeadsContextType | undefined>(undefined)
+const LeadsContext = createContext<LeadsContextType | undefined>(undefined);
 
-const STORAGE_KEY = 'mini-seller-leads'
+const STORAGE_KEY = "mini-seller-leads";
 
 /**
  * Generates a unique ID
  */
 const generateId = (): number => {
-  return Date.now() + Math.floor(Math.random() * 1000)
-}
+  return Date.now() + Math.floor(Math.random() * 1000);
+};
 
 /**
  * Local storage functions
  */
 const saveLeadsToStorage = (leads: Lead[]): void => {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(leads))
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
   } catch (error) {
-    console.error('Erro ao salvar leads no localStorage:', error)
+    console.error("Erro ao salvar leads no localStorage:", error);
   }
-}
+};
 
 const loadLeadsFromStorage = (): Lead[] => {
   try {
-    const stored = localStorage.getItem(STORAGE_KEY)
+    const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
-      return JSON.parse(stored)
+      return JSON.parse(stored);
     }
   } catch (error) {
-    console.error('Erro ao carregar leads do localStorage:', error)
+    console.error("Erro ao carregar leads do localStorage:", error);
   }
-  return []
-}
+  return [];
+};
 
 /**
  * Loads initial leads from JSON file (fallback)
  */
 const loadInitialLeads = async (): Promise<Lead[]> => {
   try {
-    const response = await fetch('/data/leads.json')
+    const response = await fetch("/data/leads.json");
     if (response.ok) {
-      const data = await response.json()
-      return data.leads || []
+      const data = await response.json();
+      return data.leads || [];
     }
   } catch (error) {
-    console.error('Erro ao carregar leads iniciais:', error)
+    console.error("Erro ao carregar leads iniciais:", error);
   }
-  return []
-}
+  return [];
+};
 
 interface LeadsProviderProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export function LeadsProvider({ children }: LeadsProviderProps) {
-  const [leads, setLeads] = useState<Lead[]>([])
-  const [loading, setLoading] = useState(true)
-  const [isInitialized, setIsInitialized] = useState(false)
+  const [leads, setLeads] = useState<Lead[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   // Load leads on initialization
   useEffect(() => {
     const initializeLeads = async () => {
-      setLoading(true)
-      const storedLeads = loadLeadsFromStorage()
-      
+      setLoading(true);
+      const storedLeads = loadLeadsFromStorage();
+
       if (storedLeads.length > 0) {
-        setLeads(storedLeads)
+        setLeads(storedLeads);
       } else {
         // If no leads in localStorage, load from JSON file
-        const initialLeads = await loadInitialLeads()
-        setLeads(initialLeads)
+        const initialLeads = await loadInitialLeads();
+        setLeads(initialLeads);
         if (initialLeads.length > 0) {
-          saveLeadsToStorage(initialLeads)
+          saveLeadsToStorage(initialLeads);
         }
       }
-      
-      setIsInitialized(true)
-      setLoading(false)
-    }
 
-    initializeLeads()
-  }, [])
+      setIsInitialized(true);
+      setLoading(false);
+    };
+
+    initializeLeads();
+  }, []);
 
   // Salvar no localStorage sempre que leads mudarem
   useEffect(() => {
     if (isInitialized) {
-      saveLeadsToStorage(leads)
+      saveLeadsToStorage(leads);
     }
-  }, [leads, isInitialized])
+  }, [leads, isInitialized]);
 
-  const addLead = (leadData: Omit<Lead, 'id'>) => {
+  const addLead = (leadData: Omit<Lead, "id">) => {
     const newLead: Lead = {
       ...leadData,
-      id: generateId()
-    }
-    setLeads(prev => [...prev, newLead])
-  }
+      id: generateId(),
+    };
+    setLeads(prev => [...prev, newLead]);
+  };
 
   const updateLead = (id: number, leadData: Partial<Lead>) => {
-    setLeads(prev => prev.map(lead => 
-      lead.id === id ? { ...lead, ...leadData } : lead
-    ))
-  }
+    setLeads(prev => prev.map(_lead => (_lead.id === id ? { ..._lead, ...leadData } : _lead)));
+  };
 
   const deleteLead = (id: number) => {
-    setLeads(prev => prev.filter(lead => lead.id !== id))
-  }
+    setLeads(prev => prev.filter(_lead => _lead.id !== id));
+  };
 
   const importLeads = (newLeads: Lead[]) => {
     // Add IDs if they don't exist
-    const leadsWithIds = newLeads.map(lead => ({
-      ...lead,
-      id: typeof lead.id === 'number' ? lead.id : generateId()
-    }))
-    
+    const leadsWithIds = newLeads.map(_lead => ({
+      ..._lead,
+      id: typeof _lead.id === "number" ? _lead.id : generateId(),
+    }));
+
     // Substituir todos os leads pelos importados
-    setLeads(leadsWithIds)
-  }
+    setLeads(leadsWithIds);
+  };
 
   const clearLeads = () => {
-    setLeads([])
-  }
+    setLeads([]);
+  };
 
   const value: LeadsContextType = {
     leads,
@@ -141,22 +139,18 @@ export function LeadsProvider({ children }: LeadsProviderProps) {
     updateLead,
     deleteLead,
     importLeads,
-    clearLeads
-  }
+    clearLeads,
+  };
 
-  return (
-    <LeadsContext.Provider value={value}>
-      {children}
-    </LeadsContext.Provider>
-  )
+  return <LeadsContext.Provider value={value}>{children}</LeadsContext.Provider>;
 }
 
 export function useLeads() {
-  const context = useContext(LeadsContext)
+  const context = useContext(LeadsContext);
   if (context === undefined) {
-    throw new Error('useLeads deve ser usado dentro de um LeadsProvider')
+    throw new Error("useLeads deve ser usado dentro de um LeadsProvider");
   }
-  return context
+  return context;
 }
 
-export { LeadsContext }
+export { LeadsContext };

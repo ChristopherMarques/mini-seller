@@ -1,5 +1,6 @@
 // Tipos compartilhados entre componentes
 
+import React from "react";
 import type { Lead, Opportunity } from "@/types";
 
 // Tipos para status de leads
@@ -38,13 +39,11 @@ export interface FilterState {
   statusFilter: string;
 }
 
-
 export interface FormState {
   loading: boolean;
   error: string | null;
   success: string | null;
 }
-
 
 export interface ValidationResult {
   isValid: boolean;

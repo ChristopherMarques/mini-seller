@@ -2,7 +2,13 @@
 
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { AlertCircle, CheckCircle2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -11,18 +17,14 @@ import { LeadHeader } from "./lead-header";
 import { LeadInfoDisplay } from "./lead-info-display";
 import { SheetActions } from "./sheet-actions";
 import type { Lead, LeadDetailSheetProps } from "./types";
-import {
-  simulateConvertApi,
-  simulateSaveApi,
-  validateLeadForm
-} from "./utils";
+import { simulateConvertApi, simulateSaveApi, validateLeadForm } from "./utils";
 
-export function LeadDetailSheet({ 
-  lead, 
-  open, 
-  onOpenChange, 
-  onConvert, 
-  onSave 
+export function LeadDetailSheet({
+  lead,
+  open,
+  onOpenChange,
+  onConvert,
+  onSave,
 }: LeadDetailSheetProps) {
   const { t } = useTranslation();
   const [editedLead, setEditedLead] = useState<Lead | null>(null);
@@ -44,7 +46,7 @@ export function LeadDetailSheet({
 
   const handleSave = async () => {
     const validation = validateLeadForm(editedLead, t);
-    
+
     if (!validation.isValid) {
       setError(validation.message || "");
       return;
@@ -93,8 +95,8 @@ export function LeadDetailSheet({
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent 
-        className="w-full sm:max-w-md glass-effect border-l border-gray-200" 
+      <SheetContent
+        className="w-full sm:max-w-md glass-effect border-l border-gray-200"
         side="right"
       >
         <SheetHeader className="pb-6">

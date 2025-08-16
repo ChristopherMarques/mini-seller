@@ -1,4 +1,4 @@
-import { Opportunity } from '@/components/shared';
+import { Opportunity } from "@/components/shared";
 
 export interface OpportunitiesTableProps {
   opportunities: Opportunity[];

@@ -1,7 +1,7 @@
 import type { Lead, FilterState, TableProps } from "@/components/shared";
 
 export interface LeadsTableProps extends TableProps {
-  onLeadClick: (lead: Lead) => void;
+  onLeadClick: (_lead: Lead) => void;
 }
 
 export interface ScoreIndicatorProps {
@@ -10,14 +10,14 @@ export interface ScoreIndicatorProps {
 
 export interface LeadRowProps {
   lead: Lead;
-  onClick: (lead: Lead) => void;
+  onClick: (_lead: Lead) => void;
 }
 
 export interface TableFiltersProps {
   searchTerm: string;
   statusFilter: string;
-  onSearchChange: (value: string) => void;
-  onStatusChange: (value: string) => void;
+  onSearchChange: (_value: string) => void;
+  onStatusChange: (_value: string) => void;
 }
 
 export interface EmptyStateProps {

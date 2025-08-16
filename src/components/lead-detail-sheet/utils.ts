@@ -1,11 +1,10 @@
-import type { Lead } from "@/components/shared";
-import { validateEmail } from "@/components/shared";
+import { validateEmail, type Lead } from "@/components/shared";
 
 /**
  * Simula uma chamada de API para salvar lead
  */
 export const simulateSaveApi = (lead: Lead): Promise<Lead> => {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(() => {
       resolve(lead);
     }, 1000);
@@ -15,8 +14,8 @@ export const simulateSaveApi = (lead: Lead): Promise<Lead> => {
 /**
  * Simula uma chamada de API para converter lead
  */
-export const simulateConvertApi = (lead: Lead): Promise<void> => {
-  return new Promise((resolve) => {
+export const simulateConvertApi = (): Promise<void> => {
+  return new Promise(resolve => {
     setTimeout(() => {
       resolve();
     }, 1000);
@@ -26,21 +25,21 @@ export const simulateConvertApi = (lead: Lead): Promise<void> => {
 /**
  * Valida os dados do lead no formulário
  */
-export const validateLeadForm = (lead: Lead, t: (key: string) => string) => {
+export const validateLeadForm = (lead: Lead, t: (_key: string) => string) => {
   if (!validateEmail(lead.email).isValid) {
     return {
       isValid: false,
-      message: t("detail_sheet.messages.invalid_email")
+      message: t("detail_sheet.messages.invalid_email"),
     };
   }
-  
+
   if (!lead.email.trim()) {
     return {
       isValid: false,
-      message: t("detail_sheet.messages.email_required")
+      message: t("detail_sheet.messages.email_required"),
     };
   }
-  
+
   return { isValid: true };
 };
 
@@ -74,7 +73,7 @@ export const getInitials = (name: string): string => {
 /**
  * Gera as opções de status para o select
  */
-export const getStatusOptions = (t: (key: string) => string) => [
+export const getStatusOptions = (t: (_key: string) => string) => [
   { value: "New", label: t("leads.status.new") },
   { value: "Contacted", label: t("leads.status.contacted") },
   { value: "Qualified", label: t("leads.status.qualified") },
@@ -95,11 +94,12 @@ export const resetFormState = () => ({
  * Gera classes CSS para inputs com erro
  */
 export const getInputErrorClasses = (hasError: boolean): string => {
-  const baseClasses = "bg-white border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200";
-  
+  const baseClasses =
+    "bg-white border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200";
+
   if (hasError) {
     return `${baseClasses} border-red-300 focus:border-red-500 focus:ring-red-500/20`;
   }
-  
+
   return baseClasses;
 };

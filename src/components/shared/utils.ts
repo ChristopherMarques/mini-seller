@@ -7,10 +7,10 @@ import type { ValidationResult } from "./types";
 export const validateEmail = (email: string): ValidationResult => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const isValid = emailRegex.test(email);
-  
+
   return {
     isValid,
-    message: isValid ? undefined : "Email inválido"
+    message: isValid ? undefined : "Email inválido",
   };
 };
 
@@ -33,19 +33,15 @@ export const getScoreWidth = (score: number): number => {
 /**
  * Filtra leads baseado em termo de busca e status
  */
-export const filterLeads = (
-  leads: any[],
-  searchTerm: string,
-  statusFilter: string
-) => {
-  return leads.filter((lead) => {
+export const filterLeads = (leads: any[], searchTerm: string, statusFilter: string) => {
+  return leads.filter(lead => {
     const matchesSearch =
       lead.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       lead.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
       lead.email.toLowerCase().includes(searchTerm.toLowerCase());
-    
+
     const matchesStatus = statusFilter === "all" || lead.status === statusFilter;
-    
+
     return matchesSearch && matchesStatus;
   });
 };
@@ -72,34 +68,34 @@ export const validateLeadData = (lead: any): ValidationResult => {
   if (!lead.name?.trim()) {
     return { isValid: false, message: "Nome é obrigatório" };
   }
-  
+
   if (!lead.email?.trim()) {
     return { isValid: false, message: "Email é obrigatório" };
   }
-  
+
   const emailValidation = validateEmail(lead.email);
   if (!emailValidation.isValid) {
     return emailValidation;
   }
-  
+
   if (!lead.company?.trim()) {
     return { isValid: false, message: "Empresa é obrigatória" };
   }
-  
+
   return { isValid: true };
 };
 
 /**
  * Debounce function para otimizar performance
  */
-export const debounce = <T extends (...args: any[]) => any>(
+export const debounce = <T extends (..._args: any[]) => any>(
   func: T,
-  wait: number
-): ((...args: Parameters<T>) => void) => {
-  let timeout: NodeJS.Timeout;
-  
-  return (...args: Parameters<T>) => {
+  wait: number,
+): ((..._args: Parameters<T>) => void) => {
+  let timeout: ReturnType<typeof setTimeout>;
+
+  return (..._args: Parameters<T>) => {
     clearTimeout(timeout);
-    timeout = setTimeout(() => func(...args), wait);
+    timeout = setTimeout(() => func(..._args), wait);
   };
 };

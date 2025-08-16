@@ -39,7 +39,9 @@ export function LeadInfoDisplay({ lead, t }: LeadInfoDisplayProps) {
         <Label className="text-sm font-medium text-gray-500">
           {t("detail_sheet.current_status")}
         </Label>
-        <Badge className={`${STATUS_COLORS[lead.status]} rounded-full px-3 py-1 text-xs font-medium border`}>
+        <Badge
+          className={`${STATUS_COLORS[lead.status]} rounded-full px-3 py-1 text-xs font-medium border`}
+        >
           {t(`leads.status.${lead.status.toLowerCase()}`)}
         </Badge>
       </div>

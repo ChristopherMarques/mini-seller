@@ -7,12 +7,10 @@ export const STATUS_COLORS = {
   Qualified: "bg-green-100 text-green-800 border-green-200",
 } as const;
 
-
 export const LANGUAGES = [
   { code: "en", label: "EN" },
   { code: "pt", label: "PT" },
 ] as const;
-
 
 export const SCORE_CONFIG = {
   HIGH_THRESHOLD: 90,
@@ -26,7 +24,6 @@ export const SCORE_CLASSES = {
   MEDIUM: "score-medium",
   LOW: "score-low",
 } as const;
-
 
 export const DEFAULT_VALUES = {
   CONVERSION_RATE: 85,

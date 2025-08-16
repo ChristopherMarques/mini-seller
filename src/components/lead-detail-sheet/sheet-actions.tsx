@@ -3,13 +3,7 @@ import { SheetFooter } from "@/components/ui/sheet";
 import { Sparkles } from "lucide-react";
 import type { SheetActionsProps } from "./types";
 
-export function SheetActions({ 
-  onSave, 
-  onConvert, 
-  saving, 
-  converting, 
-  t 
-}: SheetActionsProps) {
+export function SheetActions({ onSave, onConvert, saving, converting, t }: SheetActionsProps) {
   return (
     <SheetFooter className="gap-2 pt-6 border-t border-gray-200">
       <Button

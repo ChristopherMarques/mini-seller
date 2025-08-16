@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Package files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+*.log
+
+# Coverage
+coverage/
+
+# Cache
+.cache/
+.eslintcache
+.stylelintcache
+
+# Public assets
+public/
+
+# Config files that should maintain their format
+*.config.js
+*.config.ts
+vite.config.ts
+tailwind.config.ts
+postcss.config.js
+
+# Generated files
+*.d.ts
+
+# Documentation
+CHANGELOG.md
+LICENSE

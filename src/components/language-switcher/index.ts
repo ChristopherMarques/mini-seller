@@ -1,8 +1,8 @@
 export { LanguageSwitcher, default } from "./language-switcher";
 export type { LanguageSwitcherProps, LanguageButtonProps, Language, LanguageCode } from "./types";
-export { 
-  getAvailableLanguages, 
-  getLanguageButtonClasses, 
+export {
+  getAvailableLanguages,
+  getLanguageButtonClasses,
   getSwitcherContainerClasses,
-  isValidLanguageCode 
+  isValidLanguageCode,
 } from "./utils";
