@@ -12,7 +12,7 @@ export const getAvailableLanguages = (): Language[] => {
  * Generates CSS classes for the language button
  */
 export const getLanguageButtonClasses = (isActive: boolean): string => {
-  const baseClasses = "px-3 py-1 text-sm font-semibold rounded-full transition-all duration-200";
+  const baseClasses = "py-2 px-3  text-sm font-semibold rounded-full transition-all duration-200";
 
   if (isActive) {
     return `${baseClasses} bg-secondary text-white shadow-md transform scale-105`;

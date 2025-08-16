@@ -61,9 +61,8 @@ export function ExportButtons({
         <DropdownMenuTrigger asChild>
           <Button
             variant="outline"
-            size="sm"
             disabled={disabled || isExporting || exportCount === 0}
-            className="gap-2"
+            className="gap-2 h-full"
           >
             <Download className="h-4 w-4" />
             {isExporting ? t("leads.export.exporting") : t("leads.export.button")}
