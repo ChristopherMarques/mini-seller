@@ -4,10 +4,10 @@
 
 **🎯 Purpose**: This project serves as a comprehensive technical demonstration showcasing modern frontend development practices, component architecture, and user experience design.
 
-![Mini Seller Console](https://img.shields.io/badge/React-18.2.0-blue?style=for-the-badge&logo=react)
-![Vite](https://img.shields.io/badge/Vite-5.4.19-646CFF?style=for-the-badge&logo=vite)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.1-38B2AC?style=for-the-badge&logo=tailwind-css)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.6.2-3178C6?style=for-the-badge&logo=typescript)
+![Mini Seller Console](https://img.shields.io/badge/React-18-blue?style=for-the-badge&logo=react)
+![Vite](https://img.shields.io/badge/Vite-5.2.0-646CFF?style=for-the-badge&logo=vite)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.17-38B2AC?style=for-the-badge&logo=tailwind-css)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.2.2-3178C6?style=for-the-badge&logo=typescript)
 
 ## ✨ Features
 
@@ -127,11 +127,17 @@ pnpm dev
 ### Available Scripts
 
 ```bash
-pnpm dev          # Start development server (http://localhost:3000)
-pnpm build        # Build for production
-pnpm preview      # Preview production build
-pnpm lint         # Run ESLint
-pnpm type-check   # Run TypeScript compiler
+pnpm dev              # Start development server (http://localhost:3000)
+pnpm build            # Build for production
+pnpm preview          # Preview production build
+pnpm test             # Run unit tests
+pnpm test:watch       # Run tests in watch mode
+pnpm test:coverage    # Run tests with coverage report
+pnpm test:ui          # Run tests with UI interface
+pnpm lint             # Run ESLint
+pnpm lint:fix         # Fix ESLint issues automatically
+pnpm type-check       # Run TypeScript compiler
+pnpm format           # Format code with Prettier
 ```
 
 ### First Time Setup
@@ -142,9 +148,32 @@ pnpm type-check   # Run TypeScript compiler
 4. **Import sample data**: Use the import functionality to add leads
 5. **Explore features**: Try filtering, searching, and converting leads to opportunities
 
+### Testing
+
+The project includes focused unit tests for core functionality:
+
+```bash
+# Run all tests
+pnpm test
+
+# Run tests in watch mode
+pnpm test --watch
+```
+
+**Test Coverage:**
+- ✅ Utility functions (`src/components/shared/utils.test.ts`) - 32 tests
+- ✅ Score indicator component (`src/components/leads-table/score-indicator.test.tsx`) - 8 tests
+- **Total: 40 unit tests**
+
+The test suite focuses on:
+- Core utility functions (validation, formatting, filtering)
+- Component rendering and behavior
+- Business logic validation
+- Simple, maintainable test cases
+
 ### Code Quality & Formatting
 
-````bash
+```bash
 # Check for linting issues
 npm run lint:check
 
@@ -248,18 +277,33 @@ Easily extensible for additional languages through the `public/locales/` directo
 
 ## 🔧 Technical Stack
 
+### Core Technologies
+
 | Technology    | Version | Purpose                     |
 | ------------- | ------- | --------------------------- |
-| React         | 18.2.0  | UI Framework                |
-| Vite          | 5.4.19  | Build Tool                  |
-| TypeScript    | 5.6.2   | Type Safety                 |
-| Tailwind CSS  | 3.4.1   | Styling                     |
+| React         | 18      | UI Framework                |
+| Vite          | 5.2.0   | Build Tool                  |
+| TypeScript    | 5.2.2   | Type Safety                 |
+| Tailwind CSS  | 3.4.17  | Styling                     |
 | Radix UI      | Latest  | UI Primitives               |
 | React i18next | Latest  | Internationalization        |
-| Lucide React  | Latest  | Icons                       |
-| XLSX          | Latest  | Excel Export Functionality  |
-| File-Saver    | Latest  | File Download Management    |
-| Shepherd.js   | Latest  | Interactive Tutorial System |
+| Lucide React  | 0.454.0 | Icons                       |
+| XLSX          | 0.18.5  | Excel Export Functionality  |
+| File-Saver    | 2.0.5   | File Download Management    |
+| React Joyride | 2.9.3   | Interactive Tutorial System |
+| Sonner        | 2.0.7   | Toast Notifications         |
+
+### Development Tools
+
+| Technology           | Version | Purpose                     |
+| -------------------- | ------- | --------------------------- |
+| Vitest               | 3.2.4   | Testing Framework           |
+| Testing Library      | 16.3.0  | React Testing Utilities     |
+| Jest DOM             | 6.7.0   | DOM Testing Matchers        |
+| ESLint               | 8.57.0  | Code Linting                |
+| Prettier             | 3.6.2   | Code Formatting             |
+| MSW                  | 2.10.5  | API Mocking                 |
+| JSDOM                | 26.1.0  | DOM Environment for Tests   |
 
 ## ⚙️ Development Configuration
 
