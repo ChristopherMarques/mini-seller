@@ -5,7 +5,7 @@ export interface Lead {
   email: string;
   source: string;
   score: number;
-  status: "New" | "Contacted" | "Qualified";
+  status: "New" | "Contacted" | "Qualified" | "Converted";
 }
 
 export interface Opportunity {

@@ -81,6 +81,34 @@ export const Tutorial = ({ runTour = false, onTourEnd }: TutorialProps) => {
       });
     }
 
+    // Adiciona passo de conversão de leads apenas se o elemento existir
+    if (document.querySelector('[data-tutorial="conversion"]')) {
+      allSteps.push({
+        target: '[data-tutorial="conversion"]',
+        content: (
+          <div>
+            <h3 className="text-lg font-semibold mb-2">{t("tutorial.conversion.title")}</h3>
+            <p>{t("tutorial.conversion.content")}</p>
+          </div>
+        ),
+        placement: "bottom",
+      });
+    }
+
+    // Adiciona passo de edição de valor apenas se o elemento existir
+    if (document.querySelector('[data-tutorial="amount-edit"]')) {
+      allSteps.push({
+        target: '[data-tutorial="amount-edit"]',
+        content: (
+          <div>
+            <h3 className="text-lg font-semibold mb-2">{t("tutorial.amount_edit.title")}</h3>
+            <p>{t("tutorial.amount_edit.content")}</p>
+          </div>
+        ),
+        placement: "bottom",
+      });
+    }
+
     allSteps.push({
       target: '[data-tutorial="leads"]',
       content: (

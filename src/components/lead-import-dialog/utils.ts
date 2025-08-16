@@ -135,6 +135,7 @@ export const getStatusOptions = (t: (_key: string) => string) => [
   { value: "New", label: t("leads.status.new") },
   { value: "Contacted", label: t("leads.status.contacted") },
   { value: "Qualified", label: t("leads.status.qualified") },
+  { value: "Converted", label: t("leads.status.converted") },
 ];
 
 /**

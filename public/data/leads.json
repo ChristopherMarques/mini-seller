@@ -24,7 +24,7 @@
     "email": "emily@cloudvision.io",
     "source": "Referral",
     "score": 92,
-    "status": "Qualified"
+    "status": "Converted"
   },
   {
     "id": 4,
@@ -60,7 +60,7 @@
     "email": "maria@scaleup.vc",
     "source": "LinkedIn",
     "score": 91,
-    "status": "Qualified"
+    "status": "Converted"
   },
   {
     "id": 8,

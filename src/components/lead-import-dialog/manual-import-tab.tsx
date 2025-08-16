@@ -99,7 +99,7 @@ export function ManualImportTab({
             <SelectTrigger className="border-primary/50 shadow-sm">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className="bg-white border-primary/50 shadow-sm">
+            <SelectContent className="bg-background border-primary/50 shadow-sm">
               {statusOptions.map(option => (
                 <SelectItem key={option.value} value={option.value}>
                   {option.label}

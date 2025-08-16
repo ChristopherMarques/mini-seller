@@ -6,6 +6,7 @@ import { Footer } from "@/components/shared/footer";
 import { Tutorial } from "@/components/shared/tutorial";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { LeadsProvider, useLeads } from "@/contexts/leads-provider";
+import { OpportunitiesProvider, useOpportunities } from "@/contexts/opportunities-provider";
 import type { Lead, Opportunity } from "@/types";
 import { Suspense, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -14,7 +15,7 @@ import { ThemeProvider } from "./contexts/theme-provider";
 
 function MiniSellerConsoleContent() {
   const { t } = useTranslation();
-  const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
+  const { opportunities } = useOpportunities();
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [sheetOpen, setSheetOpen] = useState(false);
 
@@ -24,6 +25,7 @@ function MiniSellerConsoleContent() {
   };
 
   const { updateLead, deleteLead } = useLeads();
+  const { addOpportunity } = useOpportunities();
 
   const handleSaveLead = (updatedLead: Lead) => {
     updateLead(updatedLead.id, updatedLead);
@@ -31,17 +33,20 @@ function MiniSellerConsoleContent() {
   };
 
   const handleConvertLead = (lead: Lead) => {
+    // First update the lead status to 'Converted' in localStorage
+    updateLead(lead.id, { ...lead, status: "Converted" });
+
+    // Then delete the lead and create opportunity
     deleteLead(lead.id);
 
-    const newOpportunity: Opportunity = {
-      id: Date.now(),
+    const newOpportunity: Omit<Opportunity, "id"> = {
       name: lead.name,
       stage: "Discovery",
       accountName: lead.company,
       amount: 0,
     };
 
-    setOpportunities(prevOpportunities => [...prevOpportunities, newOpportunity]);
+    addOpportunity(newOpportunity);
   };
 
   const handleDeleteLead = (lead: Lead) => {
@@ -102,7 +107,9 @@ export default function App() {
         }
       >
         <LeadsProvider>
-          <MiniSellerConsoleContent />
+          <OpportunitiesProvider>
+            <MiniSellerConsoleContent />
+          </OpportunitiesProvider>
         </LeadsProvider>
       </Suspense>
     </ThemeProvider>

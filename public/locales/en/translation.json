@@ -26,7 +26,13 @@
       "phone": "Phone",
       "source": "Source",
       "score": "Score",
-      "status": "Status"
+      "status": "Status",
+      "sort_score_asc": "Sort score ascending",
+      "sort_score_desc": "Sort score descending",
+      "sort_score_none": "Remove score sorting",
+      "edit_email": "Edit email",
+      "edit_status": "Edit status",
+      "email_placeholder": "Enter a valid email"
     },
     "filter": {
       "all_status": "All statuses"
@@ -78,7 +84,8 @@
     "status": {
       "new": "New",
       "qualified": "Qualified",
-      "contacted": "Contacted"
+      "contacted": "Contacted",
+      "converted": "Converted"
     },
     "empty": {
       "title": "Ready to convert your first lead?",
@@ -110,12 +117,21 @@
       "columns": {
         "id": "ID",
         "name": "Name",
-        "company": "Company",
         "email": "Email",
         "source": "Source",
         "score": "Score",
         "status": "Status"
       }
+    },
+    "pagination": {
+      "showing": "Showing {{start}} - {{end}} of {{total}} leads",
+      "items_per_page": "Items per page",
+      "page": "Page",
+      "of": "of",
+      "first_page": "First page",
+      "previous_page": "Previous page",
+      "next_page": "Next page",
+      "last_page": "Last page"
     }
   },
   "detail_sheet": {
@@ -154,6 +170,13 @@
   "opportunities": {
     "title": "Converted Opportunities",
     "subtitle": "Track your successful conversions",
+    "table": {
+      "title": "Opportunities List",
+      "name": "Name",
+      "account": "Account",
+      "stage": "Stage",
+      "amount": "Amount"
+    },
     "empty": {
       "title": "Ready to convert your first lead?",
       "subtitle": "Start converting qualified leads into opportunities and watch your pipeline grow.",
@@ -186,7 +209,15 @@
     },
     "opportunities": {
       "title": "Opportunities Table",
-      "content": "View and manage your sales opportunities converted from leads."
+      "content": "View and manage your sales opportunities converted from leads. Click the edit icon to modify values inline."
+    },
+    "conversion": {
+      "title": "Lead Conversion",
+      "content": "Convert qualified leads into opportunities by clicking the 'Convert to Opportunity' button in lead details."
+    },
+    "amount_edit": {
+      "title": "Value Editing",
+      "content": "Click the edit icon next to the amount to edit it inline. Use Enter to save or Escape to cancel."
     },
     "leads": {
       "title": "Leads Table",

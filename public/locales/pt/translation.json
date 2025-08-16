@@ -26,7 +26,13 @@
       "phone": "Telefone",
       "source": "Origem",
       "score": "Pontuação",
-      "status": "Status"
+      "status": "Status",
+      "sort_score_asc": "Ordenar pontuação crescente",
+      "sort_score_desc": "Ordenar pontuação decrescente",
+      "sort_score_none": "Remover ordenação por pontuação",
+      "edit_email": "Editar email",
+      "edit_status": "Editar status",
+      "email_placeholder": "Digite um email válido"
     },
     "filter": {
       "all_status": "Todos os status"
@@ -78,7 +84,8 @@
     "status": {
       "new": "Novo",
       "qualified": "Qualificado",
-      "contacted": "Contactado"
+      "contacted": "Contactado",
+      "converted": "Convertido"
     },
     "empty": {
       "title": "Pronto para converter seu primeiro lead?",
@@ -102,7 +109,6 @@
       "unexpected_error": "Erro inesperado durante a exportação",
       "filtered_leads": "Exportar {{count}} leads filtrados",
       "all_leads": "Exportar todos os {{count}} leads",
-      "excel_format": "Excel (.xlsx)",
       "excel_description": "Melhor para análise de dados",
       "csv_format": "CSV (.csv)",
       "csv_description": "Compatível com qualquer sistema",
@@ -116,6 +122,16 @@
         "score": "Pontuação",
         "status": "Status"
       }
+    },
+    "pagination": {
+      "showing": "Mostrando {{start}} - {{end}} de {{total}} leads",
+      "items_per_page": "Itens por página",
+      "page": "Página",
+      "of": "de",
+      "first_page": "Primeira página",
+      "previous_page": "Página anterior",
+      "next_page": "Próxima página",
+      "last_page": "Última página"
     }
   },
   "detail_sheet": {
@@ -154,6 +170,13 @@
   "opportunities": {
     "title": "Oportunidades Convertidas",
     "subtitle": "Acompanhe suas conversões de sucesso",
+    "table": {
+      "title": "Lista de Oportunidades",
+      "name": "Nome",
+      "account": "Conta",
+      "stage": "Estágio",
+      "amount": "Valor"
+    },
     "empty": {
       "title": "Pronto para converter seu primeiro lead?",
       "subtitle": "Comece a converter leads qualificados em oportunidades e veja seu pipeline crescer.",
@@ -186,7 +209,15 @@
     },
     "opportunities": {
       "title": "Tabela de Oportunidades",
-      "content": "Visualize e gerencie suas oportunidades de vendas convertidas a partir de leads."
+      "content": "Visualize e gerencie suas oportunidades de vendas convertidas a partir de leads. Clique no ícone de edição para alterar valores inline."
+    },
+    "conversion": {
+      "title": "Conversão de Leads",
+      "content": "Converta leads qualificados em oportunidades clicando no botão 'Converter em Oportunidade' nos detalhes do lead."
+    },
+    "amount_edit": {
+      "title": "Edição de Valores",
+      "content": "Clique no ícone de edição ao lado do valor para editá-lo inline. Use Enter para salvar ou Escape para cancelar."
     },
     "leads": {
       "title": "Tabela de Leads",

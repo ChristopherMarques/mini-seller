@@ -19,6 +19,8 @@
 - **📝 Inline Editing**: Quick status updates and email validation directly in the interface
 - **🔄 Lead Conversion**: One-click conversion from leads to opportunities
 - **📈 Opportunity Tracking**: Dedicated opportunity management with stage tracking
+- **💰 Inline Value Editing**: Direct amount editing in opportunities table with currency formatting
+- **🌍 Currency Internationalization**: Automatic currency display based on selected language (BRL/USD)
 
 ### 🎨 User Experience
 
@@ -39,7 +41,7 @@
 - **🏗️ Modular Architecture**: Component-based architecture with dedicated folders
 - **🔄 Shared Resources**: Centralized types, utilities, and constants
 - **📝 Clean Code**: English documentation and consistent code standards
-- **🎓 Interactive Tutorial**: Built-in guided tutorial system for user onboarding
+- **🎓 Interactive Tutorial**: Built-in guided tutorial system covering all features including lead conversion and value editing
 - **📊 Export Functionality**: Excel and CSV export capabilities for data analysis
 - **🔍 Advanced Filtering**: Multi-criteria filtering with persistent preferences
 - **📱 Mobile-First**: Responsive design optimized for all device sizes
@@ -70,6 +72,7 @@ src/
 │   │   ├── opportunities-table.tsx    # Main component
 │   │   ├── opportunities-header.tsx   # Table header
 │   │   ├── empty-opportunities-state.tsx # Empty state
+│   │   ├── editable-amount-cell.tsx   # Inline value editing
 │   │   ├── types.ts             # Opportunity types
 │   │   ├── utils.ts             # Opportunity utilities
 │   │   └── index.ts             # Component exports
@@ -229,11 +232,14 @@ interface Opportunity {
 
 ### Interactive Tutorial System
 
-- **Guided Onboarding**: Step-by-step tutorial for new users
+- **Comprehensive Coverage**: Step-by-step tutorial covering all features
+- **Lead Conversion Guide**: Tutorial step for converting leads to opportunities
+- **Value Editing Tutorial**: Guided tour of inline amount editing functionality
 - **Conditional Steps**: Tutorial adapts based on available UI elements
 - **Visual Highlights**: Spotlight effect on tutorial targets
 - **Progress Tracking**: Clear indication of tutorial progress
 - **Skip Functionality**: Users can skip or restart the tutorial anytime
+- **Multi-language Support**: Tutorial content available in Portuguese and English
 
 ### Lead Detail Panel
 
@@ -243,13 +249,33 @@ interface Opportunity {
 - **Save/Cancel Actions**: Proper state management with error handling
 - **Form Validation**: Comprehensive form validation with error messages
 
-### Opportunity Conversion
+### Opportunity Management
 
-- **One-click Conversion**: Seamless lead-to-opportunity workflow
+- **One-click Conversion**: Seamless lead-to-opportunity workflow from lead detail panel
 - **Automatic Data Mapping**: Smart field mapping during conversion
 - **Stage Management**: Opportunity pipeline tracking
-- **Amount Tracking**: Optional financial data management
+- **Inline Amount Editing**: Click-to-edit functionality for opportunity values
+- **Currency Formatting**: Automatic currency formatting based on language (R$ for Portuguese, $ for English)
+- **Input Validation**: Real-time validation for numeric values with proper formatting
+- **Persistent Data**: Automatic saving to localStorage with optimistic updates
 - **Empty State Handling**: Elegant empty states with import suggestions
+
+### Inline Editing Features
+
+- **Click-to-Edit Interface**: Intuitive double-click activation for amount editing
+- **Real-time Validation**: Instant feedback for invalid input with visual indicators
+- **Keyboard Navigation**: Enter to save, Escape to cancel editing
+- **Currency Input Handling**: Smart parsing of currency symbols and decimal separators
+- **Optimistic Updates**: Immediate UI feedback with background persistence
+- **Error Recovery**: Automatic rollback on save failures with user notification
+
+### Internationalization & Localization
+
+- **Dynamic Currency Display**: Automatic currency formatting based on selected language
+- **Regional Number Formatting**: Proper decimal and thousand separators per locale
+- **Language-Aware Validation**: Input validation adapts to regional number formats
+- **Tutorial Localization**: Complete tutorial experience in multiple languages
+- **Conditional UI Elements**: Smart display of import buttons based on data state
 
 ### Data Management
 
@@ -257,6 +283,8 @@ interface Opportunity {
 - **JSON Fallback**: Initial data loading from JSON files
 - **State Management**: Centralized state with React Context
 - **Real-time Updates**: Instant UI updates with optimistic rendering
+- **Currency Localization**: Dynamic currency formatting using Intl.NumberFormat
+- **Input Sanitization**: Proper validation and formatting for monetary values
 
 ## 🎨 Design System
 

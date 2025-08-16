@@ -1,4 +1,5 @@
-import { Opportunity } from "@/components/shared";
+import { Opportunity } from "@/types";
+import i18n from "@/lib/i18n";
 
 /**
  * Checks if there are opportunities to display
@@ -23,12 +24,22 @@ export const getOpportunitiesStats = (opportunities: Opportunity[]) => {
 };
 
 /**
- * Formats monetary value for display
+ * Formats monetary value for display with internationalization
  */
-export const formatCurrency = (value: number, currency: string = "BRL"): string => {
-  return new Intl.NumberFormat("pt-BR", {
+export const formatCurrency = (value: number): string => {
+  const currentLanguage = i18n.language || "pt";
+
+  // Define currency and locale based on language
+  const localeConfig = {
+    pt: { locale: "pt-BR", currency: "BRL" },
+    en: { locale: "en-US", currency: "USD" },
+  };
+
+  const config = localeConfig[currentLanguage as keyof typeof localeConfig] || localeConfig.pt;
+
+  return new Intl.NumberFormat(config.locale, {
     style: "currency",
-    currency: currency,
+    currency: config.currency,
   }).format(value);
 };
 

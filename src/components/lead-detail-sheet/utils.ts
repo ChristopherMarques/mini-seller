@@ -77,6 +77,7 @@ export const getStatusOptions = (t: (_key: string) => string) => [
   { value: "New", label: t("leads.status.new") },
   { value: "Contacted", label: t("leads.status.contacted") },
   { value: "Qualified", label: t("leads.status.qualified") },
+  { value: "Converted", label: t("leads.status.converted") },
 ];
 
 /**
@@ -95,7 +96,7 @@ export const resetFormState = () => ({
  */
 export const getInputErrorClasses = (hasError: boolean): string => {
   const baseClasses =
-    "bg-white border-primary/50 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200";
+    "bg-background border-primary/50 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200";
 
   if (hasError) {
     return `${baseClasses} border-red-300 focus:border-red-500 focus:ring-red-500/20`;

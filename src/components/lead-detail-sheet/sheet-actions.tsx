@@ -19,6 +19,7 @@ export function SheetActions({
           disabled={converting}
           className="flex-1 btn-press transition-all duration-200"
           variant="default"
+          data-tutorial="conversion"
         >
           <Sparkles className="h-4 w-4 mr-2" />
           {converting ? t("detail_sheet.messages.converting") : t("detail_sheet.buttons.convert")}

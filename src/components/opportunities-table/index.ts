@@ -16,4 +16,4 @@ export {
   getHeaderClasses,
 } from "./utils";
 
-export type { Opportunity } from "@/components/shared";
+export type { Opportunity } from "@/types";

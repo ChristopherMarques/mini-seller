@@ -73,7 +73,10 @@ export function LeadDetailSheet({
 
     try {
       await simulateConvertApi();
-      onConvert(editedLead);
+      // Update lead status to 'Converted' and save to localStorage
+      const convertedLead = { ...editedLead, status: "Converted" as const };
+      setEditedLead(convertedLead);
+      onConvert(convertedLead);
       setConverting(false);
       onOpenChange(false);
     } catch (err) {

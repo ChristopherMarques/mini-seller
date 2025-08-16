@@ -29,6 +29,7 @@ export const getStatusFilterOptions = (t: (_key: string, _options?: any) => stri
   { value: "New", label: t("leads.status.new") },
   { value: "Contacted", label: t("leads.status.contacted") },
   { value: "Qualified", label: t("leads.status.qualified") },
+  { value: "Converted", label: t("leads.status.converted") },
 ];
 
 /**
