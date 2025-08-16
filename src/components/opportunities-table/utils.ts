@@ -1,14 +1,14 @@
 import { Opportunity } from "@/components/shared";
 
 /**
- * Verifica se há oportunidades para exibir
+ * Checks if there are opportunities to display
  */
 export const hasOpportunities = (opportunities: Opportunity[]): boolean => {
   return opportunities.length > 0;
 };
 
 /**
- * Obtém estatísticas básicas das oportunidades
+ * Gets basic statistics of opportunities
  */
 export const getOpportunitiesStats = (opportunities: Opportunity[]) => {
   const total = opportunities.length;
@@ -23,7 +23,7 @@ export const getOpportunitiesStats = (opportunities: Opportunity[]) => {
 };
 
 /**
- * Formata valor monetário para exibição
+ * Formats monetary value for display
  */
 export const formatCurrency = (value: number, currency: string = "BRL"): string => {
   return new Intl.NumberFormat("pt-BR", {
@@ -33,7 +33,7 @@ export const formatCurrency = (value: number, currency: string = "BRL"): string 
 };
 
 /**
- * Obtém classes CSS para o estado vazio
+ * Gets CSS classes for the empty state
  */
 export const getEmptyStateClasses = () => ({
   container: "text-center ",
@@ -44,7 +44,7 @@ export const getEmptyStateClasses = () => ({
 });
 
 /**
- * Obtém classes CSS para o cabeçalho
+ * Gets CSS classes for the header
  */
 export const getHeaderClasses = () => ({
   container: "flex items-center justify-between",

@@ -2,7 +2,7 @@ import { MoonIcon, SunIcon, SystemIcon } from "./icons";
 import type { Theme, ThemeOption } from "./types";
 
 /**
- * Retorna a lista de opções de tema disponíveis
+ * Returns the list of available theme options
  */
 export const getAvailableThemes = (): ThemeOption[] => {
   return [
@@ -25,7 +25,7 @@ export const getAvailableThemes = (): ThemeOption[] => {
 };
 
 /**
- * Gera as classes CSS para o botão de tema
+ * Generates CSS classes for the theme button
  */
 export const getThemeButtonClasses = (isActive: boolean): string => {
   const baseClasses =
@@ -39,7 +39,7 @@ export const getThemeButtonClasses = (isActive: boolean): string => {
 };
 
 /**
- * Gera as classes CSS para o container do switcher
+ * Generates CSS classes for the switcher container
  */
 export const getThemeSwitcherContainerClasses = (customClassName?: string): string => {
   const baseClasses =
@@ -49,7 +49,7 @@ export const getThemeSwitcherContainerClasses = (customClassName?: string): stri
 };
 
 /**
- * Valida se o tema é válido
+ * Validates if the theme is valid
  */
 export const isValidTheme = (theme: string): theme is Theme => {
   return ["light", "dark", "system"].includes(theme);

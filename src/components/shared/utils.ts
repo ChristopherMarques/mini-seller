@@ -2,7 +2,7 @@ import { SCORE_CLASSES, SCORE_CONFIG } from "./constants";
 import type { ValidationResult } from "./types";
 
 /**
- * Valida formato de email
+ * Validates email format
  */
 export const validateEmail = (email: string): ValidationResult => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -15,7 +15,7 @@ export const validateEmail = (email: string): ValidationResult => {
 };
 
 /**
- * Retorna a classe CSS apropriada para o score
+ * Returns the appropriate CSS class for the score
  */
 export const getScoreClass = (score: number): string => {
   if (score >= SCORE_CONFIG.HIGH_THRESHOLD) return SCORE_CLASSES.HIGH;
@@ -24,14 +24,14 @@ export const getScoreClass = (score: number): string => {
 };
 
 /**
- * Calcula a largura da barra de score
+ * Calculates the score bar width
  */
 export const getScoreWidth = (score: number): number => {
   return Math.max(score, SCORE_CONFIG.MIN_WIDTH);
 };
 
 /**
- * Filtra leads baseado em termo de busca e status
+ * Filters leads based on search term and status
  */
 export const filterLeads = (leads: any[], searchTerm: string, statusFilter: string) => {
   return leads.filter(lead => {
@@ -47,14 +47,14 @@ export const filterLeads = (leads: any[], searchTerm: string, statusFilter: stri
 };
 
 /**
- * Gera ID único para novos leads
+ * Generates unique ID for new leads
  */
 export const generateLeadId = (): number => {
   return Date.now() + Math.floor(Math.random() * 1000);
 };
 
 /**
- * Formata texto para exibição
+ * Formats text for display
  */
 export const formatText = (text: string, maxLength: number = 50): string => {
   if (text.length <= maxLength) return text;
@@ -62,7 +62,7 @@ export const formatText = (text: string, maxLength: number = 50): string => {
 };
 
 /**
- * Valida dados de lead
+ * Validates lead data
  */
 export const validateLeadData = (lead: any): ValidationResult => {
   if (!lead.name?.trim()) {
@@ -86,7 +86,7 @@ export const validateLeadData = (lead: any): ValidationResult => {
 };
 
 /**
- * Debounce function para otimizar performance
+ * Debounce function to optimize performance
  */
 export const debounce = <T extends (..._args: any[]) => any>(
   func: T,

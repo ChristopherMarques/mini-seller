@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-const TUTORIAL_STORAGE_KEY = 'mini-seller-tutorial-completed';
+const TUTORIAL_STORAGE_KEY = "mini-seller-tutorial-completed";
 
 export function useTutorial() {
   const [isFirstVisit, setIsFirstVisit] = useState(false);
@@ -8,20 +8,20 @@ export function useTutorial() {
 
   useEffect(() => {
     const hasCompletedTutorial = localStorage.getItem(TUTORIAL_STORAGE_KEY);
-    
+
     if (!hasCompletedTutorial) {
       setIsFirstVisit(true);
       // Start tutorial after a short delay to ensure all components are mounted
       const timer = setTimeout(() => {
         setRunTour(true);
       }, 1000);
-      
+
       return () => clearTimeout(timer);
     }
   }, []);
 
   const completeTutorial = () => {
-    localStorage.setItem(TUTORIAL_STORAGE_KEY, 'true');
+    localStorage.setItem(TUTORIAL_STORAGE_KEY, "true");
     setIsFirstVisit(false);
     setRunTour(false);
   };

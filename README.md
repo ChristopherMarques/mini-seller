@@ -1,6 +1,8 @@
 # 🚀 Mini Seller Console
 
-> A lightweight, modern sales management console built with React + Vite + Tailwind CSS for efficient lead management and opportunity conversion.
+> A lightweight, modern sales management console built with React + Vite + Tailwind CSS for efficient lead management and opportunity conversion. This project demonstrates advanced React patterns, TypeScript implementation, and modern UI/UX practices.
+
+**🎯 Purpose**: This project serves as a comprehensive technical demonstration showcasing modern frontend development practices, component architecture, and user experience design.
 
 ![Mini Seller Console](https://img.shields.io/badge/React-18.2.0-blue?style=for-the-badge&logo=react)
 ![Vite](https://img.shields.io/badge/Vite-5.4.19-646CFF?style=for-the-badge&logo=vite)
@@ -37,6 +39,10 @@
 - **🏗️ Modular Architecture**: Component-based architecture with dedicated folders
 - **🔄 Shared Resources**: Centralized types, utilities, and constants
 - **📝 Clean Code**: English documentation and consistent code standards
+- **🎓 Interactive Tutorial**: Built-in guided tutorial system for user onboarding
+- **📊 Export Functionality**: Excel and CSV export capabilities for data analysis
+- **🔍 Advanced Filtering**: Multi-criteria filtering with persistent preferences
+- **📱 Mobile-First**: Responsive design optimized for all device sizes
 
 ## 🏗️ Architecture
 
@@ -101,7 +107,7 @@ src/
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - pnpm (recommended) or npm
 
 ### Installation
@@ -121,16 +127,24 @@ pnpm dev
 ### Available Scripts
 
 ```bash
-pnpm dev          # Start development server
+pnpm dev          # Start development server (http://localhost:3000)
 pnpm build        # Build for production
 pnpm preview      # Preview production build
 pnpm lint         # Run ESLint
 pnpm type-check   # Run TypeScript compiler
 ```
 
+### First Time Setup
+
+1. **Start the development server**: `pnpm dev`
+2. **Open your browser**: Navigate to `http://localhost:3000`
+3. **Take the tutorial**: Click the "Start Tutorial" button to learn the interface
+4. **Import sample data**: Use the import functionality to add leads
+5. **Explore features**: Try filtering, searching, and converting leads to opportunities
+
 ### Code Quality & Formatting
 
-```bash
+````bash
 # Check for linting issues
 npm run lint:check
 
@@ -142,12 +156,6 @@ npm run format
 
 # Check TypeScript types
 npm run type-check
-
-# Alternative: Use batch scripts (Windows)
-.\lint.bat          # Check linting
-.\lint-fix.bat      # Fix linting issues
-.\format.bat        # Format code
-```
 
 ## 📊 Data Structure
 
@@ -162,31 +170,44 @@ interface Lead {
   score: number
   status: 'new' | 'contacted' | 'qualified' | 'lost'
 }
-```
+````
 
 ### Opportunity Object
+
 ```typescript
 interface Opportunity {
-  id: string
-  name: string
-  stage: string
-  amount?: number
-  accountName: string
-  createdAt: string
+  id: string;
+  name: string;
+  stage: string;
+  amount?: number;
+  accountName: string;
+  createdAt: string;
 }
 ```
 
 ## 🎯 Key Features Breakdown
 
 ### Lead Management
+
 - **Dynamic Filtering**: Filter by status with real-time updates
 - **Advanced Search**: Search across name and company fields
 - **Smart Sorting**: Sort by score (descending) for priority management
 - **Bulk Operations**: Handle 100+ leads efficiently
 - **Lead Import**: JSON and manual lead import functionality
 - **Score Visualization**: Color-coded score indicators with progress bars
+- **Data Export**: Export filtered leads to Excel (.xlsx) or CSV formats
+- **Always-Visible Import**: Import button available in leads table for easy access
+
+### Interactive Tutorial System
+
+- **Guided Onboarding**: Step-by-step tutorial for new users
+- **Conditional Steps**: Tutorial adapts based on available UI elements
+- **Visual Highlights**: Spotlight effect on tutorial targets
+- **Progress Tracking**: Clear indication of tutorial progress
+- **Skip Functionality**: Users can skip or restart the tutorial anytime
 
 ### Lead Detail Panel
+
 - **Slide-over Design**: Non-intrusive detail view
 - **Inline Editing**: Direct status and email editing
 - **Email Validation**: Real-time email format validation
@@ -194,6 +215,7 @@ interface Opportunity {
 - **Form Validation**: Comprehensive form validation with error messages
 
 ### Opportunity Conversion
+
 - **One-click Conversion**: Seamless lead-to-opportunity workflow
 - **Automatic Data Mapping**: Smart field mapping during conversion
 - **Stage Management**: Opportunity pipeline tracking
@@ -201,6 +223,7 @@ interface Opportunity {
 - **Empty State Handling**: Elegant empty states with import suggestions
 
 ### Data Management
+
 - **LocalStorage Persistence**: Automatic data persistence across sessions
 - **JSON Fallback**: Initial data loading from JSON files
 - **State Management**: Centralized state with React Context
@@ -217,6 +240,7 @@ interface Opportunity {
 ## 🌍 Internationalization
 
 Supported languages:
+
 - 🇺🇸 English (default)
 - 🇧🇷 Portuguese
 
@@ -224,30 +248,37 @@ Easily extensible for additional languages through the `public/locales/` directo
 
 ## 🔧 Technical Stack
 
-| Technology | Version | Purpose |
-|------------|---------|----------|
-| React | 18.2.0 | UI Framework |
-| Vite | 5.4.19 | Build Tool |
-| TypeScript | 5.6.2 | Type Safety |
-| Tailwind CSS | 3.4.1 | Styling |
-| Radix UI | Latest | UI Primitives |
-| React i18next | Latest | Internationalization |
-| Lucide React | Latest | Icons |
+| Technology    | Version | Purpose                     |
+| ------------- | ------- | --------------------------- |
+| React         | 18.2.0  | UI Framework                |
+| Vite          | 5.4.19  | Build Tool                  |
+| TypeScript    | 5.6.2   | Type Safety                 |
+| Tailwind CSS  | 3.4.1   | Styling                     |
+| Radix UI      | Latest  | UI Primitives               |
+| React i18next | Latest  | Internationalization        |
+| Lucide React  | Latest  | Icons                       |
+| XLSX          | Latest  | Excel Export Functionality  |
+| File-Saver    | Latest  | File Download Management    |
+| Shepherd.js   | Latest  | Interactive Tutorial System |
 
 ## ⚙️ Development Configuration
 
 ### Code Quality Tools
+
 - **ESLint**: Configured for React, TypeScript, and React Hooks
 - **Prettier**: Automatic code formatting with consistent style
 - **VSCode Integration**: Auto-format on save and lint fixes
 - **Batch Scripts**: Windows-compatible scripts for easy linting
 
 ### VSCode Setup
+
 The project includes VSCode configuration files:
+
 - `.vscode/settings.json`: Editor settings for consistent formatting
 - `.vscode/extensions.json`: Recommended extensions for optimal development
 
 ### Linting Rules
+
 - React Hooks validation
 - Unused variables detection
 - Console statement warnings
@@ -271,7 +302,9 @@ The project includes VSCode configuration files:
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under a Custom Technical Assessment License - see the [LICENSE.md](LICENSE.md) file for details.
+
+**⚠️ Important**: This project is intended exclusively for technical assessment purposes in job application processes. Commercial use, redistribution, or any other use is strictly prohibited.
 
 ## 🙏 Acknowledgments
 

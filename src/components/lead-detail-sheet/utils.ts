@@ -1,7 +1,7 @@
 import { validateEmail, type Lead } from "@/components/shared";
 
 /**
- * Simula uma chamada de API para salvar lead
+ * Simulates an API call to save lead
  */
 export const simulateSaveApi = (lead: Lead): Promise<Lead> => {
   return new Promise(resolve => {
@@ -12,7 +12,7 @@ export const simulateSaveApi = (lead: Lead): Promise<Lead> => {
 };
 
 /**
- * Simula uma chamada de API para converter lead
+ * Simulates an API call to convert lead
  */
 export const simulateConvertApi = (): Promise<void> => {
   return new Promise(resolve => {
@@ -23,7 +23,7 @@ export const simulateConvertApi = (): Promise<void> => {
 };
 
 /**
- * Valida os dados do lead no formulário
+ * Validates lead data in the form
  */
 export const validateLeadForm = (lead: Lead, t: (_key: string) => string) => {
   if (!validateEmail(lead.email).isValid) {
@@ -44,7 +44,7 @@ export const validateLeadForm = (lead: Lead, t: (_key: string) => string) => {
 };
 
 /**
- * Gera as classes CSS para o score baseado no valor
+ * Generates CSS classes for the score based on value
  */
 export const getScoreGradientClass = (score: number): string => {
   if (score >= 90) {
@@ -57,21 +57,21 @@ export const getScoreGradientClass = (score: number): string => {
 };
 
 /**
- * Calcula a largura da barra de score
+ * Calculates the score bar width
  */
 export const getScoreBarWidth = (score: number): number => {
   return Math.max(score, 10);
 };
 
 /**
- * Gera as iniciais do nome para o avatar
+ * Generates name initials for the avatar
  */
 export const getInitials = (name: string): string => {
   return name.charAt(0).toUpperCase();
 };
 
 /**
- * Gera as opções de status para o select
+ * Generates status options for the select
  */
 export const getStatusOptions = (t: (_key: string) => string) => [
   { value: "New", label: t("leads.status.new") },
@@ -80,7 +80,7 @@ export const getStatusOptions = (t: (_key: string) => string) => [
 ];
 
 /**
- * Reseta o estado do formulário
+ * Resets the form state
  */
 export const resetFormState = () => ({
   loading: false,
@@ -91,7 +91,7 @@ export const resetFormState = () => ({
 });
 
 /**
- * Gera classes CSS para inputs com erro
+ * Generates CSS classes for inputs with error
  */
 export const getInputErrorClasses = (hasError: boolean): string => {
   const baseClasses =

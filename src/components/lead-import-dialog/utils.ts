@@ -1,7 +1,7 @@
 import { ManualLeadForm, ValidationResult } from "./types";
 
 /**
- * Valida um lead individual durante a importação
+ * Validates an individual lead during import
  */
 export const validateLead = (
   lead: any,
@@ -48,7 +48,7 @@ export const validateLead = (
 };
 
 /**
- * Valida o formulário manual de lead
+ * Validates the manual lead form
  */
 export const validateManualLead = (
   manualLead: ManualLeadForm,
@@ -69,7 +69,7 @@ export const validateManualLead = (
 };
 
 /**
- * Processa a importação de leads via JSON
+ * Processes lead import via JSON
  */
 export const processJsonImport = (jsonInput: string, t: (_key: string) => string) => {
   const parsedLeads = JSON.parse(jsonInput) as any[];
@@ -106,7 +106,7 @@ export const processJsonImport = (jsonInput: string, t: (_key: string) => string
 };
 
 /**
- * Gera mensagem de sucesso para importação
+ * Generates success message for import
  */
 export const getImportSuccessMessage = (
   validCount: number,
@@ -117,7 +117,7 @@ export const getImportSuccessMessage = (
 };
 
 /**
- * Estado inicial para o formulário manual
+ * Initial state for the manual form
  */
 export const getInitialManualLead = (): ManualLeadForm => ({
   name: "",
@@ -129,7 +129,7 @@ export const getInitialManualLead = (): ManualLeadForm => ({
 });
 
 /**
- * Opções de status para o select
+ * Status options for the select
  */
 export const getStatusOptions = (t: (_key: string) => string) => [
   { value: "New", label: t("leads.status.new") },
@@ -138,7 +138,7 @@ export const getStatusOptions = (t: (_key: string) => string) => [
 ];
 
 /**
- * Placeholder para o JSON de exemplo
+ * Placeholder for the example JSON
  */
 export const getJsonPlaceholder = () => `[
   {

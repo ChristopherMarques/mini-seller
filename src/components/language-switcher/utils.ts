@@ -2,14 +2,14 @@ import { LANGUAGES } from "@/components/shared";
 import type { Language, LanguageCode } from "./types";
 
 /**
- * Retorna a lista de idiomas disponíveis
+ * Returns the list of available languages
  */
 export const getAvailableLanguages = (): Language[] => {
   return [...LANGUAGES];
 };
 
 /**
- * Gera as classes CSS para o botão de idioma
+ * Generates CSS classes for the language button
  */
 export const getLanguageButtonClasses = (isActive: boolean): string => {
   const baseClasses = "px-3 py-1 text-sm font-semibold rounded-full transition-all duration-200";
@@ -22,7 +22,7 @@ export const getLanguageButtonClasses = (isActive: boolean): string => {
 };
 
 /**
- * Gera as classes CSS para o container do switcher
+ * Generates CSS classes for the switcher container
  */
 export const getSwitcherContainerClasses = (customClassName?: string): string => {
   const baseClasses =
@@ -32,7 +32,7 @@ export const getSwitcherContainerClasses = (customClassName?: string): string =>
 };
 
 /**
- * Valida se o código de idioma é válido
+ * Validates if the language code is valid
  */
 export const isValidLanguageCode = (code: string): code is LanguageCode => {
   return LANGUAGES.some(lang => lang.code === code);
