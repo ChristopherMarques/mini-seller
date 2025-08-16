@@ -34,22 +34,67 @@
 - **🎨 Modern UI**: Radix UI components with Tailwind CSS styling
 - **📦 Optimized Bundle**: Tree-shaking and code splitting for minimal bundle size
 - **🔧 Developer Experience**: ESLint + Prettier configuration for code quality
+- **🏗️ Modular Architecture**: Component-based architecture with dedicated folders
+- **🔄 Shared Resources**: Centralized types, utilities, and constants
+- **📝 Clean Code**: English documentation and consistent code standards
 
 ## 🏗️ Architecture
 
 ```
 src/
-├── components/          # Reusable UI components
-│   ├── ui/             # Base UI components (Radix + Tailwind)
-│   ├── kpi-cards.tsx   # Dashboard KPI metrics
-│   ├── leads-table.tsx # Lead management table
-│   ├── opportunities-table.tsx # Opportunity tracking
-│   └── lead-detail-sheet.tsx   # Lead detail panel
-├── lib/                # Utilities and configurations
-│   ├── utils.ts        # Helper functions
-│   └── i18n.ts         # Internationalization setup
-├── types/              # TypeScript type definitions
-└── App.tsx             # Main application component
+├── components/                    # Organized component library
+│   ├── ui/                       # Base UI components (Radix + Tailwind)
+│   ├── shared/                   # Shared utilities and types
+│   │   ├── types.ts             # Common type definitions
+│   │   ├── constants.ts         # Shared constants
+│   │   ├── utils.ts             # Shared utility functions
+│   │   └── index.ts             # Centralized exports
+│   ├── kpi-cards/               # KPI dashboard components
+│   │   ├── kpi-cards.tsx        # Main component
+│   │   ├── types.ts             # Component-specific types
+│   │   ├── utils.ts             # Component utilities
+│   │   └── index.ts             # Component exports
+│   ├── leads-table/             # Lead management components
+│   │   ├── leads-table.tsx      # Main table component
+│   │   ├── score-indicator.tsx  # Score visualization
+│   │   ├── types.ts             # Lead table types
+│   │   ├── utils.ts             # Table utilities
+│   │   └── index.ts             # Component exports
+│   ├── opportunities-table/     # Opportunity management
+│   │   ├── opportunities-table.tsx    # Main component
+│   │   ├── opportunities-header.tsx   # Table header
+│   │   ├── empty-opportunities-state.tsx # Empty state
+│   │   ├── types.ts             # Opportunity types
+│   │   ├── utils.ts             # Opportunity utilities
+│   │   └── index.ts             # Component exports
+│   ├── lead-detail-sheet/       # Lead detail management
+│   │   ├── lead-detail-sheet.tsx # Main sheet component
+│   │   ├── lead-header.tsx      # Sheet header
+│   │   ├── lead-form.tsx        # Form component
+│   │   ├── sheet-actions.tsx    # Action buttons
+│   │   ├── types.ts             # Sheet types
+│   │   ├── utils.ts             # Sheet utilities
+│   │   └── index.ts             # Component exports
+│   ├── lead-import-dialog/      # Lead import functionality
+│   │   ├── lead-import-dialog.tsx # Main dialog
+│   │   ├── json-import-tab.tsx  # JSON import tab
+│   │   ├── manual-import-tab.tsx # Manual import tab
+│   │   ├── types.ts             # Import types
+│   │   ├── utils.ts             # Import utilities
+│   │   └── index.ts             # Component exports
+│   └── language-switcher/       # Internationalization
+│       ├── language-switcher.tsx # Language toggle
+│       ├── types.ts             # Language types
+│       ├── utils.ts             # Language utilities
+│       └── index.ts             # Component exports
+├── contexts/                    # React contexts
+│   ├── leads-provider.tsx       # Lead state management
+│   └── theme-provider.tsx       # Theme management
+├── lib/                         # Utilities and configurations
+│   ├── utils.ts                 # Helper functions
+│   └── i18n.ts                  # Internationalization setup
+├── types/                       # Global TypeScript definitions
+└── App.tsx                      # Main application component
 ```
 
 ## 🚀 Quick Start
@@ -117,18 +162,28 @@ interface Opportunity {
 - **Advanced Search**: Search across name and company fields
 - **Smart Sorting**: Sort by score (descending) for priority management
 - **Bulk Operations**: Handle 100+ leads efficiently
+- **Lead Import**: JSON and manual lead import functionality
+- **Score Visualization**: Color-coded score indicators with progress bars
 
 ### Lead Detail Panel
 - **Slide-over Design**: Non-intrusive detail view
 - **Inline Editing**: Direct status and email editing
 - **Email Validation**: Real-time email format validation
 - **Save/Cancel Actions**: Proper state management with error handling
+- **Form Validation**: Comprehensive form validation with error messages
 
 ### Opportunity Conversion
 - **One-click Conversion**: Seamless lead-to-opportunity workflow
 - **Automatic Data Mapping**: Smart field mapping during conversion
 - **Stage Management**: Opportunity pipeline tracking
 - **Amount Tracking**: Optional financial data management
+- **Empty State Handling**: Elegant empty states with import suggestions
+
+### Data Management
+- **LocalStorage Persistence**: Automatic data persistence across sessions
+- **JSON Fallback**: Initial data loading from JSON files
+- **State Management**: Centralized state with React Context
+- **Real-time Updates**: Instant UI updates with optimistic rendering
 
 ## 🎨 Design System
 
