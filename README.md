@@ -1,6 +1,7 @@
 # 🚀 Mini Seller Console
 
-![Mini Seller Console Cover](https://github.com/user-attachments/assets/b8b8b8b8-b8b8-b8b8-b8b8-b8b8b8b8b8b8)
+<img width="1552" height="914" alt="image" src="https://github.com/user-attachments/assets/202df510-7eb4-4457-914d-fa1e2d85db33" />
+
 
 > A lightweight, modern sales management console built with React + Vite + Tailwind CSS for efficient lead management and opportunity conversion. This project demonstrates advanced React patterns, TypeScript implementation, and modern UI/UX practices.
 
