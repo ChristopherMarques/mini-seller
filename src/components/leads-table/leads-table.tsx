@@ -309,7 +309,7 @@ export function LeadsTable({ onLeadClick }: LeadsTableProps) {
               {paginatedLeads.map(lead => (
                 <TableRow
                   key={lead.id}
-                  className="hover:bg-primaryOpacity-foreground cursor-pointer border-primary/50 shadow-sm"
+                  className="hover:bg-primaryOpacity-foreground dark:hover:bg-secondary cursor-pointer border-primary/50 shadow-sm"
                   onClick={() => onLeadClick(lead)}
                 >
                   <TableCell className="font-medium text-foreground">{lead.name}</TableCell>
